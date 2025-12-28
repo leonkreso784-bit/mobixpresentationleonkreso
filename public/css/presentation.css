@@ -14,7 +14,34 @@
     display: flex;
 }
 
-/* Admin Controls */
+/* Navigation Controls */
+.nav-controls {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 var(--spacing-6);
+    z-index: var(--z-sticky);
+}
+
+.nav-controls.active {
+    display: flex;
+}
+
+.nav-buttons {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
+}
+
+/* Admin Controls (legacy) */
 .admin-controls {
     position: fixed;
     top: 0;
