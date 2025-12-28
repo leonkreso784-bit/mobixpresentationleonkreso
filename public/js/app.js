@@ -10,6 +10,7 @@ class MobixPresentation {
         this.currentSlide = 1;
         this.totalSlides = slidesData.length;
         this.isTransitioning = false;
+        this.offlineMode = false;
         
         this.init();
     }
@@ -176,51 +177,32 @@ class MobixPresentation {
     }
 
     connectSocket(code) {
-        // Disconnect existing socket if any
-        if (this.socket) {
-            this.socket.disconnect();
+        // Access codes - validated locally for offline mode
+        const ADMIN_CODE = '1543';
+        const VIEWER_CODE = '0000';
+        
+        // First try local validation (works offline/Vercel)
+        if (code === ADMIN_CODE) {
+            this.isAdmin = true;
+            this.offlineMode = true;
+            this.currentSlide = parseInt(localStorage.getItem('mobix_current_slide')) || 1;
+            this.saveSession(code);
+            this.startPresentation();
+            console.log('Offline mode: Admin access granted');
+            return;
+        } else if (code === VIEWER_CODE) {
+            this.isAdmin = false;
+            this.offlineMode = true;
+            this.currentSlide = parseInt(localStorage.getItem('mobix_current_slide')) || 1;
+            this.saveSession(code);
+            this.startPresentation();
+            console.log('Offline mode: Viewer access granted');
+            return;
         }
         
-        // Connect to Socket.io server
-        this.socket = io();
-        
-        // Store code for session save
-        this._pendingCode = code;
-        
-        // Handle connection
-        this.socket.on('connect', () => {
-            console.log('Connected to server');
-            this.socket.emit('login', code);
-        });
-        
-        // Handle login result
-        this.socket.on('loginResult', (data) => {
-            if (data.success) {
-                this.isAdmin = data.isAdmin;
-                this.currentSlide = data.currentSlide;
-                this.saveSession(this._pendingCode);
-                this.startPresentation();
-            } else {
-                this.showError(data.message);
-                this.clearSession();
-            }
-        });
-        
-        // Handle slide changes from server
-        this.socket.on('slideChanged', (slideNumber) => {
-            if (!this.isAdmin && slideNumber !== this.currentSlide) {
-                this.goToSlide(slideNumber);
-            }
-        });
-        
-        // Handle connection errors
-        this.socket.on('connect_error', () => {
-            this.showError('Connection error. Please try again.');
-        });
-        
-        this.socket.on('disconnect', () => {
-            console.log('Disconnected from server');
-        });
+        // Invalid code
+        this.showError('Invalid access code');
+        this.clearSession();
     }
 
     showError(message) {
@@ -294,10 +276,8 @@ class MobixPresentation {
                 this.currentSlide = slideNumber;
                 this.renderSlide(this.currentSlide);
                 
-                // Emit slide change if admin
-                if (this.isAdmin && this.socket) {
-                    this.socket.emit('slideChange', this.currentSlide);
-                }
+                // Save current slide to localStorage
+                localStorage.setItem('mobix_current_slide', this.currentSlide);
                 
                 setTimeout(() => {
                     this.isTransitioning = false;
@@ -306,6 +286,7 @@ class MobixPresentation {
         } else {
             this.currentSlide = slideNumber;
             this.renderSlide(this.currentSlide);
+            localStorage.setItem('mobix_current_slide', this.currentSlide);
         }
     }
 

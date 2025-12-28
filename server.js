@@ -93,9 +93,6 @@ server.listen(PORT, () => {
 ║                                                              ║
 ║   Open in browser: http://localhost:${PORT}                   ║
 ║                                                              ║
-║   Admin Code: ${ADMIN_CODE}                                        ║
-║   Viewer Code: ${VIEWER_CODE}                                       ║
-║                                                              ║
 ╚══════════════════════════════════════════════════════════════╝
     `);
 });
