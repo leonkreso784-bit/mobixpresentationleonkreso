@@ -11,6 +11,8 @@ class MobixPresentation {
         this.totalSlides = slidesData.length;
         this.isTransitioning = false;
         this.offlineMode = false;
+        this.isLoggedIn = false;
+        this.isConnecting = false;
         
         this.init();
     }
@@ -83,7 +85,7 @@ class MobixPresentation {
 
     checkSavedSession() {
         const savedCode = localStorage.getItem('mobix_session_code');
-        if (savedCode) {
+        if (savedCode && !this.isLoggedIn && !this.isConnecting) {
             this.connectSocket(savedCode);
         }
     }
@@ -97,9 +99,16 @@ class MobixPresentation {
     }
 
     handleLogout() {
+        // Reset flags
+        this.isLoggedIn = false;
+        this.isConnecting = false;
+        this.isAdmin = false;
+        this.offlineMode = false;
+        
         this.clearSession();
         if (this.socket) {
             this.socket.disconnect();
+            this.socket = null;
         }
         // Reset UI
         this.presentationContainer.classList.remove('active');
@@ -177,9 +186,17 @@ class MobixPresentation {
     }
 
     connectSocket(code) {
+        // Prevent multiple connection attempts
+        if (this.isConnecting || this.isLoggedIn) {
+            console.log('Already connecting or logged in, skipping');
+            return;
+        }
+        this.isConnecting = true;
+        
         // Disconnect existing socket if any
         if (this.socket) {
             this.socket.disconnect();
+            this.socket = null;
         }
         
         // Store code for session save
@@ -188,17 +205,25 @@ class MobixPresentation {
         // Check if Socket.io is available
         if (typeof io === 'undefined') {
             // Fallback to offline mode
+            this.isConnecting = false;
             this.connectOffline(code);
             return;
         }
         
-        // Connect to Socket.io server
-        this.socket = io();
+        // Connect to Socket.io server with auto-reconnect disabled
+        this.socket = io({
+            reconnection: false,
+            timeout: 5000
+        });
         
         // Connection timeout
         const connectionTimeout = setTimeout(() => {
             console.log('Socket connection timeout, falling back to offline mode');
-            this.socket.disconnect();
+            this.isConnecting = false;
+            if (this.socket) {
+                this.socket.disconnect();
+                this.socket = null;
+            }
             this.connectOffline(code);
         }, 3000);
         
@@ -211,7 +236,16 @@ class MobixPresentation {
         
         // Handle login result
         this.socket.on('loginResult', (data) => {
+            // Prevent duplicate login handling
+            if (this.isLoggedIn) {
+                console.log('Already logged in, ignoring duplicate loginResult');
+                return;
+            }
+            
+            this.isConnecting = false;
+            
             if (data.success) {
+                this.isLoggedIn = true;
                 this.isAdmin = data.isAdmin;
                 // Always use server's currentSlide for viewers, ignore localStorage
                 this.currentSlide = data.currentSlide || 1;
@@ -236,6 +270,7 @@ class MobixPresentation {
         this.socket.on('connect_error', () => {
             clearTimeout(connectionTimeout);
             console.log('Socket connection error, falling back to offline mode');
+            this.isConnecting = false;
             this.connectOffline(code);
         });
         
@@ -245,11 +280,18 @@ class MobixPresentation {
     }
     
     connectOffline(code) {
+        // Prevent if already logged in
+        if (this.isLoggedIn) {
+            console.log('Already logged in, skipping offline connect');
+            return;
+        }
+        
         // Access codes for offline validation
         const ADMIN_CODE = '1543';
         const VIEWER_CODE = '0000';
         
         if (code === ADMIN_CODE) {
+            this.isLoggedIn = true;
             this.isAdmin = true;
             this.offlineMode = true;
             // Admin can use localStorage to remember position
@@ -258,6 +300,7 @@ class MobixPresentation {
             this.startPresentation();
             console.log('Offline mode: Admin access granted, slide:', this.currentSlide);
         } else if (code === VIEWER_CODE) {
+            this.isLoggedIn = true;
             this.isAdmin = false;
             this.offlineMode = true;
             // Viewer in offline mode starts at slide 1 (no sync available)
