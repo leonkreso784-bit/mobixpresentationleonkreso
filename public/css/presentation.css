@@ -352,3 +352,34 @@
         width: 60px;
     }
 }
+
+/* =============================================
+   iPhone 16 / Pro / Pro Max (Dynamic Island)
+   ============================================= */
+
+@media (max-width: 430px) and (min-height: 800px) {
+    /* Safe area for Dynamic Island */
+    .admin-controls {
+        height: 54px;
+        padding-top: env(safe-area-inset-top, 10px);
+        padding-left: max(var(--spacing-3), env(safe-area-inset-left));
+        padding-right: max(var(--spacing-3), env(safe-area-inset-right));
+    }
+    
+    .viewer-indicator {
+        top: max(var(--spacing-2), env(safe-area-inset-top, 10px));
+        right: max(var(--spacing-2), env(safe-area-inset-right));
+    }
+    
+    /* Slides container with safe area */
+    .slides-container {
+        padding-top: 58px;
+        padding-bottom: max(10px, env(safe-area-inset-bottom));
+        padding-left: max(8px, env(safe-area-inset-left));
+        padding-right: max(8px, env(safe-area-inset-right));
+    }
+    
+    .progress-bar {
+        bottom: env(safe-area-inset-bottom, 0);
+    }
+}

@@ -1720,82 +1720,89 @@
 @media (max-width: 480px) {
     /* Base Slide */
     .slides-container {
-        inset: 50px 0 10px 0;
-        padding: 5px;
+        inset: 54px 0 10px 0;
+        padding: 8px;
     }
     
     .slide {
-        padding: 10px 8px;
+        padding: 8px 6px;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
     }
     
     .slide-content {
-        gap: 10px;
-        padding: 0 5px;
+        gap: 8px;
+        padding: 0 4px;
+        justify-content: flex-start;
+        padding-top: 10px;
     }
     
     .slide-title {
-        font-size: 1.3rem;
-        margin-bottom: 8px;
+        font-size: 1.2rem;
+        margin-bottom: 6px;
+        line-height: 1.3;
     }
     
     .slide-title::after {
-        width: 50px;
+        width: 40px;
         height: 2px;
-        bottom: -4px;
+        bottom: -3px;
     }
     
     .slide-subtitle,
     .slide-intro {
-        font-size: 0.9rem;
-        margin-bottom: 10px;
+        font-size: 0.85rem;
+        margin-bottom: 8px;
     }
     
     /* Title Slide (Slide 1) */
     .title-slide-content {
-        gap: 12px;
+        gap: 10px;
+        padding-top: 0;
     }
     
     .title-header {
-        gap: 6px;
+        gap: 4px;
     }
     
     .title-logo-img {
-        max-width: 200px;
+        max-width: 160px;
     }
     
     .title-subtitle {
-        font-size: 0.8rem;
-        letter-spacing: 0.05em;
+        font-size: 0.7rem;
+        letter-spacing: 0.04em;
     }
     
     .main-description {
-        font-size: 0.8rem;
-        padding: 0 10px;
+        font-size: 0.75rem;
+        padding: 0 8px;
+        line-height: 1.5;
     }
     
     .features-grid {
         grid-template-columns: 1fr;
-        gap: 10px;
+        gap: 8px;
         max-width: 100%;
     }
     
     .feature-card {
-        padding: 14px 12px;
-        border-radius: 12px;
+        padding: 12px 10px;
+        border-radius: 10px;
     }
     
     .feature-icon {
-        font-size: 1.8rem;
-        margin-bottom: 6px;
-    }
-    
-    .feature-title {
-        font-size: 0.9rem;
+        font-size: 1.5rem;
         margin-bottom: 4px;
     }
     
+    .feature-title {
+        font-size: 0.85rem;
+        margin-bottom: 3px;
+    }
+    
     .feature-desc {
-        font-size: 0.75rem;
+        font-size: 0.7rem;
     }
     
     .tagline {
@@ -2583,5 +2590,579 @@
     
     .revenue-total {
         font-size: 2.4rem;
+    }
+}
+
+/* =============================================
+   iPhone 16 / Pro / Pro Max Specific Styles
+   (393x852 to 430x932 viewport)
+   ============================================= */
+
+@media (max-width: 430px) and (min-height: 800px) {
+    /* Slides container adjusted for Dynamic Island */
+    .slides-container {
+        inset: 58px 0 8px 0;
+        padding: 6px;
+    }
+    
+    .slide {
+        padding: 6px 4px;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .slide-content {
+        gap: 6px;
+        padding: 4px;
+        justify-content: flex-start;
+        padding-top: 8px;
+        min-height: auto;
+    }
+    
+    /* Slide titles - visible at top */
+    .slide-title {
+        font-size: 1.15rem;
+        margin-bottom: 4px;
+        padding-top: 0;
+    }
+    
+    .slide-title::after {
+        width: 35px;
+        height: 2px;
+        bottom: -2px;
+    }
+    
+    .slide-subtitle,
+    .slide-intro {
+        font-size: 0.8rem;
+        margin-bottom: 6px;
+    }
+    
+    /* Title Slide */
+    .title-slide-content {
+        gap: 8px;
+    }
+    
+    .title-logo-img {
+        max-width: 140px;
+    }
+    
+    .title-subtitle {
+        font-size: 0.65rem;
+    }
+    
+    .main-description {
+        font-size: 0.7rem;
+        line-height: 1.4;
+    }
+    
+    .tagline {
+        font-size: 0.85rem;
+    }
+    
+    /* Feature cards smaller */
+    .features-grid {
+        gap: 6px;
+    }
+    
+    .feature-card {
+        padding: 10px 8px;
+    }
+    
+    .feature-icon {
+        font-size: 1.3rem;
+        margin-bottom: 3px;
+    }
+    
+    .feature-title {
+        font-size: 0.8rem;
+    }
+    
+    .feature-desc {
+        font-size: 0.65rem;
+    }
+    
+    /* Problem cards */
+    .problem-card {
+        padding: 10px 8px;
+    }
+    
+    .problem-icon {
+        font-size: 1.3rem;
+        margin-bottom: 4px;
+    }
+    
+    .problem-title {
+        font-size: 0.8rem;
+    }
+    
+    .problem-desc {
+        font-size: 0.65rem;
+    }
+    
+    .conclusion-box {
+        padding: 8px 12px;
+        margin-top: 6px;
+    }
+    
+    .conclusion-text {
+        font-size: 0.8rem;
+    }
+    
+    /* Solution cards */
+    .solution-card {
+        padding: 12px 10px;
+    }
+    
+    .solution-icon {
+        font-size: 1.5rem;
+        margin-bottom: 6px;
+    }
+    
+    .solution-title {
+        font-size: 0.85rem;
+    }
+    
+    .solution-desc {
+        font-size: 0.7rem;
+    }
+    
+    .main-message {
+        padding: 8px 12px;
+        margin-bottom: 4px;
+    }
+    
+    .main-message p {
+        font-size: 0.9rem;
+    }
+    
+    /* Flow steps */
+    .flow-step {
+        padding: 16px 12px;
+        width: 100%;
+    }
+    
+    .step-number {
+        width: 24px;
+        height: 24px;
+        font-size: 0.75rem;
+        top: -10px;
+    }
+    
+    .step-icon {
+        font-size: 1.5rem;
+        margin-bottom: 4px;
+    }
+    
+    .step-title {
+        font-size: 0.85rem;
+    }
+    
+    .step-desc {
+        font-size: 0.65rem;
+    }
+    
+    /* Mode cards */
+    .mode-card {
+        padding: 14px 12px;
+    }
+    
+    .mode-icon {
+        font-size: 1.8rem;
+        margin-bottom: 6px;
+    }
+    
+    .mode-title {
+        font-size: 1rem;
+    }
+    
+    .mode-desc {
+        font-size: 0.7rem;
+        margin-bottom: 8px;
+    }
+    
+    .mode-example {
+        padding: 8px 10px;
+    }
+    
+    .example-label {
+        font-size: 0.6rem;
+    }
+    
+    .example-text {
+        font-size: 0.7rem;
+    }
+    
+    /* Cards comparison */
+    .card-type-box {
+        padding: 16px 12px;
+    }
+    
+    .card-type-icon {
+        font-size: 1.8rem;
+        margin-bottom: 8px;
+    }
+    
+    .card-type-title {
+        font-size: 1rem;
+    }
+    
+    .card-type-desc {
+        font-size: 0.75rem;
+        margin-bottom: 10px;
+    }
+    
+    .card-features-list li {
+        font-size: 0.7rem;
+        padding: 4px 0;
+        padding-left: 18px;
+    }
+    
+    .highlight-box {
+        padding: 10px 14px;
+    }
+    
+    .highlight-box p {
+        font-size: 0.85rem;
+    }
+    
+    /* Social cards */
+    .future-badge {
+        padding: 4px 10px;
+        font-size: 0.6rem;
+    }
+    
+    .slide-main-title {
+        font-size: 1.3rem;
+    }
+    
+    .social-feature-card {
+        padding: 12px 10px;
+    }
+    
+    .social-icon {
+        font-size: 1.5rem;
+        margin-bottom: 6px;
+    }
+    
+    .social-title {
+        font-size: 0.85rem;
+    }
+    
+    .social-desc {
+        font-size: 0.7rem;
+    }
+    
+    .slide-quote {
+        font-size: 0.8rem;
+        margin-top: 8px;
+    }
+    
+    /* Personalization */
+    .personalization-card {
+        padding: 12px 10px;
+    }
+    
+    .pers-icon {
+        font-size: 1.5rem;
+        margin-bottom: 6px;
+    }
+    
+    .pers-title {
+        font-size: 0.8rem;
+    }
+    
+    .pers-desc {
+        font-size: 0.65rem;
+    }
+    
+    .stats-row {
+        gap: 12px;
+        margin-top: 10px;
+    }
+    
+    .stat-value {
+        font-size: 1.5rem;
+    }
+    
+    .stat-label {
+        font-size: 0.75rem;
+    }
+    
+    /* Levels */
+    .level-card {
+        padding: 14px 10px;
+    }
+    
+    .level-icon {
+        font-size: 1.3rem;
+    }
+    
+    .level-name {
+        font-size: 0.9rem;
+    }
+    
+    .level-xp {
+        font-size: 0.6rem;
+        padding: 2px 8px;
+    }
+    
+    .level-perks li {
+        font-size: 0.65rem;
+    }
+    
+    .earn-xp-box {
+        padding: 10px 14px;
+        margin-top: 10px;
+    }
+    
+    .earn-xp-box h4 {
+        font-size: 0.7rem;
+    }
+    
+    .xp-method {
+        padding: 4px 10px;
+        font-size: 0.7rem;
+    }
+    
+    /* Business */
+    .business-card {
+        padding: 16px 12px;
+    }
+    
+    .business-revenue {
+        padding: 3px 8px;
+        font-size: 0.75rem;
+        top: 10px;
+        right: 10px;
+    }
+    
+    .business-icon {
+        font-size: 1.8rem;
+        margin-bottom: 8px;
+    }
+    
+    .business-title {
+        font-size: 0.9rem;
+    }
+    
+    .business-desc {
+        font-size: 0.7rem;
+    }
+    
+    /* Pricing */
+    .pricing-card {
+        padding: 16px 12px;
+    }
+    
+    .pricing-icon {
+        font-size: 1.5rem;
+        margin-bottom: 8px;
+    }
+    
+    .pricing-name {
+        font-size: 1rem;
+    }
+    
+    .price-value {
+        font-size: 1.5rem;
+    }
+    
+    .price-period {
+        font-size: 0.75rem;
+    }
+    
+    .pricing-features li {
+        font-size: 0.75rem;
+    }
+    
+    /* Marketplace */
+    .headline {
+        font-size: 0.95rem;
+        margin-bottom: 10px;
+    }
+    
+    .marketplace-card {
+        padding: 16px 12px;
+    }
+    
+    .marketplace-icon {
+        font-size: 1.8rem;
+        margin-bottom: 8px;
+    }
+    
+    .marketplace-title {
+        font-size: 1rem;
+    }
+    
+    .marketplace-benefits li {
+        font-size: 0.75rem;
+    }
+    
+    /* B2B */
+    .b2b-card {
+        padding: 12px 10px;
+    }
+    
+    .b2b-icon {
+        font-size: 1.5rem;
+        margin-bottom: 6px;
+    }
+    
+    .b2b-title {
+        font-size: 0.85rem;
+    }
+    
+    .b2b-desc {
+        font-size: 0.65rem;
+    }
+    
+    .b2b-price-tier {
+        padding: 10px 16px;
+    }
+    
+    .tier-name {
+        font-size: 0.7rem;
+    }
+    
+    .tier-price {
+        font-size: 0.9rem;
+    }
+    
+    /* Revenue */
+    .revenue-total {
+        font-size: 2.2rem;
+    }
+    
+    .revenue-year {
+        font-size: 0.95rem;
+    }
+    
+    .revenue-item {
+        padding: 12px 10px;
+    }
+    
+    .revenue-source {
+        font-size: 0.85rem;
+    }
+    
+    .revenue-amount {
+        font-size: 0.9rem;
+    }
+    
+    .revenue-details {
+        font-size: 0.65rem;
+    }
+    
+    /* Advantages */
+    .advantage-card {
+        padding: 14px 10px;
+    }
+    
+    .advantage-icon {
+        font-size: 1.5rem;
+        margin-bottom: 6px;
+    }
+    
+    .advantage-title {
+        font-size: 0.9rem;
+    }
+    
+    .advantage-desc {
+        font-size: 0.7rem;
+    }
+    
+    .vs-others {
+        padding: 6px 10px;
+    }
+    
+    .vs-label {
+        font-size: 0.65rem;
+    }
+    
+    .competitor {
+        padding: 4px 10px;
+        font-size: 0.7rem;
+    }
+    
+    /* Vision timeline */
+    .vision-quote {
+        font-size: 0.9rem;
+        margin-bottom: 16px;
+    }
+    
+    .timeline-item {
+        gap: 6px;
+    }
+    
+    .timeline-year {
+        padding: 6px 14px;
+        font-size: 0.85rem;
+    }
+    
+    .timeline-content {
+        padding: 10px 8px;
+    }
+    
+    .timeline-title {
+        font-size: 0.85rem;
+    }
+    
+    .timeline-desc {
+        font-size: 0.65rem;
+    }
+    
+    .mission-statement {
+        font-size: 0.8rem;
+        margin-top: 12px;
+    }
+    
+    /* Final slide */
+    .final-title {
+        font-size: 1.8rem;
+    }
+    
+    .final-headline {
+        font-size: 1.1rem;
+    }
+    
+    .presenter-item {
+        font-size: 0.8rem;
+    }
+    
+    .contact-btn {
+        padding: 10px 16px;
+        font-size: 0.85rem;
+    }
+    
+    .demo-label {
+        font-size: 0.75rem;
+    }
+    
+    .demo-url {
+        font-size: 0.75rem;
+    }
+    
+    .final-tagline {
+        font-size: 0.8rem;
+    }
+    
+    /* Modal for iPhone 16 */
+    .modal-content {
+        padding: 18px 14px;
+        max-height: 80vh;
+        margin-top: 60px;
+    }
+    
+    .modal-icon {
+        font-size: 1.8rem;
+    }
+    
+    .modal-title {
+        font-size: 1.2rem;
+    }
+    
+    .modal-body {
+        font-size: 0.85rem;
     }
 }

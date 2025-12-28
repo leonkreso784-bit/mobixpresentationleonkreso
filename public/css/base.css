@@ -146,10 +146,14 @@ input::placeholder {
 /* Safe area insets for iPhone X and newer */
 @supports (padding-top: env(safe-area-inset-top)) {
     body {
+        /* Don't add padding to body - handle in individual components */
+    }
+    
+    /* Root element safe area handling */
+    .presentation-screen,
+    .login-screen {
         padding-top: env(safe-area-inset-top);
         padding-bottom: env(safe-area-inset-bottom);
-        padding-left: env(safe-area-inset-left);
-        padding-right: env(safe-area-inset-right);
     }
 }
 
@@ -157,4 +161,11 @@ input::placeholder {
 html {
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
+}
+
+/* iPhone 16 viewport meta handling */
+@media (max-width: 430px) and (min-height: 800px) {
+    html, body {
+        overflow-x: hidden;
+    }
 }
