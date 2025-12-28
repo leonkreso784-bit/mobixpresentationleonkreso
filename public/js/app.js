@@ -6,12 +6,12 @@
 class MobixPresentation {
     constructor() {
         this.socket = null;
-        this.isAdmin = false;
-        this.currentSlide = 1;
+        this.isAdmin = true; // Always admin mode - no login required
+        this.currentSlide = parseInt(localStorage.getItem('mobix_current_slide')) || 1;
         this.totalSlides = slidesData.length;
         this.isTransitioning = false;
-        this.offlineMode = false;
-        this.isLoggedIn = false;
+        this.offlineMode = true;
+        this.isLoggedIn = true;
         this.isConnecting = false;
         
         this.init();
@@ -21,7 +21,8 @@ class MobixPresentation {
         this.cacheElements();
         this.bindEvents();
         this.updateProgressBar();
-        this.checkSavedSession();
+        // Skip login - start presentation directly
+        this.startPresentation();
     }
 
     cacheElements() {
@@ -227,6 +228,15 @@ class MobixPresentation {
             this.connectOffline(code);
         }, 3000);
         
+        // Handle slide changes from server (for viewers) - MUST be set up BEFORE login
+        this.socket.on('slideChanged', (slideNumber) => {
+            console.log('[DEBUG] slideChanged event received:', slideNumber, 'isAdmin:', this.isAdmin);
+            if (!this.isAdmin && slideNumber !== this.currentSlide) {
+                console.log('[DEBUG] Viewer going to slide:', slideNumber);
+                this.goToSlide(slideNumber, true, true);
+            }
+        });
+        
         // Handle connection
         this.socket.on('connect', () => {
             clearTimeout(connectionTimeout);
@@ -248,7 +258,9 @@ class MobixPresentation {
                 this.isLoggedIn = true;
                 this.isAdmin = data.isAdmin;
                 // Always use server's currentSlide for viewers, ignore localStorage
-                this.currentSlide = data.currentSlide || 1;
+                const serverSlide = data.currentSlide || 1;
+                console.log('[DEBUG] Server sent currentSlide:', serverSlide, 'isAdmin:', data.isAdmin);
+                this.currentSlide = serverSlide;
                 this.offlineMode = false;
                 this.saveSession(this._pendingCode);
                 console.log('Logged in as', this.isAdmin ? 'Admin' : 'Viewer', 'starting at slide', this.currentSlide);
@@ -256,13 +268,6 @@ class MobixPresentation {
             } else {
                 this.showError(data.message);
                 this.clearSession();
-            }
-        });
-        
-        // Handle slide changes from server (for viewers)
-        this.socket.on('slideChanged', (slideNumber) => {
-            if (!this.isAdmin && slideNumber !== this.currentSlide) {
-                this.goToSlide(slideNumber, true, true);
             }
         });
         
@@ -287,7 +292,7 @@ class MobixPresentation {
         }
         
         // Access codes for offline validation
-        const ADMIN_CODE = '1543';
+        const ADMIN_CODE = '1111';
         const VIEWER_CODE = '0000';
         
         if (code === ADMIN_CODE) {
@@ -325,6 +330,7 @@ class MobixPresentation {
     // ==========================================
 
     startPresentation() {
+        console.log('[DEBUG] startPresentation called, currentSlide:', this.currentSlide);
         // Hide login, show presentation
         this.loginScreen.classList.remove('active');
         this.presentationContainer.classList.add('active');
@@ -342,6 +348,7 @@ class MobixPresentation {
         }, 500);
         
         // Render initial slide
+        console.log('[DEBUG] Calling renderSlide with:', this.currentSlide);
         this.renderSlide(this.currentSlide);
     }
 

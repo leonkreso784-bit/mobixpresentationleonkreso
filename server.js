@@ -11,7 +11,7 @@ const io = new Server(server);
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Access codes
-const ADMIN_CODE = '1543';
+const ADMIN_CODE = '1111';
 const VIEWER_CODE = '0000';
 
 // Current presentation state
@@ -52,7 +52,9 @@ io.on('connection', (socket) => {
         } else if (code === VIEWER_CODE) {
             socket.role = 'viewer';
             viewers.add(socket.id);
-            console.log('Sending viewer to slide:', presentationState.currentSlide);
+            console.log('=== VIEWER LOGIN ===');
+            console.log('presentationState.currentSlide:', presentationState.currentSlide);
+            console.log('Sending viewer to slide:', presentationState.currentSlide || 1);
             socket.emit('loginResult', { 
                 success: true,
                 isAdmin: false, 
@@ -66,11 +68,13 @@ io.on('connection', (socket) => {
 
     // Handle slide change (admin only)
     socket.on('slideChange', (slideIndex) => {
+        console.log('slideChange received from', socket.id, 'role:', socket.role, 'slideIndex:', slideIndex);
         if (socket.role === 'admin') {
             presentationState.currentSlide = slideIndex;
+            console.log('presentationState.currentSlide updated to:', presentationState.currentSlide);
             // Broadcast to all viewers
             io.emit('slideChanged', slideIndex);
-            console.log('Slide changed to:', slideIndex);
+            console.log('Slide changed to:', slideIndex, '- broadcasted to all clients');
         }
     });
 
