@@ -14,7 +14,7 @@ Interactive presentation platform with real-time synchronization between present
 
 | Role | Code |
 |------|------|
-| Admin (Presenter) | `1543` |
+| Admin (Presenter) | ` |
 | Viewer (Audience) | `0000` |
 
 > **Note:** Only one admin can be connected at a time.
