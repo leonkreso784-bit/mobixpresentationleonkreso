@@ -16,13 +16,14 @@ const VIEWER_CODE = '0000';
 
 // Current presentation state
 let presentationState = {
-    currentSlide: 0,
+    currentSlide: 1,
     totalSlides: 0,
     adminConnected: false
 };
 
 // Connected clients
 let viewers = new Set();
+let adminSocketId = null;
 
 io.on('connection', (socket) => {
     console.log('New connection:', socket.id);
@@ -30,7 +31,17 @@ io.on('connection', (socket) => {
     // Handle login
     socket.on('login', (code) => {
         if (code === ADMIN_CODE) {
+            // Check if admin is already connected
+            if (presentationState.adminConnected && adminSocketId !== socket.id) {
+                socket.emit('loginResult', { 
+                    success: false, 
+                    message: 'Admin is already connected from another device' 
+                });
+                return;
+            }
+            
             socket.role = 'admin';
+            adminSocketId = socket.id;
             presentationState.adminConnected = true;
             socket.emit('loginResult', { 
                 success: true,
@@ -48,7 +59,7 @@ io.on('connection', (socket) => {
             });
             console.log('Viewer connected:', socket.id);
         } else {
-            socket.emit('loginResult', { success: false, message: 'Neispravan pristupni kod' });
+            socket.emit('loginResult', { success: false, message: 'Invalid access code' });
         }
     });
 
@@ -71,6 +82,7 @@ io.on('connection', (socket) => {
     socket.on('disconnect', () => {
         if (socket.role === 'admin') {
             presentationState.adminConnected = false;
+            adminSocketId = null;
             console.log('Admin disconnected');
         } else if (socket.role === 'viewer') {
             viewers.delete(socket.id);

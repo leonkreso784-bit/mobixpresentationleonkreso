@@ -177,11 +177,76 @@ class MobixPresentation {
     }
 
     connectSocket(code) {
-        // Access codes - validated locally for offline mode
+        // Disconnect existing socket if any
+        if (this.socket) {
+            this.socket.disconnect();
+        }
+        
+        // Store code for session save
+        this._pendingCode = code;
+        
+        // Check if Socket.io is available
+        if (typeof io === 'undefined') {
+            // Fallback to offline mode
+            this.connectOffline(code);
+            return;
+        }
+        
+        // Connect to Socket.io server
+        this.socket = io();
+        
+        // Connection timeout
+        const connectionTimeout = setTimeout(() => {
+            console.log('Socket connection timeout, falling back to offline mode');
+            this.socket.disconnect();
+            this.connectOffline(code);
+        }, 3000);
+        
+        // Handle connection
+        this.socket.on('connect', () => {
+            clearTimeout(connectionTimeout);
+            console.log('Connected to server');
+            this.socket.emit('login', code);
+        });
+        
+        // Handle login result
+        this.socket.on('loginResult', (data) => {
+            if (data.success) {
+                this.isAdmin = data.isAdmin;
+                this.currentSlide = data.currentSlide;
+                this.offlineMode = false;
+                this.saveSession(this._pendingCode);
+                this.startPresentation();
+            } else {
+                this.showError(data.message);
+                this.clearSession();
+            }
+        });
+        
+        // Handle slide changes from server (for viewers)
+        this.socket.on('slideChanged', (slideNumber) => {
+            if (!this.isAdmin && slideNumber !== this.currentSlide) {
+                this.goToSlide(slideNumber, true, true);
+            }
+        });
+        
+        // Handle connection errors
+        this.socket.on('connect_error', () => {
+            clearTimeout(connectionTimeout);
+            console.log('Socket connection error, falling back to offline mode');
+            this.connectOffline(code);
+        });
+        
+        this.socket.on('disconnect', () => {
+            console.log('Disconnected from server');
+        });
+    }
+    
+    connectOffline(code) {
+        // Access codes for offline validation
         const ADMIN_CODE = '1543';
         const VIEWER_CODE = '0000';
         
-        // First try local validation (works offline/Vercel)
         if (code === ADMIN_CODE) {
             this.isAdmin = true;
             this.offlineMode = true;
@@ -189,7 +254,6 @@ class MobixPresentation {
             this.saveSession(code);
             this.startPresentation();
             console.log('Offline mode: Admin access granted');
-            return;
         } else if (code === VIEWER_CODE) {
             this.isAdmin = false;
             this.offlineMode = true;
@@ -197,12 +261,10 @@ class MobixPresentation {
             this.saveSession(code);
             this.startPresentation();
             console.log('Offline mode: Viewer access granted');
-            return;
+        } else {
+            this.showError('Invalid access code');
+            this.clearSession();
         }
-        
-        // Invalid code
-        this.showError('Invalid access code');
-        this.clearSession();
     }
 
     showError(message) {
@@ -264,7 +326,7 @@ class MobixPresentation {
         }, 100);
     }
 
-    goToSlide(slideNumber, animate = true) {
+    goToSlide(slideNumber, animate = true, fromServer = false) {
         if (this.isTransitioning) return;
         if (slideNumber < 1 || slideNumber > this.totalSlides) return;
         
@@ -279,6 +341,11 @@ class MobixPresentation {
                 // Save current slide to localStorage
                 localStorage.setItem('mobix_current_slide', this.currentSlide);
                 
+                // Emit to server if admin and not from server
+                if (this.isAdmin && this.socket && !fromServer && !this.offlineMode) {
+                    this.socket.emit('slideChange', this.currentSlide);
+                }
+                
                 setTimeout(() => {
                     this.isTransitioning = false;
                 }, 300);
@@ -287,6 +354,11 @@ class MobixPresentation {
             this.currentSlide = slideNumber;
             this.renderSlide(this.currentSlide);
             localStorage.setItem('mobix_current_slide', this.currentSlide);
+            
+            // Emit to server if admin and not from server
+            if (this.isAdmin && this.socket && !fromServer && !this.offlineMode) {
+                this.socket.emit('slideChange', this.currentSlide);
+            }
         }
     }
 
