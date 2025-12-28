@@ -479,33 +479,27 @@ const slidesData = [
         title: "Revenue Potential",
         type: "revenue-slide",
         content: {
-            headline: "Projected Annual Revenue",
-            totalRevenue: "€16M",
-            year: "Year 3",
+            headline: "Monthly Revenue @ 100K Users",
+            totalRevenue: "€1.34M",
+            year: "per month",
             breakdown: [
                 {
                     source: "Subscriptions",
-                    amount: "€6.4M",
-                    percentage: 40,
-                    details: "200K paying users @ €32/year avg"
+                    amount: "€515K",
+                    percentage: 39,
+                    details: "30K Plus (€9.99) + 12K Premium (€17.99)"
                 },
                 {
-                    source: "Creator Marketplace",
-                    amount: "€4M",
-                    percentage: 25,
-                    details: "30% commission on €13.3M GMV"
+                    source: "Booking Commissions",
+                    amount: "€642K",
+                    percentage: 48,
+                    details: "11,760 bookings × €520 avg × 10.5%"
                 },
                 {
                     source: "B2B Solutions",
-                    amount: "€3.2M",
-                    percentage: 20,
-                    details: "50 enterprise clients @ €64K/year"
-                },
-                {
-                    source: "Affiliate Revenue",
-                    amount: "€2.4M",
-                    percentage: 15,
-                    details: "€80M booking value @ 3% commission"
+                    amount: "€180K",
+                    percentage: 13,
+                    details: "80 partners × €1.5K + €60K campaigns"
                 }
             ]
         }
