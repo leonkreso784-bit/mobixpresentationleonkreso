@@ -25,6 +25,13 @@ class MobixPresentation {
         this.nextBtn = document.getElementById('nextBtn');
         this.slideNumber = document.getElementById('slideNumber');
         this.progressFill = document.getElementById('progressFill');
+        
+        // Modal elements
+        this.modalOverlay = document.getElementById('modalOverlay');
+        this.modalIcon = document.getElementById('modalIcon');
+        this.modalTitle = document.getElementById('modalTitle');
+        this.modalBody = document.getElementById('modalBody');
+        this.modalClose = document.getElementById('modalClose');
     }
 
     bindEvents() {
@@ -37,6 +44,15 @@ class MobixPresentation {
         
         // Touch/Swipe support
         this.setupTouchNavigation();
+        
+        // Modal events
+        this.modalClose.addEventListener('click', () => this.closeModal());
+        this.modalOverlay.addEventListener('click', (e) => {
+            if (e.target === this.modalOverlay) this.closeModal();
+        });
+        
+        // Delegate click events for modal cards
+        this.slidesContainer.addEventListener('click', (e) => this.handleCardClick(e));
     }
 
     // ==========================================
@@ -164,6 +180,63 @@ class MobixPresentation {
         
         this.prevBtn.style.opacity = this.currentSlide === 1 ? '0.5' : '1';
         this.nextBtn.style.opacity = this.currentSlide === this.totalSlides ? '0.5' : '1';
+    }
+
+    // ==========================================
+    // Modal Functions
+    // ==========================================
+
+    handleCardClick(e) {
+        const card = e.target.closest('[data-modal]');
+        if (!card) return;
+        
+        const modalType = card.getAttribute('data-modal');
+        const modalData = this.getModalContent(modalType, card);
+        
+        if (modalData) {
+            this.openModal(modalData);
+        }
+    }
+
+    getModalContent(type, card) {
+        // Get icon and title from the card
+        const iconEl = card.querySelector('.feature-icon, .problem-icon, .solution-icon, .tech-icon, .benefit-icon, .metric-icon, .step-icon, .detail-icon, .item-icon, .spec-icon');
+        const titleEl = card.querySelector('.feature-title, .problem-title, .solution-title, .tech-title, .benefit-title, .metric-title, .step-title, .detail-title, .item-title, .spec-title, h3, h4');
+        const descEl = card.querySelector('.feature-desc, .problem-desc, .solution-desc, .tech-desc, .benefit-desc, .metric-desc, .step-desc, .detail-desc, .item-desc, .spec-desc, p');
+        
+        const icon = iconEl ? iconEl.textContent : '📌';
+        const title = titleEl ? titleEl.textContent : 'Details';
+        const desc = descEl ? descEl.textContent : '';
+        
+        // Get extended content from data attributes or generate based on type
+        const extendedContent = card.getAttribute('data-content') || this.generateExtendedContent(type, title, desc);
+        
+        return {
+            icon,
+            title,
+            content: extendedContent
+        };
+    }
+
+    generateExtendedContent(type, title, desc) {
+        // Generate more detailed content based on the card type
+        return `
+            <p>${desc}</p>
+            <p class="modal-extra">Click anywhere outside to close this popup.</p>
+        `;
+    }
+
+    openModal(data) {
+        this.modalIcon.textContent = data.icon;
+        this.modalTitle.textContent = data.title;
+        this.modalBody.innerHTML = data.content;
+        this.modalOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    closeModal() {
+        this.modalOverlay.classList.remove('active');
+        document.body.style.overflow = '';
     }
 }
 

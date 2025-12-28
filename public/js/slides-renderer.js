@@ -42,7 +42,7 @@ const SlidesRenderer = {
                     
                     <div class="features-grid stagger-animation animate">
                         ${features.map(f => `
-                            <div class="feature-card hover-lift">
+                            <div class="feature-card hover-lift" data-modal="feature">
                                 <span class="feature-icon">${f.icon}</span>
                                 <h3 class="feature-title">${f.title}</h3>
                                 <p class="feature-desc">${f.desc}</p>
@@ -64,7 +64,7 @@ const SlidesRenderer = {
                     
                     <div class="problems-grid stagger-animation animate">
                         ${problems.map(p => `
-                            <div class="problem-card hover-lift">
+                            <div class="problem-card hover-lift" data-modal="problem">
                                 <span class="problem-icon">${p.icon}</span>
                                 <h3 class="problem-title">${p.title}</h3>
                                 <p class="problem-desc">${p.desc}</p>
@@ -92,7 +92,7 @@ const SlidesRenderer = {
                     
                     <div class="solutions-grid stagger-animation animate">
                         ${solutions.map(s => `
-                            <div class="solution-card hover-lift">
+                            <div class="solution-card hover-lift" data-modal="solution">
                                 <span class="solution-icon">${s.icon}</span>
                                 <h3 class="solution-title">${s.title}</h3>
                                 <p class="solution-desc">${s.desc}</p>
@@ -113,7 +113,7 @@ const SlidesRenderer = {
                     
                     <div class="flow-container stagger-animation animate">
                         ${steps.map((step, index) => `
-                            <div class="flow-step hover-lift">
+                            <div class="flow-step hover-lift" data-modal="step">
                                 <div class="step-number">${step.number}</div>
                                 <span class="step-icon">${step.icon}</span>
                                 <h3 class="step-title">${step.title}</h3>
@@ -136,7 +136,7 @@ const SlidesRenderer = {
                     
                     <div class="modes-container stagger-animation animate">
                         ${modes.map(mode => `
-                            <div class="mode-card mode-${mode.color} hover-lift">
+                            <div class="mode-card mode-${mode.color} hover-lift" data-modal="mode">
                                 <span class="mode-icon">${mode.icon}</span>
                                 <h3 class="mode-title">${mode.title}</h3>
                                 <p class="mode-desc">${mode.desc}</p>
@@ -159,7 +159,7 @@ const SlidesRenderer = {
                     <h1 class="slide-title gradient-text animate-fade-up">${slide.title}</h1>
                     
                     <div class="cards-comparison stagger-animation animate">
-                        <div class="card-type-box hover-lift">
+                        <div class="card-type-box hover-lift" data-modal="card">
                             <span class="card-type-icon">${travelCards.icon}</span>
                             <h3 class="card-type-title">${travelCards.title}</h3>
                             <p class="card-type-desc">${travelCards.desc}</p>
@@ -168,7 +168,7 @@ const SlidesRenderer = {
                             </ul>
                         </div>
                         
-                        <div class="card-type-box hover-lift">
+                        <div class="card-type-box hover-lift" data-modal="card">
                             <span class="card-type-icon">${travelNotes.icon}</span>
                             <h3 class="card-type-title">${travelNotes.title}</h3>
                             <p class="card-type-desc">${travelNotes.desc}</p>
@@ -198,7 +198,7 @@ const SlidesRenderer = {
                     
                     <div class="social-features-grid stagger-animation animate">
                         ${features.map(f => `
-                            <div class="social-feature-card hover-lift">
+                            <div class="social-feature-card hover-lift" data-modal="social">
                                 <span class="social-icon">${f.icon}</span>
                                 <h3 class="social-title">${f.title}</h3>
                                 <p class="social-desc">${f.desc}</p>
@@ -221,7 +221,7 @@ const SlidesRenderer = {
                     
                     <div class="personalization-grid stagger-animation animate">
                         ${features.map(f => `
-                            <div class="personalization-card hover-lift">
+                            <div class="personalization-card hover-lift" data-modal="personalization">
                                 <span class="pers-icon">${f.icon}</span>
                                 <h3 class="pers-title">${f.title}</h3>
                                 <p class="pers-desc">${f.desc}</p>
@@ -251,7 +251,7 @@ const SlidesRenderer = {
                     
                     <div class="levels-container stagger-animation animate">
                         ${levels.map(level => `
-                            <div class="level-card level-${level.level} hover-lift">
+                            <div class="level-card level-${level.level} hover-lift" data-modal="level">
                                 <div class="level-header">
                                     <span class="level-icon">${level.icon}</span>
                                     <div class="level-info">
@@ -287,7 +287,7 @@ const SlidesRenderer = {
                     
                     <div class="business-models-grid stagger-animation animate">
                         ${models.map(model => `
-                            <div class="business-card hover-lift">
+                            <div class="business-card hover-lift" data-modal="business">
                                 <div class="business-revenue">${model.revenue}</div>
                                 <span class="business-icon">${model.icon}</span>
                                 <h3 class="business-title">${model.title}</h3>
@@ -308,7 +308,7 @@ const SlidesRenderer = {
                     
                     <div class="pricing-container stagger-animation animate">
                         ${tiers.map(tier => `
-                            <div class="pricing-card ${tier.highlighted ? 'highlighted' : ''} hover-lift">
+                            <div class="pricing-card ${tier.highlighted ? 'highlighted' : ''} hover-lift" data-modal="pricing">
                                 <span class="pricing-icon">${tier.icon}</span>
                                 <h3 class="pricing-name">${tier.name}</h3>
                                 <div class="pricing-price">
@@ -334,7 +334,7 @@ const SlidesRenderer = {
                     <p class="headline animate-fade-up">${headline}</p>
                     
                     <div class="marketplace-grid stagger-animation animate">
-                        <div class="marketplace-card creators hover-lift">
+                        <div class="marketplace-card creators hover-lift" data-modal="marketplace">
                             <span class="marketplace-icon">${forCreators.icon}</span>
                             <h3 class="marketplace-title">${forCreators.title}</h3>
                             <ul class="marketplace-benefits">
@@ -342,7 +342,7 @@ const SlidesRenderer = {
                             </ul>
                         </div>
                         
-                        <div class="marketplace-card travelers hover-lift">
+                        <div class="marketplace-card travelers hover-lift" data-modal="marketplace">
                             <span class="marketplace-icon">${forTravelers.icon}</span>
                             <h3 class="marketplace-title">${forTravelers.title}</h3>
                             <ul class="marketplace-benefits">
@@ -373,7 +373,7 @@ const SlidesRenderer = {
                     
                     <div class="b2b-solutions-grid stagger-animation animate">
                         ${solutions.map(s => `
-                            <div class="b2b-card hover-lift">
+                            <div class="b2b-card hover-lift" data-modal="b2b">
                                 <span class="b2b-icon">${s.icon}</span>
                                 <h3 class="b2b-title">${s.title}</h3>
                                 <p class="b2b-desc">${s.desc}</p>
@@ -408,7 +408,7 @@ const SlidesRenderer = {
                     
                     <div class="revenue-breakdown stagger-animation animate">
                         ${breakdown.map(item => `
-                            <div class="revenue-item hover-lift">
+                            <div class="revenue-item hover-lift" data-modal="revenue">
                                 <div class="revenue-header">
                                     <span class="revenue-source">${item.source}</span>
                                     <span class="revenue-amount">${item.amount}</span>
@@ -434,7 +434,7 @@ const SlidesRenderer = {
                     
                     <div class="advantages-grid stagger-animation animate">
                         ${advantages.map(adv => `
-                            <div class="advantage-card hover-lift">
+                            <div class="advantage-card hover-lift" data-modal="advantage">
                                 <span class="advantage-icon">${adv.icon}</span>
                                 <h3 class="advantage-title">${adv.title}</h3>
                                 <p class="advantage-desc">${adv.desc}</p>
@@ -466,7 +466,7 @@ const SlidesRenderer = {
                         ${milestones.map(m => `
                             <div class="timeline-item">
                                 <span class="timeline-year">${m.year}</span>
-                                <div class="timeline-content hover-lift">
+                                <div class="timeline-content hover-lift" data-modal="timeline">
                                     <h3 class="timeline-title">${m.title}</h3>
                                     <p class="timeline-desc">${m.desc}</p>
                                 </div>
