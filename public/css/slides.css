@@ -23,6 +23,15 @@
     justify-content: center;
     padding: 20px;
     overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.slide a,
+.slide button {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    position: relative;
+    z-index: 10;
 }
 
 .slide.slide-enter {
