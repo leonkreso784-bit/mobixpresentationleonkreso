@@ -213,9 +213,11 @@ class MobixPresentation {
         this.socket.on('loginResult', (data) => {
             if (data.success) {
                 this.isAdmin = data.isAdmin;
-                this.currentSlide = data.currentSlide;
+                // Always use server's currentSlide for viewers, ignore localStorage
+                this.currentSlide = data.currentSlide || 1;
                 this.offlineMode = false;
                 this.saveSession(this._pendingCode);
+                console.log('Logged in as', this.isAdmin ? 'Admin' : 'Viewer', 'starting at slide', this.currentSlide);
                 this.startPresentation();
             } else {
                 this.showError(data.message);
@@ -250,17 +252,19 @@ class MobixPresentation {
         if (code === ADMIN_CODE) {
             this.isAdmin = true;
             this.offlineMode = true;
+            // Admin can use localStorage to remember position
             this.currentSlide = parseInt(localStorage.getItem('mobix_current_slide')) || 1;
             this.saveSession(code);
             this.startPresentation();
-            console.log('Offline mode: Admin access granted');
+            console.log('Offline mode: Admin access granted, slide:', this.currentSlide);
         } else if (code === VIEWER_CODE) {
             this.isAdmin = false;
             this.offlineMode = true;
-            this.currentSlide = parseInt(localStorage.getItem('mobix_current_slide')) || 1;
+            // Viewer in offline mode starts at slide 1 (no sync available)
+            this.currentSlide = 1;
             this.saveSession(code);
             this.startPresentation();
-            console.log('Offline mode: Viewer access granted');
+            console.log('Offline mode: Viewer access granted (no sync available)');
         } else {
             this.showError('Invalid access code');
             this.clearSession();

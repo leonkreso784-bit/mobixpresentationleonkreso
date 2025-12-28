@@ -52,6 +52,7 @@ io.on('connection', (socket) => {
         } else if (code === VIEWER_CODE) {
             socket.role = 'viewer';
             viewers.add(socket.id);
+            console.log('Sending viewer to slide:', presentationState.currentSlide);
             socket.emit('loginResult', { 
                 success: true,
                 isAdmin: false, 
