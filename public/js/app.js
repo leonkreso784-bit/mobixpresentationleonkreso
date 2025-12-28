@@ -200,85 +200,130 @@ class MobixPresentation {
         // Detailed explanations from seminar content - EXACT titles from slides-data.js
         const detailedContent = {
             // ========== SLIDE 1: What is MOBIX? ==========
-            'AI Assistant': 'MOBIX uses artificial intelligence to understand your preferences, budget, and travel style through natural conversation. Instead of searching across multiple platforms, you interact with one intelligent AI assistant that learns and improves with every interaction. The AI analyzes your behavior and generates personalized travel recommendations.',
-            'Destinations': 'Discover perfect destinations matched to your interests. MOBIX suggests places you\'ll love based on your travel style - whether you prefer beaches, mountains, cities, or cultural experiences. Every destination recommendation includes pricing, best times to visit, and personalized reasons why it fits you.',
-            'Travel Cards': 'Every recommendation is presented as a beautiful, organized Travel Card with essential details: price, duration, rating, and AI explanation. Cards contain destination highlights, best time to visit, budget estimates, top experiences, and local tips. Save cards to build your complete itinerary.',
+            'AI Assistant': 'The idea for MOBIX emerged from personal travel frustrations - realizing how complex, time-consuming, and exhausting travel planning can be. MOBIX is an AI-powered chatbot that creates fully personalized travel plans based on your preferences, budget, and interests. You only need to specify your destination and budget, while the platform handles transportation, accommodation, attractions, and recommendations - suggesting options you would never have considered on your own.',
+            
+            'Destinations': 'MOBIX suggests destinations based on your profile data including budget range, travel style, and personal interests. The AI analyzes thousands of options to find places that match YOUR preferences - not generic recommendations. Whether you prefer tropical beaches like the Maldives, cultural cities like Vienna, or adventure destinations - MOBIX finds your perfect match and explains WHY it suits you.',
+            
+            'Travel Cards': 'Travel Cards are the core output of MOBIX. Each card contains structured travel information: destination highlights, transportation options, accommodation suggestions, restaurants, and attractions. Before each group of cards, the AI explains why these options are suitable and which ones best match your preferences. Cards can be saved to Travel Notes to build complete, bookable itineraries.',
             
             // ========== SLIDE 2: Problems ==========
-            'Time-Consuming Planning': 'Travel planning today requires hours of manual research across multiple websites. Users must compare flights, hotels, and activities separately, leading to decision fatigue. What should be exciting becomes stressful and exhausting.',
-            'Information Overload': 'There\'s too much information to process - endless reviews, conflicting recommendations, and constantly changing prices. Traditional platforms bombard users with options without helping them decide.',
-            'Lack of Personalization': 'Generic travel packages don\'t match individual preferences. Current platforms show the same recommendations to everyone, ignoring your unique travel style, interests, and budget constraints.',
-            'Fragmented Experience': 'Booking flights, hotels, and activities happens across different platforms without coordination. Users juggle multiple apps and tabs, with no unified view of their trip.',
+            'Time-Consuming Planning': 'Finding the cheapest and most efficient travel option is nearly impossible for individual travelers. Prices change daily, sometimes within hours. A real example: round-trip train tickets from Trieste to Lausanne were priced at 400 euros on one platform, while the same service on another offered tickets for almost half the price. This creates confusion and makes rational decision-making extremely difficult.',
+            
+            'Information Overload': 'Hotel prices vary significantly depending on demand, seasonality, and local events - factors impossible to fully understand without local knowledge. Travelers spend hours comparing prices and searching for information, often without confidence they made the best choice. Prices on different platforms for the same service can differ by 50% or more.',
+            
+            'Lack of Personalization': 'Current travel platforms show the same results to everyone. They don\'t understand that you prefer cultural experiences over nightlife, or that you\'re a budget traveler who values authenticity over luxury. Generic packages ignore individual preferences, travel styles, and budget constraints - treating all travelers the same.',
+            
+            'Fragmented Experience': 'Travel planning is scattered across many platforms - Google for information, Booking for hotels, Skyscanner for flights, TripAdvisor for reviews. Users must manually combine information across multiple systems, book separately on each platform, and keep track of everything themselves. There\'s no unified view of the complete trip.',
             
             // ========== SLIDE 3: Solutions ==========
-            'Conversational AI': 'MOBIX replaces fragmented search with natural conversation. Tell the AI about your dream trip in your own words - it understands context, preferences, and constraints. One conversation leads to a complete travel plan.',
-            'Smart Recommendations': 'The AI doesn\'t just search - it thinks. It understands your preferences and explains why each recommendation matches you. Recommendations improve over time as MOBIX learns your travel patterns.',
-            'All-in-One Platform': 'Everything from inspiration to booking in one place. No switching between apps or websites. MOBIX handles transport, accommodation, attractions, and restaurants in a unified experience.',
+            'Conversational AI': 'MOBIX centralizes the entire travel process. Instead of searching across multiple platforms, you interact with ONE intelligent AI assistant. Simply tell MOBIX: "Plan a trip from Rijeka to London" - and it generates structured travel cards containing transportation options (outbound and return), accommodation suggestions, restaurants, and attractions.',
+            
+            'Smart Recommendations': 'The AI doesn\'t just search - it THINKS and EXPLAINS. Before each recommendation, MOBIX tells you WHY this option is good and HOW it matches your preferences. This reduces user anxiety and increases trust. The system continuously learns from your interactions to improve future suggestions.',
+            
+            'All-in-One Platform': 'MOBIX integrates the entire travel lifecycle: discovery and inspiration → planning and itinerary creation → bookings and payments → travel-time guidance and reminders → post-trip sharing and monetization. Everything in one ecosystem - no switching between apps or losing track of details.',
             
             // ========== SLIDE 4: How It Works ==========
-            'Chat': 'Start by telling MOBIX about your dream trip in natural language. Describe where you want to go, your budget, interests, and travel dates. The AI understands context and asks clarifying questions.',
-            'AI Process': 'The AI analyzes your input against your profile, past behavior, and real-time data. It considers budget constraints, preferred activities, and travel patterns to find the best matches.',
-            'Get Cards': 'Receive organized Travel Cards with complete trip details. Each card shows price, duration, rating, and a personalized explanation of why it fits your preferences.',
-            'Travel': 'Book directly through partner integrations. Your complete itinerary is ready - flights, accommodation, activities, and local recommendations all in one place.',
+            'Chat': 'Input: You submit a question or request in natural language. Example: "I want a beach vacation under €1000" or "Plan 5 days in Barcelona". The AI understands context - your budget constraints, preferred activities, travel dates, and personal interests from your profile.',
+            
+            'AI Process': 'Processing: Your request is sent to the AI model which analyzes it against your profile data, past behavior, and real-time availability. The system considers budget range, travel style, interests, and preferences to find the best possible matches from thousands of options.',
+            
+            'Get Cards': 'Output: The AI returns organized Travel Cards with structured information. Each card shows price, duration, rating, and a personalized explanation. Cards cover: transportation (flights, trains, buses), accommodation (hotels, apartments), restaurants, and attractions. Save any card to your Travel Notes.',
+            
+            'Travel': 'Once Travel Notes are finalized, you can book all services directly within MOBIX. The long-term vision: pay once for everything and receive a confirmation email with booking details and check-in links for flights, trains, or buses. Complete trip coordination in one platform.',
             
             // ========== SLIDE 5: AI Modes ==========
-            'Inspire Mode': 'Not sure where to go? Inspire Mode suggests destinations based on your interests, budget, and travel style. Perfect for dreamers who want the AI to surprise them with possibilities they hadn\'t considered.',
-            'Plan Mode': 'Have a destination in mind? Plan Mode creates detailed day-by-day itineraries with activities, restaurants, and hidden gems. Get a complete trip structure tailored to your preferences.',
-            'Book Mode': 'Ready to travel? Book Mode connects you directly to booking partners for flights, hotels, and experiences. One-click booking from your finalized itinerary.',
+            'Inspire Mode': 'RECOMMENDATION MODE: The chatbot acts as a personalized travel advisor. Based on your profile data - budget range, travel style, interests, preferences - it suggests destinations and attractions you might love. Every recommendation includes an explanation of WHY it matches you. Perfect when you\'re not sure where to go.',
+            
+            'Plan Mode': 'TRIP PLANNING MODE: The most advanced mode. Request complete travel plans like "Plan a trip from Rijeka to London" and receive structured cards containing: transportation (outbound + return), accommodation, restaurants, and attractions. The AI provides explanations before each group showing which options best match your preferences.',
+            
+            'Book Mode': 'CONVERSATIONAL MODE + BOOKING: Handles both casual questions ("Who are you?", "How does this work?") and booking requests. When ready to travel, connect directly to booking partners for flights, hotels, and experiences. One-click booking from your finalized Travel Notes.',
             
             // ========== SLIDE 6: Cards & Notes ==========
-            'Travel Notes': 'Saved cards form Travel Notes - your personal trip journal. Notes are fully customizable: reorder activities, remove items, or add new cards. Notes include day-by-day itinerary, personal recommendations, photo memories, expense tracking, and shareable format.',
+            'Travel Notes': 'Saved cards form Travel Notes - your personal itinerary collection. Notes are fully customizable: reorder items, remove what you don\'t want, add new cards. Once finalized, Travel Notes become complete, bookable itineraries. MOBIX enables end-to-end booking where you pay once and receive all confirmations. Travel Notes can also be PUBLISHED for others to book - turning your travel expertise into income.',
             
             // ========== SLIDE 7: Social Discovery ==========
-            'Community Feed': 'The app opens with a scrollable feed of published trips from travelers with similar interests. Browse journeys like social content - swipe, like, save. Travel discovery becomes as intuitive as Instagram.',
-            'Creator Profiles': 'Follow travel experts and influencers who share their journeys. See their trip history, specialties, and ratings. Discover trusted voices for destination recommendations.',
-            'Share & Inspire': 'Post your Travel Cards for others to use. Transform your travel experiences into content others can book. Build a following around your travel expertise.',
-            'Travel Chat': 'Connect with fellow travelers heading to the same destinations. Get real-time tips, find travel buddies, or ask questions to locals and experts.',
+            'Community Feed': 'Upon opening MOBIX, users see a dynamic discovery feed - published travel itineraries from other users, verified creators, and partners. A vertical, scroll-based experience like modern social platforms. Each itinerary appears as a rich card with destination highlights, budget, duration, and travel style. Discovery becomes inspirational, not task-driven.',
+            
+            'Creator Profiles': 'Users can follow travel experts and influencers who share their journeys. See their trip history, specialties, and ratings. This creates TRUST - you\'re not following anonymous reviews, but real travelers whose taste you understand. Creators build audiences around their travel expertise.',
+            
+            'Share & Inspire': 'Users can PUBLISH their Travel Cards for others to use. Transform travel experiences into monetizable content. A key innovation: treating a travel plan as a digital product. MOBIX enables a "travel creator economy" where users earn money from their published itineraries.',
+            
+            'Travel Chat': 'Connect with fellow travelers. Get real-time tips from people heading to the same destinations. Find travel buddies for group trips. Ask questions to locals and experts. This social layer creates engagement and community - something competitors completely lack.',
             
             // ========== SLIDE 8: Personalization ==========
-            'Preference Learning': 'Every interaction teaches the AI your travel style. Swipes, likes, saves, and bookings all contribute to understanding your preferences. MOBIX learns what you love without explicit configuration.',
-            'Interest Tags': 'Adventure, culture, food, relaxation - the AI remembers your interests. Tags are automatically generated from your behavior and can be manually adjusted. They power increasingly accurate recommendations.',
-            'Budget Awareness': 'MOBIX remembers your spending comfort zone. It won\'t suggest luxury resorts to budget travelers or hostels to luxury seekers. Budget learning happens automatically through your booking patterns.',
+            'Preference Learning': 'Every interaction is a data signal. When you like itineraries, remove content, save trips, or open detailed views - MOBIX analyzes these actions to refine your profile. The platform evolves from reactive recommendations to anticipatory intelligence, where content feels increasingly personal. The more you use it, the smarter it becomes.',
+            
+            'Smart Recommendations': 'MOBIX collects structured preference and intent data through: onboarding surveys, profile settings, saved cards, Travel Notes customization, and behavioral signals. This improves personalization quality over time. The result: a self-reinforcing loop where the platform adapts uniquely to each user.',
+            
+            'Interest Tags': 'The AI categorizes your preferences: Adventure, Culture, Food, Relaxation, Luxury, Budget, Family, Solo, etc. Tags are automatically generated from behavior but can be manually adjusted. They power recommendation matching - ensuring you see content aligned with YOUR travel personality.',
+            
+            'Budget Awareness': 'MOBIX learns your spending comfort zone from booking patterns and interactions. It won\'t suggest €500/night hotels to budget travelers, or hostels to luxury seekers. Budget matching is automatic and continuous - your price range becomes part of every recommendation.',
             
             // ========== SLIDE 9: User Levels ==========
-            'Explorer': 'Entry level (0-500 XP) for new users. Includes basic AI features and 5 Travel Cards per month. Start earning XP through trips, shares, and reviews.',
-            'Adventurer': 'Level 2 (500-2000 XP) with priority support and 15 Travel Cards per month. Unlock early access to new features and better deal visibility.',
-            'Voyager': 'Level 3 (2000-5000 XP) with exclusive deals and unlimited Cards. Gain access to creator tools and start monetizing your travel expertise.',
-            'Legend': 'Top tier (5000+ XP) with VIP experiences and revenue sharing. Get beta access to new features, maximum discounts, and premium support.',
+            'Explorer': 'Level 1 (0-500 XP): Entry level for new users. Basic AI features, 5 Travel Cards/month. Earn XP through: completing trips, sharing cards, writing reviews, referring friends. Start your MOBIX journey and unlock increasingly valuable benefits.',
+            
+            'Adventurer': 'Level 2 (500-2000 XP): Priority support and 15 Travel Cards/month. Unlock early access to new features and better deal visibility. Earned through consistent platform engagement - rewarding active travelers.',
+            
+            'Voyager': 'Level 3 (2000-5000 XP): Exclusive deals and unlimited Cards. Gain access to creator tools - start publishing your own itineraries and monetizing your travel expertise. This is where users become creators.',
+            
+            'Legend': 'Level 4 (5000+ XP): Top tier with VIP experiences and revenue sharing. Get beta access to new features, maximum discounts, premium support, and invitations to curated group trips. Loyalty has direct economic and experiential value.',
             
             // ========== SLIDE 10: Business Model ==========
-            'Subscriptions': 'Premium tiers for power travelers generate 40% of revenue. Users pay monthly for unlimited AI usage, creator tools, and exclusive features.',
-            'Creator Marketplace': 'Commission on Travel Card sales generates 25% of revenue. When travelers book creator itineraries, MOBIX takes a platform fee while creators earn majority commission.',
-            'B2B Partnerships': 'API and white-label solutions for enterprises generate 20% of revenue. Hotels, airlines, and travel agencies integrate MOBIX AI into their platforms.',
-            'Affiliate Revenue': 'Booking partner commissions generate 15% of revenue. Every flight, hotel, and activity booked through MOBIX earns a percentage.',
+            'Subscriptions': 'Subscriptions generate 40% of revenue. Tiered pricing: Free (€0), Traveler Plus (€9.99/month), Traveler Premium (€17.99/month). Higher tiers unlock unlimited AI usage, creator marketplace access, and monetization tools. Subscriptions stabilize cash flow and fund AI infrastructure.',
+            
+            'Creator Marketplace': 'Marketplace fees generate 25% of revenue. Creators publish itineraries, travelers book them. MOBIX takes a platform fee (15-30%) while creators earn the remainder. Itineraries priced €2.99-€19.99 each. This turns users into distribution channels - powerful network effects.',
+            
+            'B2B Partnerships': 'B2B solutions generate 20% of revenue. Travel agencies upload offers into MOBIX\'s database - the AI recommends them when relevant. This replaces generic advertising with intent-based matching. Pricing: base subscription €499-€2,999/month plus performance fees per booking.',
+            
+            'Affiliate Revenue': 'Booking commissions generate 15% of revenue. Hotels earn 12-18% commission, flights 3-6%, experiences 10-20%. Unlike standard booking sites, MOBIX\'s conversion funnel is superior: personalized filtering + AI explanations + saved plans = higher conversion rates than search-only platforms.',
             
             // ========== SLIDE 11: Subscription Tiers ==========
-            'Free': 'Perfect for trying MOBIX. Includes 5 AI conversations per month, 3 Travel Cards, basic recommendations, and community access. No credit card required.',
-            'Pro': '€19.99/month for power users and creators. Everything in Explorer plus unlimited Travel Cards, creator marketplace access, revenue sharing, API access, and white-label options.',
+            'Free': 'MOBIX Explorer (€0): 20 AI messages/month, 1 itinerary/day, 30 travel cards/day, limited Travel Notes storage. Provides real value but pushes heavy users to upgrade. Goal: mass acquisition and habit formation with low friction.',
+            
+            'Explorer': 'MOBIX Traveler Plus (€9.99/month or €99/year): Unlimited AI messages, unlimited itineraries, unlimited cards, full Travel Notes sync, faster responses, advanced personalization. Engineered as the "default paid plan" - affordable for students and frequent travelers.',
+            
+            'Pro': 'MOBIX Traveler Premium (€17.99/month or €179/year): Everything in Plus + ability to EARN MONEY from published itineraries + group trip creation + analytics dashboard + promotion tools + verification badge. Transforms users into marketplace participants.',
             
             // ========== SLIDE 12: Creator Marketplace ==========
-            'For Creators': 'Publish your travel itineraries for others to discover and book. Earn 70% commission on every sale. Build your following with exclusive creator tools and analytics. Turn travel expertise into passive income.',
-            'For Travelers': 'Access expert-curated itineraries from experienced travelers. One-click trip adoption saves hours of planning. Every recommendation is verified and reviewed. Authentic journeys from real trips.',
+            'For Creators': 'Publish your travel itineraries as digital products. Earn 70% commission on every sale (MOBIX takes 30%). Build your following with exclusive creator tools and analytics dashboard showing views, saves, and conversion estimates. Effectively become a travel micro-agent - turning expertise into passive income.',
+            
+            'For Travelers': 'Access expert-curated itineraries from experienced travelers. One-click trip adoption: see an itinerary you love → adopt it → customize it → book it. Save hours of planning with verified, reviewed recommendations. Authentic journeys from real trips - not generic package deals.',
             
             // ========== SLIDE 13: B2B Solutions ==========
-            'Hotels & Resorts': 'Integrate AI concierge into guest apps. Provide personalized local recommendations to guests. Promote on-site services through conversational AI. Increase guest satisfaction and ancillary revenue.',
-            'Airlines': 'In-flight destination planning experience. Passengers can plan activities before landing. Promote airline partners and loyalty programs. Capture high-intent travel moments.',
-            'Banks & Cards': 'Travel perks for premium cardholders. White-label MOBIX as a cardholder benefit. Track travel spending with AI insights. Increase card usage for travel purchases.',
-            'OTAs': 'AI-powered travel recommendation API. Enhance existing platforms with MOBIX intelligence. Personalization layer for booking engines. Increase conversion and customer satisfaction.',
+            'Hotels & Resorts': 'Integrate MOBIX AI concierge into guest apps. Provide personalized local recommendations. "Conversational advertising" - promote on-site services naturally through AI recommendations. Pricing: API Access €500/month, White Label €2,000/month, Enterprise custom.',
+            
+            'Airlines': 'In-flight destination planning experience. Passengers plan activities while flying. Promote airline partners and loyalty programs. Capture HIGH-INTENT travel moments when users are actively thinking about their trip. New revenue channel through contextual recommendations.',
+            
+            'Banks & Cards': 'Travel perks for premium cardholders. White-label MOBIX as a cardholder benefit - exclusive AI travel planning for your customers. Track travel spending with AI insights. Increase card usage for travel purchases through integrated booking.',
+            
+            'OTAs': 'AI-powered recommendation API for existing platforms. Add MOBIX\'s personalization layer to your booking engine. Increase conversion rates through intelligent matching. Replace static search with dynamic, explained recommendations.',
             
             // ========== SLIDE 14: Revenue Potential ==========
-            'B2B Solutions': 'Enterprise solutions projected at €3.2M annually in Year 3. 50 enterprise clients averaging €64K/year for API access, white-label solutions, and custom integrations.',
+            'Subscriptions': 'At 100K monthly active users: 30% on Plus (30,000 × €9.99 = €299,700/month) + 12% on Premium (12,000 × €17.99 = €215,880/month) = €515,580/month subscription revenue.',
+            
+            'Creator Marketplace': 'Platform facilitation fee (15-30%) on creator sales. As creators publish and travelers book, marketplace GMV grows. Strong network effects: creators bring users, users become creators, content increases platform value without MOBIX producing it.',
+            
+            'B2B Solutions': '80 agencies/hotels on average plans (80 × €1,500/month = €120,000) + sponsored campaigns (€60,000/month) = €180,000/month B2B revenue. High-margin growth from enterprise clients.',
+            
+            'Affiliate Revenue': 'At 100K users: 42,000 paid users, 28% booking rate = 11,760 bookings/month. Average booking €520 × 10.5% commission = €642,096/month. Total monthly revenue potential: €1,337,676 (~€16M annually).',
             
             // ========== SLIDE 15: Competitive Advantages ==========
-            'True AI Understanding': 'MOBIX doesn\'t just search keywords - it actually understands travel desires. Contextual comprehension of preferences, constraints, and intent. Competitors rely on keyword matching; MOBIX uses true AI understanding.',
-            'Hyper-Personalization': 'Learning system that improves with every interaction. Your experience becomes uniquely yours over time. Competitors offer static recommendations; MOBIX adapts continuously.',
-            'Social Layer': 'Community-driven discovery and sharing sets MOBIX apart. Travel meets social media in a unique feed experience. Competitors offer isolated, transactional experiences.',
+            'True AI Understanding': 'Most platforms do keyword matching. MOBIX does COMPREHENSION. It understands travel desires, constraints, context, and explains decisions. Google = information, Booking = accommodation, Skyscanner = flights. MOBIX integrates everything into one intelligent workflow: intent → cards → Travel Notes → booking → reminders → sharing.',
+            
+            'Hyper-Personalization': 'Competitors offer static recommendations - same results for everyone. MOBIX builds a learning system that improves with EVERY interaction. First-party intent data from profiles, saved cards, and Travel Notes customization creates a data advantage that competitors can\'t match.',
+            
+            'All-in-One Platform': 'Competitors: fragmented tools. MOBIX: complete journey orchestration. Unlike standard booking sites where users are overloaded with options, MOBIX filters choices, explains why they\'re good, transforms results into saved plans, and keeps users in a single flow with less drop-off.',
+            
+            'Social Layer': 'Competitors don\'t financially incentivize users to produce and distribute itineraries. MOBIX turns users into CREATORS, and creators into distribution channels. Community-driven discovery + monetization + social sharing = network effects no competitor has.',
             
             // ========== SLIDE 16: Vision Timeline ==========
-            'The Idea': '2024 - Concept born from personal travel frustrations. Recognizing the gap between complex travel planning and modern AI capabilities.',
-            'First Demo': '2025 - Working prototype developed independently. Core AI features proven with initial user testing and iteration.',
-            'Full Version': '2026 - Complete platform with all features launched. Full social discovery, creator marketplace, and booking integrations.',
-            'Expand': '2027 - Global reach and market leadership. Multi-language support, worldwide partnerships, and category leadership.'
+            'The Idea': '2024: Concept born from personal travel frustrations. Constantly searching for affordable routes, comparing platforms with 50%+ price differences, missing attractions I didn\'t know existed. The core question: What if an AI-powered platform could plan trips FOR me?',
+            
+            'First Demo': '2025: Working prototype developed independently during night shifts as a hotel receptionist. Evolved from 2 files to 125+ files and 40,000+ lines of code. Backend: Python, FastAPI, PostgreSQL. Frontend: HTML5, CSS3, JavaScript. AI: OpenAI GPT-4. Infobip requested a meeting after seeing the demo.',
+            
+            'Full Version': '2026: Complete platform with all features. Full social discovery feed, creator marketplace with monetization, end-to-end booking integration. Travel agency licensing and legal compliance complete. Ready for scaling.',
+            
+            'Expand': '2027: Global reach and market leadership. Multi-language support, worldwide booking partnerships, enterprise B2B clients. Vision: MOBIX as the "operating system of modern travel" - not just a tool, but a living digital ecosystem.'
         };
         
         // Try to find matching detailed content
