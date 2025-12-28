@@ -1585,6 +1585,13 @@
     margin-bottom: 16px;
 }
 
+.modal-body .modal-detailed {
+    font-size: 1.15rem;
+    line-height: 1.9;
+    color: var(--gray-200);
+    text-align: left;
+}
+
 .modal-body ul {
     margin: 16px 0;
     padding-left: 24px;
