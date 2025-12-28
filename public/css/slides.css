@@ -1,0 +1,2587 @@
+/* =============================================
+   MOBIX Presentation - Modern Slide Styles
+   Inspired by business-presentation design
+   ============================================= */
+
+/* Slides Container */
+.slides-container {
+    position: absolute;
+    inset: 60px 0 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 10px;
+}
+
+/* Base Slide */
+.slide {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.slide.slide-enter {
+    animation: slideEnter 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideEnter {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Slide Content */
+.slide-content {
+    width: 100%;
+    max-width: 1400px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 16px;
+}
+
+/* =============================================
+   TITLE SLIDE (Slide 1)
+   ============================================= */
+
+.title-slide-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.title-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.title-logo-img {
+    max-width: 450px;
+    height: auto;
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3));
+    animation: floatLogo 3s ease-in-out infinite;
+}
+
+@keyframes floatLogo {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+.title-subtitle {
+    font-size: 1.2rem;
+    color: var(--primary-300);
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.main-description {
+    font-size: 1rem;
+    color: var(--gray-300);
+    max-width: 800px;
+    line-height: 1.6;
+}
+
+/* Features Grid */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    width: 100%;
+    max-width: 900px;
+    margin-top: 10px;
+}
+
+.feature-card {
+    background: linear-gradient(145deg, rgba(14, 165, 233, 0.1), rgba(14, 165, 233, 0.02));
+    border: 1px solid rgba(14, 165, 233, 0.2);
+    border-radius: 16px;
+    padding: 20px 16px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(145deg, rgba(14, 165, 233, 0.2), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: var(--primary-400);
+    box-shadow: 0 20px 40px rgba(14, 165, 233, 0.2);
+}
+
+.feature-card:hover::before {
+    opacity: 1;
+}
+
+.feature-icon {
+    font-size: 2.2rem;
+    display: block;
+    margin-bottom: 10px;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+.feature-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 6px;
+}
+
+.feature-desc {
+    font-size: 0.8rem;
+    color: var(--gray-400);
+}
+
+.tagline {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+/* =============================================
+   PROBLEM SLIDE (Slide 2)
+   ============================================= */
+
+.problems-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.problem-card {
+    background: linear-gradient(145deg, rgba(239, 68, 68, 0.1), rgba(239, 68, 68, 0.02));
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    border-radius: 16px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    text-align: left;
+}
+
+.problem-card:hover {
+    transform: translateY(-5px);
+    border-color: #ef4444;
+    box-shadow: 0 15px 30px rgba(239, 68, 68, 0.15);
+}
+
+.problem-icon {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.problem-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fca5a5;
+    margin-bottom: 6px;
+}
+
+.problem-desc {
+    font-size: 0.85rem;
+    color: var(--gray-400);
+    line-height: 1.5;
+}
+
+.conclusion-box {
+    background: linear-gradient(135deg, var(--primary-600), var(--primary-700));
+    border-radius: 12px;
+    padding: 16px 30px;
+    margin-top: 12px;
+}
+
+.conclusion-text {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--white);
+}
+
+/* =============================================
+   SOLUTION SLIDE (Slide 3)
+   ============================================= */
+
+.main-message {
+    background: linear-gradient(135deg, rgba(14, 165, 233, 0.2), rgba(6, 182, 212, 0.1));
+    border: 2px solid var(--primary-500);
+    border-radius: 16px;
+    padding: 16px 36px;
+    margin-bottom: 8px;
+}
+
+.main-message p {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--white);
+    margin: 0;
+}
+
+.solutions-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.solution-card {
+    background: linear-gradient(145deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.02));
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    border-radius: 20px;
+    padding: 28px 20px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.solution-card:hover {
+    transform: translateY(-8px);
+    border-color: #10b981;
+    box-shadow: 0 15px 30px rgba(16, 185, 129, 0.15);
+}
+
+.solution-icon {
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+    display: block;
+}
+
+.solution-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #6ee7b7;
+    margin-bottom: 10px;
+}
+
+.solution-desc {
+    font-size: 0.9rem;
+    color: var(--gray-400);
+    line-height: 1.5;
+}
+
+/* =============================================
+   FLOW SLIDE (Slide 4)
+   ============================================= */
+
+.slide-subtitle {
+    font-size: 1.3rem;
+    color: var(--gray-400);
+    margin-bottom: 20px;
+}
+
+.flow-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.flow-step {
+    background: linear-gradient(145deg, rgba(14, 165, 233, 0.15), rgba(14, 165, 233, 0.02));
+    border: 2px solid rgba(14, 165, 233, 0.3);
+    border-radius: 24px;
+    padding: 30px 24px;
+    width: 180px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+}
+
+.flow-step:hover {
+    transform: scale(1.08);
+    border-color: var(--primary-400);
+    box-shadow: 0 20px 40px rgba(14, 165, 233, 0.25);
+}
+
+.step-number {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 36px;
+    height: 36px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1rem;
+    color: var(--white);
+    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.4);
+}
+
+.step-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 12px;
+    margin-top: 8px;
+}
+
+.step-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 8px;
+}
+
+.step-desc {
+    font-size: 0.85rem;
+    color: var(--gray-400);
+}
+
+.flow-arrow {
+    font-size: 2rem;
+    color: var(--primary-400);
+    animation: pulseArrow 1.5s ease-in-out infinite;
+}
+
+@keyframes pulseArrow {
+    0%, 100% { opacity: 0.5; transform: translateX(0); }
+    50% { opacity: 1; transform: translateX(5px); }
+}
+
+/* =============================================
+   MODES SLIDE (Slide 5)
+   ============================================= */
+
+.slide-intro {
+    font-size: 1.2rem;
+    color: var(--gray-400);
+    margin-bottom: 10px;
+}
+
+.modes-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    width: 100%;
+    max-width: 1100px;
+}
+
+.mode-card {
+    border-radius: 24px;
+    padding: 32px 24px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    text-align: left;
+}
+
+.mode-card.mode-cyan {
+    background: linear-gradient(145deg, rgba(6, 182, 212, 0.15), rgba(6, 182, 212, 0.02));
+    border: 2px solid rgba(6, 182, 212, 0.3);
+}
+
+.mode-card.mode-teal {
+    background: linear-gradient(145deg, rgba(20, 184, 166, 0.15), rgba(20, 184, 166, 0.02));
+    border: 2px solid rgba(20, 184, 166, 0.3);
+}
+
+.mode-card.mode-primary {
+    background: linear-gradient(145deg, rgba(14, 165, 233, 0.15), rgba(14, 165, 233, 0.02));
+    border: 2px solid rgba(14, 165, 233, 0.3);
+}
+
+.mode-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(14, 165, 233, 0.2);
+}
+
+.mode-icon {
+    font-size: 3rem;
+    margin-bottom: 16px;
+    display: block;
+}
+
+.mode-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 12px;
+}
+
+.mode-desc {
+    font-size: 0.95rem;
+    color: var(--gray-400);
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+.mode-example {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    padding: 12px 16px;
+}
+
+.example-label {
+    font-size: 0.75rem;
+    color: var(--primary-400);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.example-text {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--gray-300);
+    font-style: italic;
+    margin-top: 4px;
+}
+
+/* =============================================
+   CARDS SLIDE (Slide 6)
+   ============================================= */
+
+.cards-comparison {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    width: 100%;
+    max-width: 900px;
+}
+
+.card-type-box {
+    background: linear-gradient(145deg, rgba(14, 165, 233, 0.1), rgba(14, 165, 233, 0.02));
+    border: 2px solid rgba(14, 165, 233, 0.2);
+    border-radius: 24px;
+    padding: 36px 28px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    text-align: left;
+}
+
+.card-type-box:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary-400);
+    box-shadow: 0 20px 40px rgba(14, 165, 233, 0.2);
+}
+
+.card-type-icon {
+    font-size: 3rem;
+    margin-bottom: 16px;
+    display: block;
+}
+
+.card-type-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 10px;
+}
+
+.card-type-desc {
+    font-size: 1rem;
+    color: var(--gray-400);
+    margin-bottom: 20px;
+}
+
+.card-features-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.card-features-list li {
+    padding: 8px 0;
+    padding-left: 28px;
+    position: relative;
+    color: var(--gray-300);
+    font-size: 0.95rem;
+}
+
+.card-features-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--primary-400);
+    font-weight: bold;
+}
+
+.highlight-box {
+    background: linear-gradient(135deg, var(--primary-600), var(--primary-700));
+    border-radius: 16px;
+    padding: 20px 36px;
+}
+
+.highlight-box p {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--white);
+    margin: 0;
+}
+
+/* =============================================
+   SOCIAL SLIDE (Slide 7)
+   ============================================= */
+
+.badge-container {
+    margin-bottom: -10px;
+}
+
+.future-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #8b5cf6, #6366f1);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.slide-main-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 10px;
+}
+
+.social-features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.social-feature-card {
+    background: linear-gradient(145deg, rgba(139, 92, 246, 0.1), rgba(139, 92, 246, 0.02));
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    border-radius: 20px;
+    padding: 28px 20px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.social-feature-card:hover {
+    transform: translateY(-8px);
+    border-color: #8b5cf6;
+    box-shadow: 0 15px 30px rgba(139, 92, 246, 0.2);
+}
+
+.social-icon {
+    font-size: 2.5rem;
+    margin-bottom: 14px;
+    display: block;
+}
+
+.social-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #c4b5fd;
+    margin-bottom: 8px;
+}
+
+.social-desc {
+    font-size: 0.9rem;
+    color: var(--gray-400);
+}
+
+.slide-quote {
+    font-size: 1.2rem;
+    color: var(--gray-400);
+    font-style: italic;
+    margin-top: 20px;
+    max-width: 700px;
+}
+
+/* =============================================
+   PERSONALIZATION SLIDE (Slide 8)
+   ============================================= */
+
+.personalization-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.personalization-card {
+    background: linear-gradient(145deg, rgba(14, 165, 233, 0.1), rgba(14, 165, 233, 0.02));
+    border: 1px solid rgba(14, 165, 233, 0.2);
+    border-radius: 20px;
+    padding: 28px 20px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.personalization-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary-400);
+    box-shadow: 0 15px 30px rgba(14, 165, 233, 0.2);
+}
+
+.pers-icon {
+    font-size: 2.5rem;
+    margin-bottom: 14px;
+    display: block;
+}
+
+.pers-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--primary-300);
+    margin-bottom: 8px;
+}
+
+.pers-desc {
+    font-size: 0.85rem;
+    color: var(--gray-400);
+}
+
+.stats-row {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin-top: 30px;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-value {
+    display: block;
+    font-size: 3rem;
+    font-weight: 800;
+}
+
+.stat-label {
+    font-size: 1rem;
+    color: var(--gray-400);
+    margin-top: 4px;
+}
+
+/* =============================================
+   LEVELS SLIDE (Slide 9)
+   ============================================= */
+
+.levels-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    width: 100%;
+    max-width: 1100px;
+}
+
+.level-card {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 28px 20px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    text-align: left;
+}
+
+.level-card.level-1 { border-color: rgba(34, 197, 94, 0.3); }
+.level-card.level-2 { border-color: rgba(59, 130, 246, 0.3); }
+.level-card.level-3 { border-color: rgba(168, 85, 247, 0.3); }
+.level-card.level-4 { border-color: rgba(234, 179, 8, 0.3); }
+
+.level-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(14, 165, 233, 0.15);
+}
+
+.level-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.level-icon {
+    font-size: 2rem;
+}
+
+.level-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.level-number {
+    font-size: 0.75rem;
+    color: var(--gray-500);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.level-name {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--white);
+    margin: 0;
+}
+
+.level-xp {
+    display: inline-block;
+    background: rgba(14, 165, 233, 0.2);
+    color: var(--primary-300);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.level-perks {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.level-perks li {
+    padding: 6px 0;
+    font-size: 0.85rem;
+    color: var(--gray-400);
+    padding-left: 20px;
+    position: relative;
+}
+
+.level-perks li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--primary-400);
+}
+
+.earn-xp-box {
+    background: rgba(14, 165, 233, 0.1);
+    border: 1px solid rgba(14, 165, 233, 0.2);
+    border-radius: 16px;
+    padding: 20px 30px;
+    margin-top: 20px;
+}
+
+.earn-xp-box h4 {
+    color: var(--primary-300);
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.xp-methods {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.xp-method {
+    background: rgba(14, 165, 233, 0.2);
+    color: var(--white);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+/* =============================================
+   BUSINESS SLIDE (Slide 10)
+   ============================================= */
+
+.business-models-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    width: 100%;
+    max-width: 1100px;
+}
+
+.business-card {
+    background: linear-gradient(145deg, rgba(14, 165, 233, 0.1), rgba(14, 165, 233, 0.02));
+    border: 2px solid rgba(14, 165, 233, 0.2);
+    border-radius: 24px;
+    padding: 30px 24px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.business-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary-400);
+    box-shadow: 0 20px 40px rgba(14, 165, 233, 0.2);
+}
+
+.business-revenue {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: var(--gradient-primary);
+    color: white;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 1rem;
+    font-weight: 800;
+}
+
+.business-icon {
+    font-size: 3rem;
+    margin-bottom: 16px;
+    display: block;
+}
+
+.business-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 10px;
+}
+
+.business-desc {
+    font-size: 0.9rem;
+    color: var(--gray-400);
+}
+
+/* =============================================
+   PRICING SLIDE (Slide 11)
+   ============================================= */
+
+.pricing-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.pricing-card {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01));
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 28px;
+    padding: 36px 28px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    text-align: left;
+}
+
+.pricing-card.highlighted {
+    background: linear-gradient(145deg, rgba(14, 165, 233, 0.2), rgba(14, 165, 233, 0.05));
+    border-color: var(--primary-400);
+    transform: scale(1.05);
+}
+
+.pricing-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(14, 165, 233, 0.15);
+}
+
+.pricing-card.highlighted:hover {
+    transform: scale(1.08);
+}
+
+.pricing-icon {
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+    display: block;
+}
+
+.pricing-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 8px;
+}
+
+.pricing-price {
+    margin-bottom: 24px;
+}
+
+.price-value {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--primary-300);
+}
+
+.price-period {
+    font-size: 1rem;
+    color: var(--gray-500);
+}
+
+.pricing-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.pricing-features li {
+    padding: 10px 0;
+    font-size: 0.95rem;
+    color: var(--gray-300);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.pricing-features .check {
+    color: var(--primary-400);
+    font-weight: bold;
+}
+
+/* =============================================
+   MARKETPLACE SLIDE (Slide 12)
+   ============================================= */
+
+.headline {
+    font-size: 1.5rem;
+    color: var(--gray-300);
+    margin-bottom: 20px;
+}
+
+.marketplace-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    width: 100%;
+    max-width: 900px;
+}
+
+.marketplace-card {
+    border-radius: 24px;
+    padding: 36px 28px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    text-align: left;
+}
+
+.marketplace-card.creators {
+    background: linear-gradient(145deg, rgba(168, 85, 247, 0.15), rgba(168, 85, 247, 0.02));
+    border: 2px solid rgba(168, 85, 247, 0.3);
+}
+
+.marketplace-card.travelers {
+    background: linear-gradient(145deg, rgba(14, 165, 233, 0.15), rgba(14, 165, 233, 0.02));
+    border: 2px solid rgba(14, 165, 233, 0.3);
+}
+
+.marketplace-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(14, 165, 233, 0.15);
+}
+
+.marketplace-icon {
+    font-size: 3rem;
+    margin-bottom: 16px;
+    display: block;
+}
+
+.marketplace-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 16px;
+}
+
+.marketplace-benefits {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.marketplace-benefits li {
+    padding: 8px 0;
+    padding-left: 28px;
+    position: relative;
+    color: var(--gray-300);
+    font-size: 1rem;
+}
+
+.marketplace-benefits li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--primary-400);
+    font-weight: bold;
+}
+
+/* =============================================
+   B2B SLIDE (Slide 13)
+   ============================================= */
+
+.b2b-solutions-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    width: 100%;
+    max-width: 1100px;
+}
+
+.b2b-card {
+    background: linear-gradient(145deg, rgba(14, 165, 233, 0.1), rgba(14, 165, 233, 0.02));
+    border: 1px solid rgba(14, 165, 233, 0.2);
+    border-radius: 20px;
+    padding: 28px 20px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.b2b-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary-400);
+    box-shadow: 0 15px 30px rgba(14, 165, 233, 0.2);
+}
+
+.b2b-icon {
+    font-size: 2.5rem;
+    margin-bottom: 14px;
+    display: block;
+}
+
+.b2b-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 8px;
+}
+
+.b2b-desc {
+    font-size: 0.85rem;
+    color: var(--gray-400);
+}
+
+.b2b-pricing {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 30px;
+}
+
+.b2b-price-tier {
+    background: rgba(14, 165, 233, 0.1);
+    border: 1px solid rgba(14, 165, 233, 0.2);
+    border-radius: 16px;
+    padding: 16px 28px;
+    text-align: center;
+}
+
+.tier-name {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--gray-400);
+    margin-bottom: 4px;
+}
+
+.tier-price {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary-300);
+}
+
+/* =============================================
+   REVENUE SLIDE (Slide 14)
+   ============================================= */
+
+.revenue-hero {
+    margin-bottom: 30px;
+}
+
+.revenue-total {
+    display: block;
+    font-size: 5rem;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.revenue-year {
+    font-size: 1.5rem;
+    color: var(--gray-400);
+}
+
+.revenue-breakdown {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 100%;
+    max-width: 900px;
+}
+
+.revenue-item {
+    background: linear-gradient(145deg, rgba(14, 165, 233, 0.1), rgba(14, 165, 233, 0.02));
+    border: 1px solid rgba(14, 165, 233, 0.2);
+    border-radius: 20px;
+    padding: 24px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    text-align: left;
+}
+
+.revenue-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-400);
+    box-shadow: 0 15px 30px rgba(14, 165, 233, 0.15);
+}
+
+.revenue-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.revenue-source {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--white);
+}
+
+.revenue-amount {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--primary-300);
+}
+
+.revenue-bar {
+    height: 8px;
+    background: rgba(14, 165, 233, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+
+.revenue-fill {
+    height: 100%;
+    background: var(--gradient-primary);
+    border-radius: 10px;
+    transition: width 1s ease-out;
+}
+
+.revenue-details {
+    font-size: 0.85rem;
+    color: var(--gray-500);
+    margin: 0;
+}
+
+/* =============================================
+   ADVANTAGE SLIDE (Slide 15)
+   ============================================= */
+
+.advantages-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.advantage-card {
+    background: linear-gradient(145deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.02));
+    border: 2px solid rgba(16, 185, 129, 0.2);
+    border-radius: 24px;
+    padding: 28px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    text-align: left;
+}
+
+.advantage-card:hover {
+    transform: translateY(-8px);
+    border-color: #10b981;
+    box-shadow: 0 20px 40px rgba(16, 185, 129, 0.15);
+}
+
+.advantage-icon {
+    font-size: 2.5rem;
+    margin-bottom: 14px;
+    display: block;
+}
+
+.advantage-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #6ee7b7;
+    margin-bottom: 8px;
+}
+
+.advantage-desc {
+    font-size: 0.95rem;
+    color: var(--gray-300);
+    margin-bottom: 12px;
+}
+
+.vs-others {
+    background: rgba(239, 68, 68, 0.1);
+    border-radius: 10px;
+    padding: 10px 14px;
+}
+
+.vs-label {
+    font-size: 0.85rem;
+    color: #fca5a5;
+}
+
+.competitors-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.vs-text {
+    font-size: 1rem;
+    color: var(--gray-500);
+    font-weight: 600;
+}
+
+.competitor {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--gray-400);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+/* =============================================
+   VISION SLIDE (Slide 16)
+   ============================================= */
+
+.vision-slide-content {
+    max-width: 1100px;
+}
+
+.vision-quote {
+    font-size: 1.8rem;
+    color: var(--white);
+    font-style: italic;
+    line-height: 1.6;
+    max-width: 900px;
+    margin-bottom: 40px;
+}
+
+.timeline {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    position: relative;
+}
+
+.timeline-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    max-width: 220px;
+}
+
+.timeline-year {
+    background: var(--gradient-primary);
+    color: white;
+    padding: 10px 24px;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    box-shadow: 0 4px 15px rgba(14, 165, 233, 0.4);
+}
+
+.timeline-content {
+    background: linear-gradient(145deg, rgba(14, 165, 233, 0.15), rgba(14, 165, 233, 0.02));
+    border: 1px solid rgba(14, 165, 233, 0.2);
+    border-radius: 16px;
+    padding: 20px 16px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    text-align: center;
+    width: 100%;
+}
+
+.timeline-content:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-400);
+    box-shadow: 0 15px 30px rgba(14, 165, 233, 0.2);
+}
+
+.timeline-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 6px;
+}
+
+.timeline-desc {
+    font-size: 0.85rem;
+    color: var(--gray-400);
+    margin: 0;
+}
+
+.mission-statement {
+    font-size: 1.1rem;
+    color: var(--primary-300);
+    margin-top: 30px;
+    font-weight: 500;
+}
+
+/* =============================================
+   FINAL SLIDE (Slide 17)
+   ============================================= */
+
+.final-slide-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.final-header {
+    text-align: center;
+}
+
+.final-title {
+    font-size: 4rem;
+    font-weight: 800;
+    color: var(--white);
+    margin: 0;
+    text-shadow: 0 4px 20px rgba(14, 165, 233, 0.3);
+}
+
+.final-headline {
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.presenter-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.presenter-item {
+    font-size: 1.1rem;
+    color: var(--gray-300);
+}
+
+.presenter-divider {
+    color: var(--gray-600);
+}
+
+.contact-buttons {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.contact-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.contact-btn .btn-icon {
+    font-size: 1.2rem;
+}
+
+.email-btn {
+    background: linear-gradient(135deg, var(--primary-600), var(--primary-700));
+    color: white;
+    border: 2px solid var(--primary-500);
+}
+
+.email-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(14, 165, 233, 0.4);
+}
+
+.github-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--white);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.github-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+}
+
+.demo-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.demo-label {
+    font-size: 1rem;
+    color: var(--gray-400);
+    font-weight: 500;
+}
+
+.demo-url {
+    font-size: 1rem;
+    color: var(--primary-300);
+    text-decoration: none;
+    padding: 8px 16px;
+    background: rgba(14, 165, 233, 0.1);
+    border: 1px solid rgba(14, 165, 233, 0.3);
+    border-radius: 20px;
+    transition: all 0.3s;
+}
+
+.demo-url:hover {
+    background: rgba(14, 165, 233, 0.2);
+    border-color: var(--primary-400);
+}
+
+.final-tagline {
+    font-size: 1.2rem;
+    color: var(--gray-400);
+    margin-top: 15px;
+    font-style: italic;
+}
+
+/* =============================================
+   MODAL STYLES
+   ============================================= */
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: linear-gradient(145deg, var(--gray-800), var(--gray-900));
+    border: 1px solid rgba(14, 165, 233, 0.3);
+    border-radius: 24px;
+    padding: 40px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    transform: scale(0.9) translateY(20px);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+}
+
+.modal-overlay.active .modal-content {
+    transform: scale(1) translateY(0);
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.modal-icon {
+    font-size: 3rem;
+}
+
+.modal-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--white);
+    margin: 0;
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 50%;
+    color: var(--gray-400);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-close:hover {
+    background: rgba(239, 68, 68, 0.3);
+    color: white;
+}
+
+.modal-body {
+    color: var(--gray-300);
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.modal-body p {
+    margin-bottom: 16px;
+}
+
+.modal-body ul {
+    margin: 16px 0;
+    padding-left: 24px;
+}
+
+.modal-body li {
+    margin-bottom: 8px;
+}
+
+/* =============================================
+   SLIDE TITLE STYLING
+   ============================================= */
+
+.slide-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 12px;
+    position: relative;
+    display: inline-block;
+}
+
+.slide-title::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: var(--gradient-primary);
+    border-radius: 2px;
+}
+
+/* Gradient Text */
+.gradient-text {
+    background: linear-gradient(135deg, var(--primary-300), var(--accent-cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.gradient-text-animated {
+    background: linear-gradient(90deg, var(--primary-300), var(--accent-cyan), var(--primary-300));
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 3s linear infinite;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+}
+
+/* Clickable hint */
+[data-modal] {
+    position: relative;
+}
+
+[data-modal]::after {
+    content: 'Click for more info';
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    font-size: 0.7rem;
+    color: var(--primary-400);
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+}
+
+[data-modal]:hover::after {
+    opacity: 0.8;
+}
+
+/* =============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================= */
+
+@media (max-width: 1200px) {
+    .features-grid,
+    .solutions-grid,
+    .modes-container,
+    .social-features-grid,
+    .personalization-grid,
+    .levels-container,
+    .business-models-grid,
+    .b2b-solutions-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .flow-container {
+        flex-wrap: wrap;
+    }
+    
+    .flow-arrow {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .slide {
+        padding: 15px;
+    }
+    
+    .slide-title {
+        font-size: 1.6rem;
+    }
+    
+    .features-grid,
+    .problems-grid,
+    .solutions-grid,
+    .modes-container,
+    .cards-comparison,
+    .social-features-grid,
+    .personalization-grid,
+    .levels-container,
+    .business-models-grid,
+    .pricing-container,
+    .marketplace-grid,
+    .b2b-solutions-grid,
+    .revenue-breakdown,
+    .advantages-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .timeline {
+        flex-direction: column;
+        gap: 16px;
+    }
+    
+    .timeline::before {
+        display: none;
+    }
+    
+    .stats-row {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+/* =============================================
+   MOBILE STYLES (iPhone & Smartphones)
+   ============================================= */
+
+@media (max-width: 480px) {
+    /* Base Slide */
+    .slides-container {
+        inset: 50px 0 10px 0;
+        padding: 5px;
+    }
+    
+    .slide {
+        padding: 10px 8px;
+    }
+    
+    .slide-content {
+        gap: 10px;
+        padding: 0 5px;
+    }
+    
+    .slide-title {
+        font-size: 1.3rem;
+        margin-bottom: 8px;
+    }
+    
+    .slide-title::after {
+        width: 50px;
+        height: 2px;
+        bottom: -4px;
+    }
+    
+    .slide-subtitle,
+    .slide-intro {
+        font-size: 0.9rem;
+        margin-bottom: 10px;
+    }
+    
+    /* Title Slide (Slide 1) */
+    .title-slide-content {
+        gap: 12px;
+    }
+    
+    .title-header {
+        gap: 6px;
+    }
+    
+    .title-logo-img {
+        max-width: 200px;
+    }
+    
+    .title-subtitle {
+        font-size: 0.8rem;
+        letter-spacing: 0.05em;
+    }
+    
+    .main-description {
+        font-size: 0.8rem;
+        padding: 0 10px;
+    }
+    
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        max-width: 100%;
+    }
+    
+    .feature-card {
+        padding: 14px 12px;
+        border-radius: 12px;
+    }
+    
+    .feature-icon {
+        font-size: 1.8rem;
+        margin-bottom: 6px;
+    }
+    
+    .feature-title {
+        font-size: 0.9rem;
+        margin-bottom: 4px;
+    }
+    
+    .feature-desc {
+        font-size: 0.75rem;
+    }
+    
+    .tagline {
+        font-size: 0.95rem;
+        margin-top: 8px;
+    }
+    
+    /* Problem Slide (Slide 2) */
+    .problems-grid {
+        gap: 10px;
+    }
+    
+    .problem-card {
+        padding: 14px 12px;
+        border-radius: 12px;
+    }
+    
+    .problem-icon {
+        font-size: 1.6rem;
+        margin-bottom: 8px;
+    }
+    
+    .problem-title {
+        font-size: 0.9rem;
+    }
+    
+    .problem-desc {
+        font-size: 0.75rem;
+    }
+    
+    .conclusion-box {
+        padding: 12px 16px;
+        margin-top: 10px;
+    }
+    
+    .conclusion-text {
+        font-size: 0.9rem;
+    }
+    
+    /* Solution Slide (Slide 3) */
+    .main-message {
+        padding: 12px 16px;
+        margin-bottom: 6px;
+    }
+    
+    .main-message p {
+        font-size: 1rem;
+    }
+    
+    .solutions-grid {
+        gap: 10px;
+    }
+    
+    .solution-card {
+        padding: 16px 14px;
+        border-radius: 14px;
+    }
+    
+    .solution-icon {
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
+    
+    .solution-title {
+        font-size: 0.95rem;
+        margin-bottom: 6px;
+    }
+    
+    .solution-desc {
+        font-size: 0.8rem;
+    }
+    
+    /* Flow Slide (Slide 4) */
+    .flow-container {
+        gap: 12px;
+    }
+    
+    .flow-step {
+        width: 100%;
+        max-width: 280px;
+        padding: 22px 16px;
+        border-radius: 16px;
+    }
+    
+    .step-number {
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
+        top: -12px;
+    }
+    
+    .step-icon {
+        font-size: 2rem;
+        margin-bottom: 8px;
+        margin-top: 6px;
+    }
+    
+    .step-title {
+        font-size: 0.95rem;
+        margin-bottom: 4px;
+    }
+    
+    .step-desc {
+        font-size: 0.75rem;
+    }
+    
+    .flow-arrow {
+        display: none;
+    }
+    
+    /* Modes Slide (Slide 5) */
+    .modes-container {
+        gap: 12px;
+    }
+    
+    .mode-card {
+        padding: 20px 16px;
+        border-radius: 16px;
+    }
+    
+    .mode-icon {
+        font-size: 2.2rem;
+        margin-bottom: 10px;
+    }
+    
+    .mode-title {
+        font-size: 1.1rem;
+        margin-bottom: 8px;
+    }
+    
+    .mode-desc {
+        font-size: 0.8rem;
+        margin-bottom: 12px;
+    }
+    
+    .mode-example {
+        padding: 10px 12px;
+        border-radius: 10px;
+    }
+    
+    .example-label {
+        font-size: 0.7rem;
+    }
+    
+    .example-text {
+        font-size: 0.8rem;
+    }
+    
+    /* Cards Slide (Slide 6) */
+    .cards-comparison {
+        gap: 14px;
+    }
+    
+    .card-type-box {
+        padding: 24px 18px;
+        border-radius: 18px;
+    }
+    
+    .card-type-icon {
+        font-size: 2.2rem;
+        margin-bottom: 10px;
+    }
+    
+    .card-type-title {
+        font-size: 1.2rem;
+        margin-bottom: 6px;
+    }
+    
+    .card-type-desc {
+        font-size: 0.85rem;
+        margin-bottom: 14px;
+    }
+    
+    .card-features-list li {
+        font-size: 0.8rem;
+        padding: 6px 0;
+        padding-left: 22px;
+    }
+    
+    .highlight-box {
+        padding: 14px 20px;
+        border-radius: 12px;
+    }
+    
+    .highlight-box p {
+        font-size: 1rem;
+    }
+    
+    /* Social Slide (Slide 7) */
+    .badge-container {
+        margin-bottom: -6px;
+    }
+    
+    .future-badge {
+        padding: 6px 14px;
+        font-size: 0.7rem;
+    }
+    
+    .slide-main-title {
+        font-size: 1.6rem;
+        margin-bottom: 6px;
+    }
+    
+    .social-features-grid {
+        gap: 10px;
+    }
+    
+    .social-feature-card {
+        padding: 18px 14px;
+        border-radius: 14px;
+    }
+    
+    .social-icon {
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
+    
+    .social-title {
+        font-size: 0.95rem;
+        margin-bottom: 6px;
+    }
+    
+    .social-desc {
+        font-size: 0.8rem;
+    }
+    
+    .slide-quote {
+        font-size: 0.95rem;
+        margin-top: 12px;
+        padding: 0 10px;
+    }
+    
+    /* Personalization Slide (Slide 8) */
+    .personalization-grid {
+        gap: 10px;
+    }
+    
+    .personalization-card {
+        padding: 18px 14px;
+        border-radius: 14px;
+    }
+    
+    .pers-icon {
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
+    
+    .pers-title {
+        font-size: 0.9rem;
+        margin-bottom: 6px;
+    }
+    
+    .pers-desc {
+        font-size: 0.75rem;
+    }
+    
+    .stats-row {
+        gap: 16px;
+        margin-top: 16px;
+    }
+    
+    .stat-value {
+        font-size: 2rem;
+    }
+    
+    .stat-label {
+        font-size: 0.85rem;
+    }
+    
+    /* Levels Slide (Slide 9) */
+    .levels-container {
+        gap: 12px;
+    }
+    
+    .level-card {
+        padding: 20px 16px;
+        border-radius: 18px;
+    }
+    
+    .level-header {
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+    
+    .level-icon {
+        font-size: 1.6rem;
+    }
+    
+    .level-number {
+        font-size: 0.65rem;
+    }
+    
+    .level-name {
+        font-size: 1rem;
+    }
+    
+    .level-xp {
+        font-size: 0.7rem;
+        padding: 3px 10px;
+        margin-bottom: 12px;
+    }
+    
+    .level-perks li {
+        font-size: 0.75rem;
+        padding: 4px 0;
+        padding-left: 16px;
+    }
+    
+    .earn-xp-box {
+        padding: 14px 18px;
+        margin-top: 14px;
+        border-radius: 12px;
+    }
+    
+    .earn-xp-box h4 {
+        font-size: 0.8rem;
+        margin-bottom: 10px;
+    }
+    
+    .xp-methods {
+        gap: 8px;
+    }
+    
+    .xp-method {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+    
+    /* Business Slide (Slide 10) */
+    .business-models-grid {
+        gap: 12px;
+    }
+    
+    .business-card {
+        padding: 22px 16px;
+        border-radius: 18px;
+    }
+    
+    .business-revenue {
+        top: 12px;
+        right: 12px;
+        padding: 4px 10px;
+        font-size: 0.85rem;
+    }
+    
+    .business-icon {
+        font-size: 2.2rem;
+        margin-bottom: 12px;
+    }
+    
+    .business-title {
+        font-size: 1rem;
+        margin-bottom: 6px;
+    }
+    
+    .business-desc {
+        font-size: 0.8rem;
+    }
+    
+    /* Pricing Slide (Slide 11) */
+    .pricing-container {
+        gap: 14px;
+    }
+    
+    .pricing-card {
+        padding: 24px 18px;
+        border-radius: 20px;
+    }
+    
+    .pricing-card.highlighted {
+        transform: scale(1);
+    }
+    
+    .pricing-card.highlighted:hover {
+        transform: translateY(-5px);
+    }
+    
+    .pricing-icon {
+        font-size: 2rem;
+        margin-bottom: 12px;
+    }
+    
+    .pricing-name {
+        font-size: 1.2rem;
+        margin-bottom: 6px;
+    }
+    
+    .pricing-price {
+        margin-bottom: 16px;
+    }
+    
+    .price-value {
+        font-size: 2rem;
+    }
+    
+    .price-period {
+        font-size: 0.85rem;
+    }
+    
+    .pricing-features li {
+        padding: 8px 0;
+        font-size: 0.85rem;
+    }
+    
+    /* Marketplace Slide (Slide 12) */
+    .headline {
+        font-size: 1.1rem;
+        margin-bottom: 14px;
+    }
+    
+    .marketplace-grid {
+        gap: 14px;
+    }
+    
+    .marketplace-card {
+        padding: 24px 18px;
+        border-radius: 18px;
+    }
+    
+    .marketplace-icon {
+        font-size: 2.2rem;
+        margin-bottom: 12px;
+    }
+    
+    .marketplace-title {
+        font-size: 1.15rem;
+        margin-bottom: 12px;
+    }
+    
+    .marketplace-benefits li {
+        padding: 6px 0;
+        padding-left: 22px;
+        font-size: 0.85rem;
+    }
+    
+    /* B2B Slide (Slide 13) */
+    .b2b-solutions-grid {
+        gap: 10px;
+    }
+    
+    .b2b-card {
+        padding: 18px 14px;
+        border-radius: 14px;
+    }
+    
+    .b2b-icon {
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
+    
+    .b2b-title {
+        font-size: 0.95rem;
+        margin-bottom: 6px;
+    }
+    
+    .b2b-desc {
+        font-size: 0.75rem;
+    }
+    
+    .b2b-pricing {
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 18px;
+    }
+    
+    .b2b-price-tier {
+        padding: 12px 20px;
+        border-radius: 12px;
+    }
+    
+    .tier-name {
+        font-size: 0.8rem;
+    }
+    
+    .tier-price {
+        font-size: 1rem;
+    }
+    
+    /* Revenue Slide (Slide 14) */
+    .revenue-hero {
+        margin-bottom: 18px;
+    }
+    
+    .revenue-total {
+        font-size: 3rem;
+    }
+    
+    .revenue-year {
+        font-size: 1.1rem;
+    }
+    
+    .revenue-breakdown {
+        gap: 12px;
+    }
+    
+    .revenue-item {
+        padding: 18px 14px;
+        border-radius: 14px;
+    }
+    
+    .revenue-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+        margin-bottom: 10px;
+    }
+    
+    .revenue-source {
+        font-size: 0.95rem;
+    }
+    
+    .revenue-amount {
+        font-size: 1.05rem;
+    }
+    
+    .revenue-bar {
+        height: 6px;
+        margin-bottom: 10px;
+    }
+    
+    .revenue-details {
+        font-size: 0.75rem;
+    }
+    
+    /* Advantages Slide (Slide 15) */
+    .advantages-grid {
+        gap: 12px;
+    }
+    
+    .advantage-card {
+        padding: 20px 16px;
+        border-radius: 18px;
+    }
+    
+    .advantage-icon {
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
+    
+    .advantage-title {
+        font-size: 1rem;
+        margin-bottom: 6px;
+    }
+    
+    .advantage-desc {
+        font-size: 0.8rem;
+        margin-bottom: 10px;
+    }
+    
+    .vs-others {
+        padding: 8px 12px;
+    }
+    
+    .vs-label {
+        font-size: 0.75rem;
+    }
+    
+    .competitors-row {
+        gap: 10px;
+        margin-top: 16px;
+    }
+    
+    .vs-text {
+        font-size: 0.85rem;
+    }
+    
+    .competitor {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+    
+    /* Vision Slide (Slide 16) */
+    .vision-slide-content {
+        max-width: 100%;
+    }
+    
+    .vision-quote {
+        font-size: 1.1rem;
+        margin-bottom: 24px;
+        padding: 0 10px;
+    }
+    
+    .timeline {
+        flex-direction: column;
+        gap: 14px;
+        align-items: center;
+    }
+    
+    .timeline-item {
+        max-width: 100%;
+        width: 100%;
+        gap: 8px;
+    }
+    
+    .timeline-year {
+        padding: 8px 18px;
+        font-size: 0.95rem;
+    }
+    
+    .timeline-content {
+        padding: 14px 12px;
+        border-radius: 12px;
+    }
+    
+    .timeline-title {
+        font-size: 0.95rem;
+        margin-bottom: 4px;
+    }
+    
+    .timeline-desc {
+        font-size: 0.75rem;
+    }
+    
+    .mission-statement {
+        font-size: 0.9rem;
+        margin-top: 18px;
+        padding: 0 10px;
+    }
+    
+    /* Final Slide (Slide 17) */
+    .final-slide-content {
+        gap: 14px;
+    }
+    
+    .final-title {
+        font-size: 2.2rem;
+    }
+    
+    .final-headline {
+        font-size: 1.3rem;
+    }
+    
+    .presenter-info {
+        flex-direction: column;
+        gap: 6px;
+        margin-top: 8px;
+    }
+    
+    .presenter-item {
+        font-size: 0.9rem;
+    }
+    
+    .presenter-divider {
+        display: none;
+    }
+    
+    .contact-buttons {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 8px;
+        width: 100%;
+        padding: 0 20px;
+    }
+    
+    .contact-btn {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+        justify-content: center;
+        width: 100%;
+    }
+    
+    .contact-btn .btn-icon {
+        font-size: 1rem;
+    }
+    
+    .demo-link {
+        flex-direction: column;
+        gap: 6px;
+        margin-top: 8px;
+    }
+    
+    .demo-label {
+        font-size: 0.85rem;
+    }
+    
+    .demo-url {
+        font-size: 0.85rem;
+        padding: 6px 14px;
+    }
+    
+    .final-tagline {
+        font-size: 0.95rem;
+        margin-top: 10px;
+        padding: 0 15px;
+    }
+    
+    /* Modal Styles for Mobile */
+    .modal-content {
+        padding: 24px 20px;
+        border-radius: 18px;
+        max-height: 85vh;
+        width: 95%;
+    }
+    
+    .modal-header {
+        gap: 12px;
+        margin-bottom: 16px;
+    }
+    
+    .modal-icon {
+        font-size: 2.2rem;
+    }
+    
+    .modal-title {
+        font-size: 1.4rem;
+    }
+    
+    .modal-close {
+        top: 14px;
+        right: 14px;
+        width: 34px;
+        height: 34px;
+        font-size: 1.2rem;
+    }
+    
+    .modal-body {
+        font-size: 0.95rem;
+        line-height: 1.7;
+    }
+    
+    .modal-body p {
+        margin-bottom: 12px;
+    }
+    
+    .modal-body ul {
+        margin: 12px 0;
+        padding-left: 20px;
+    }
+    
+    .modal-body li {
+        margin-bottom: 6px;
+    }
+    
+    /* Hide click hints on mobile */
+    [data-modal]::after {
+        display: none;
+    }
+}
+
+/* Extra small phones (iPhone SE, etc.) */
+@media (max-width: 375px) {
+    .title-logo-img {
+        max-width: 160px;
+    }
+    
+    .title-subtitle {
+        font-size: 0.7rem;
+    }
+    
+    .slide-title {
+        font-size: 1.15rem;
+    }
+    
+    .feature-card,
+    .problem-card,
+    .solution-card,
+    .mode-card,
+    .social-feature-card,
+    .personalization-card,
+    .level-card,
+    .business-card,
+    .pricing-card,
+    .marketplace-card,
+    .b2b-card,
+    .revenue-item,
+    .advantage-card {
+        padding: 12px 10px;
+    }
+    
+    .final-title {
+        font-size: 1.8rem;
+    }
+    
+    .final-headline {
+        font-size: 1.1rem;
+    }
+    
+    .vision-quote {
+        font-size: 0.95rem;
+    }
+    
+    .stat-value {
+        font-size: 1.6rem;
+    }
+    
+    .revenue-total {
+        font-size: 2.4rem;
+    }
+}

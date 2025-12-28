@@ -1,0 +1,354 @@
+/* =============================================
+   MOBIX Presentation - Presentation Screen
+   ============================================= */
+
+.presentation-screen {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(180deg, var(--gray-900) 0%, var(--primary-900) 100%);
+    display: none;
+    flex-direction: column;
+}
+
+.presentation-screen.active {
+    display: flex;
+}
+
+/* Admin Controls */
+.admin-controls {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 var(--spacing-6);
+    z-index: var(--z-sticky);
+}
+
+.admin-controls.active {
+    display: flex;
+}
+
+.admin-left,
+.admin-right {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-4);
+}
+
+.admin-badge {
+    padding: var(--spacing-1) var(--spacing-3);
+    font-size: var(--font-size-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    background: var(--gradient-primary);
+    border-radius: var(--radius-full);
+    color: var(--white);
+}
+
+.slide-counter {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-1);
+    font-size: var(--font-size-lg);
+    font-weight: 500;
+    color: var(--gray-300);
+}
+
+.slide-counter .divider {
+    color: var(--gray-600);
+}
+
+.slide-counter span:first-child {
+    color: var(--primary-400);
+    font-weight: 700;
+}
+
+/* Navigation Buttons */
+.nav-btn {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-lg);
+    color: var(--white);
+    transition: all var(--transition-normal);
+}
+
+.nav-btn:hover {
+    background: var(--primary-600);
+    border-color: var(--primary-500);
+    transform: scale(1.05);
+}
+
+.nav-btn:active {
+    transform: scale(0.95);
+}
+
+.nav-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Logout Button */
+.logout-btn {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(239, 68, 68, 0.2);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-radius: var(--radius-lg);
+    color: #ef4444;
+    transition: all var(--transition-normal);
+    margin-left: var(--spacing-2);
+    cursor: pointer;
+    z-index: 1000;
+    position: relative;
+}
+
+.logout-btn:hover {
+    background: rgba(239, 68, 68, 0.4);
+    border-color: #ef4444;
+    transform: scale(1.05);
+}
+
+.logout-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+.logout-btn-small {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(239, 68, 68, 0.2);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-radius: var(--radius-md);
+    color: #ef4444;
+    transition: all var(--transition-normal);
+    margin-left: var(--spacing-2);
+    cursor: pointer;
+    z-index: 1000;
+    position: relative;
+}
+
+.logout-btn-small:hover {
+    background: rgba(239, 68, 68, 0.4);
+    border-color: #ef4444;
+}
+
+.logout-btn-small svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* Viewer Indicator */
+.viewer-indicator {
+    position: fixed;
+    top: var(--spacing-4);
+    right: var(--spacing-4);
+    display: none;
+    align-items: center;
+    gap: var(--spacing-3);
+    padding: var(--spacing-2) var(--spacing-4);
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-full);
+    z-index: var(--z-sticky);
+}
+
+.viewer-indicator.active {
+    display: flex;
+}
+
+.viewer-badge {
+    padding: var(--spacing-1) var(--spacing-2);
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: var(--gray-700);
+    border-radius: var(--radius-sm);
+    color: var(--gray-300);
+}
+
+/* Progress Bar */
+.progress-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: var(--z-sticky);
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--gradient-primary);
+    transition: width var(--transition-slow);
+    border-radius: 0 var(--radius-full) var(--radius-full) 0;
+    box-shadow: 0 0 10px var(--primary-500);
+}
+
+/* Slides Container */
+.slides-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px var(--spacing-8) var(--spacing-8);
+    overflow: hidden;
+}
+
+/* Watermark */
+.watermark {
+    position: fixed;
+    bottom: var(--spacing-8);
+    right: var(--spacing-8);
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: var(--z-base);
+}
+
+.watermark-logo {
+    width: 150px;
+    height: auto;
+}
+
+/* =============================================
+   MOBILE RESPONSIVE - Presentation Screen
+   ============================================= */
+
+@media (max-width: 480px) {
+    /* Admin Controls */
+    .admin-controls {
+        height: 50px;
+        padding: 0 var(--spacing-3);
+    }
+    
+    .admin-left,
+    .admin-right {
+        gap: var(--spacing-2);
+    }
+    
+    .admin-badge {
+        padding: 3px 8px;
+        font-size: 0.6rem;
+        letter-spacing: 0.05em;
+    }
+    
+    .slide-counter {
+        font-size: var(--font-size-sm);
+    }
+    
+    .nav-btn {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .nav-btn svg {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .logout-btn {
+        width: 36px;
+        height: 36px;
+        margin-left: var(--spacing-1);
+    }
+    
+    .logout-btn svg {
+        width: 16px;
+        height: 16px;
+    }
+    
+    /* Viewer Indicator */
+    .viewer-indicator {
+        top: var(--spacing-2);
+        right: var(--spacing-2);
+        padding: var(--spacing-1) var(--spacing-2);
+        gap: var(--spacing-2);
+    }
+    
+    .viewer-badge {
+        font-size: 0.6rem;
+        padding: 2px 6px;
+    }
+    
+    .logout-btn-small {
+        width: 28px;
+        height: 28px;
+        margin-left: var(--spacing-1);
+    }
+    
+    .logout-btn-small svg {
+        width: 14px;
+        height: 14px;
+    }
+    
+    /* Slides Container */
+    .slides-container {
+        padding: 55px var(--spacing-2) var(--spacing-2);
+    }
+    
+    /* Progress Bar */
+    .progress-bar {
+        height: 3px;
+    }
+    
+    /* Watermark */
+    .watermark {
+        bottom: var(--spacing-4);
+        right: var(--spacing-4);
+    }
+    
+    .watermark-logo {
+        width: 80px;
+    }
+}
+
+/* Extra small phones */
+@media (max-width: 375px) {
+    .admin-controls {
+        height: 45px;
+        padding: 0 var(--spacing-2);
+    }
+    
+    .admin-badge {
+        display: none;
+    }
+    
+    .slide-counter {
+        font-size: var(--font-size-xs);
+    }
+    
+    .nav-btn {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .logout-btn {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .watermark-logo {
+        width: 60px;
+    }
+}

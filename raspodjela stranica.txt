@@ -1,0 +1,366 @@
+MOBIX – AI-Powered Travel Platform
+Presentation Structure & Slide Content
+Slide 1 – What is MOBIX?
+
+Title: What is MOBIX?
+
+Content:
+
+MOBIX is an AI-powered digital travel platform
+
+It combines:
+
+Travel planning
+
+Artificial intelligence
+
+Social discovery
+
+Marketplace logic
+
+MOBIX transforms travel planning from a fragmented process into a single intelligent flow
+
+Key message:
+MOBIX is not a booking site — it is a travel operating system.
+
+Slide 2 – The Problem MOBIX Solves
+
+Title: The Problem with Travel Planning Today
+
+Content:
+
+Travel planning is fragmented across many platforms
+
+Users must manually compare flights, hotels, attractions, transport
+
+Prices change constantly and are difficult to optimize
+
+Travelers often miss experiences they did not know existed
+
+Planning is time-consuming, stressful, and inefficient
+
+Key message:
+Travel planning today requires too many tools and too many decisions.
+
+Slide 3 – The MOBIX Solution
+
+Title: MOBIX as the Solution
+
+Content:
+
+MOBIX centralizes the entire travel process
+
+Users interact with one AI assistant instead of multiple platforms
+
+The AI:
+
+Understands user preferences
+
+Explains recommendations
+
+Builds complete travel plans
+
+Everything happens inside one ecosystem
+
+Key message:
+MOBIX reduces complexity by replacing search with intelligence.
+
+Slide 4 – How MOBIX Works (High Level)
+
+Title: How MOBIX Works
+
+Content (flow):
+
+User creates a profile and sets preferences
+
+AI analyzes budget, interests, and travel style
+
+User interacts with chatbot or discovery feed
+
+MOBIX generates:
+
+Transport options
+
+Accommodation
+
+Attractions and restaurants
+
+User saves content into Travel Notes
+
+Travel Notes become a complete, bookable itinerary
+
+Key message:
+Intent → AI → Structured travel plan.
+
+Slide 5 – AI Chatbot Logic
+
+Title: AI Chatbot – Three Core Modes
+
+Content:
+
+Recommendation Mode
+
+Suggests destinations, hotels, restaurants, attractions
+
+Based on user profile and behavior
+
+Conversational Mode
+
+Natural conversation (who are you, how does this work, etc.)
+
+Trip Planning Mode
+
+Full itineraries with cards and explanations
+
+Transport, stay, activities, return options
+
+Key message:
+The chatbot adapts its behavior to user intent.
+
+Slide 6 – Travel Cards & Travel Notes
+
+Title: Travel Cards and Travel Notes
+
+Content:
+
+Every recommendation is presented as a card
+
+Cards include price, duration, rating, explanation
+
+Users can:
+
+Save cards
+
+Remove cards
+
+Reorder cards
+
+Saved cards form Travel Notes
+
+Travel Notes are fully customizable itineraries
+
+Key message:
+Users build trips visually and intuitively.
+
+Slide 7 – Social Discovery (Future Vision)
+
+Title: Travel Discovery Feed
+
+Content:
+
+App opens with a scrollable feed of published trips
+
+Users scroll through journeys like social content
+
+Users can:
+
+Like trips
+
+Remove trips
+
+Save trips
+
+MOBIX learns preferences from every interaction
+
+Key message:
+Travel discovery becomes as intuitive as social media.
+
+Slide 8 – Personalization & Learning
+
+Title: Continuous AI Personalization
+
+Content:
+
+MOBIX learns from:
+
+Likes
+
+Saves
+
+Bookings
+
+Travel behavior
+
+AI continuously refines:
+
+Destinations
+
+Budget ranges
+
+Travel styles
+
+Recommendations improve over time
+
+Key message:
+The platform gets smarter the more it is used.
+
+Slide 9 – User Levels & Engagement
+
+Title: User Levels and Progression
+
+Content:
+
+Users earn levels based on activity
+
+Higher levels unlock:
+
+Better deals
+
+Priority recommendations
+
+Exclusive trips
+
+Encourages long-term engagement
+
+Key message:
+Loyalty is rewarded with real value.
+
+Slide 10 – Business Model Overview
+
+Title: How MOBIX Makes Money
+
+Content:
+
+Commission on bookings
+
+Subscription plans
+
+Creator marketplace fees
+
+B2B promotion and advertising
+
+Enterprise and analytics products
+
+Key message:
+MOBIX has multiple revenue streams.
+
+Slide 11 – Subscription Model
+
+Title: Subscription Tiers
+
+Content:
+
+Free
+
+Limited messages and itineraries
+
+Traveler Plus (€9.99/month)
+
+Unlimited AI usage
+
+Unlimited travel planning
+
+Traveler Premium (€17.99/month)
+
+Monetize trips
+
+Create group travel
+
+Promotion tools
+
+Key message:
+Users pay for capability, not access.
+
+Slide 12 – Creator Marketplace
+
+Title: Creator Economy
+
+Content:
+
+Users can publish travel itineraries
+
+Other users book through them
+
+Creators earn money
+
+MOBIX takes a platform fee
+
+Key message:
+Users become travel creators and micro-agents.
+
+Slide 13 – B2B Revenue
+
+Title: Travel Industry Partnerships
+
+Content:
+
+Travel agencies promote offers via AI
+
+Hotels and restaurants pay for priority placement
+
+Conversational advertising inside AI recommendations
+
+Key message:
+Suppliers pay for intent-based visibility.
+
+Slide 14 – Revenue Potential
+
+Title: Revenue Potential (100,000 Users)
+
+Content:
+
+Subscriptions ≈ €515,000/month
+
+Booking commissions ≈ €640,000/month
+
+B2B partnerships ≈ €180,000/month
+
+Total:
+➡ ~€1.3M per month
+➡ ~€16M per year
+
+Key message:
+MOBIX scales with usage, not headcount.
+
+Slide 15 – Competitive Advantage
+
+Title: Why MOBIX Wins
+
+Content:
+
+Full travel lifecycle in one platform
+
+AI explains decisions
+
+Social + marketplace model
+
+Creator economy
+
+High personalization and retention
+
+Key message:
+MOBIX is hard to copy.
+
+Slide 16 – Vision
+
+Title: The Vision of MOBIX
+
+Content:
+
+From travel planning to travel intelligence
+
+From searching to discovering
+
+From users to creators
+
+From tool to ecosystem
+
+Key message:
+MOBIX aims to become the operating system of modern travel.
+
+Slide 17 – Final Slide
+
+Title: MOBIX
+
+Content:
+
+AI-Powered
+
+Social
+
+Scalable
+
+Global
+
+Closing line:
+Planning travel should feel inspiring — not exhausting.
