@@ -1,11 +1,40 @@
 /* =============================================
    MOBIX Presentation - Slides Renderer
-   Generates HTML for each slide type
+   Premium Design with HD Images & Glassmorphism
    ============================================= */
 
 const SlidesRenderer = {
     
-    // Main render function
+    // Premium HD Images from Pexels
+    images: {
+        maldives: 'https://images.pexels.com/photos/1287460/pexels-photo-1287460.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750',
+        santorini: 'https://images.pexels.com/photos/1010657/pexels-photo-1010657.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750',
+        paris: 'https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750',
+        tokyo: 'https://images.pexels.com/photos/2506923/pexels-photo-2506923.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750',
+        bali: 'https://images.pexels.com/photos/2166559/pexels-photo-2166559.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750',
+        dubai: 'https://images.pexels.com/photos/1470502/pexels-photo-1470502.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750',
+        stressed: 'https://images.pexels.com/photos/3755755/pexels-photo-3755755.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750',
+        happy_traveler: 'https://images.pexels.com/photos/3278215/pexels-photo-3278215.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750',
+        friends_travel: 'https://images.pexels.com/photos/1268855/pexels-photo-1268855.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750',
+        solo_traveler: 'https://images.pexels.com/photos/2387873/pexels-photo-2387873.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750',
+        creator: 'https://images.pexels.com/photos/4348401/pexels-photo-4348401.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750',
+        smartphone: 'https://images.pexels.com/photos/607812/pexels-photo-607812.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750',
+        ai_tech: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750',
+        laptop_travel: 'https://images.pexels.com/photos/5082579/pexels-photo-5082579.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750',
+        chat_ai: 'https://images.pexels.com/photos/8438918/pexels-photo-8438918.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750',
+        business_meeting: 'https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750',
+        growth_chart: 'https://images.pexels.com/photos/7567443/pexels-photo-7567443.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750',
+        handshake: 'https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750',
+        office: 'https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750',
+        adventure: 'https://images.pexels.com/photos/1271619/pexels-photo-1271619.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750',
+        hiking: 'https://images.pexels.com/photos/2526025/pexels-photo-2526025.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750',
+        sunset: 'https://images.pexels.com/photos/1659438/pexels-photo-1659438.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750',
+        beach: 'https://images.pexels.com/photos/1032650/pexels-photo-1032650.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750',
+        globe: 'https://images.pexels.com/photos/335393/pexels-photo-335393.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750',
+        future: 'https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750',
+        thank_you: 'https://images.pexels.com/photos/2559941/pexels-photo-2559941.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750'
+    },
+
     render(slide) {
         const renderer = this.renderers[slide.type];
         if (renderer) {
@@ -14,309 +43,349 @@ const SlidesRenderer = {
         return this.renderDefault(slide);
     },
 
-    // Default fallback renderer
     renderDefault(slide) {
         return `
             <div class="slide-content">
-                <h1 class="slide-title gradient-text animate-fade-up">${slide.title}</h1>
+                <h1 class="premium-title animate-fade-up">${slide.title}</h1>
             </div>
         `;
     },
 
-    // All slide type renderers
     renderers: {
         
-        // Slide 1: Title Slide
+        // SLIDE 1: TITLE
         'title-slide': (slide) => {
             const { subtitle, mainText, features, tagline } = slide.content;
+            const img = SlidesRenderer.images;
             return `
                 <div class="slide-content title-slide-content">
+                    <div class="slide-hero-bg">
+                        <img src="${img.maldives}" alt="Paradise destination" loading="lazy">
+                    </div>
                     <div class="title-header animate-fade-up">
                         <img src="assets/title-font.png" alt="MOBIX" class="title-logo-img">
-                        <p class="title-subtitle">${subtitle}</p>
+                        <p class="premium-subtitle">${subtitle}</p>
                     </div>
-                    
-                    <p class="main-description animate-fade-up" style="animation-delay: 0.2s">
-                        ${mainText}
-                    </p>
-                    
-                    <div class="features-grid stagger-animation animate">
+                    <p class="premium-text animate-fade-up" style="animation-delay: 0.2s; max-width: 700px; text-align: center;">${mainText}</p>
+                    <div class="features-grid stagger-premium">
                         ${features.map(f => `
-                            <div class="feature-card hover-lift" data-modal="feature">
-                                <span class="feature-icon">${f.icon}</span>
+                            <div class="premium-card hover-lift" data-modal="feature">
+                                <div class="premium-icon">${f.icon}</div>
                                 <h3 class="feature-title">${f.title}</h3>
                                 <p class="feature-desc">${f.desc}</p>
                             </div>
                         `).join('')}
                     </div>
-                    
-                    <p class="tagline gradient-text-animated">${tagline}</p>
+                    <p class="tagline gradient-text-animated animate-float">${tagline}</p>
                 </div>
             `;
         },
 
-        // Slide 2: Problem Slide
+        // SLIDE 2: PROBLEM
         'problem-slide': (slide) => {
             const { problems, conclusion } = slide.content;
+            const img = SlidesRenderer.images;
             return `
-                <div class="slide-content">
-                    <h1 class="slide-title gradient-text animate-fade-up">${slide.title}</h1>
-                    
-                    <div class="problems-grid stagger-animation animate">
-                        ${problems.map(p => `
-                            <div class="problem-card hover-lift" data-modal="problem">
-                                <span class="problem-icon">${p.icon}</span>
-                                <h3 class="problem-title">${p.title}</h3>
-                                <p class="problem-desc">${p.desc}</p>
-                            </div>
-                        `).join('')}
-                    </div>
-                    
-                    <div class="conclusion-box animate-fade-up">
-                        <p class="conclusion-text">${conclusion}</p>
-                    </div>
-                </div>
-            `;
-        },
-
-        // Slide 3: Solution Slide
-        'solution-slide': (slide) => {
-            const { mainMessage, solutions } = slide.content;
-            return `
-                <div class="slide-content">
-                    <h1 class="slide-title gradient-text animate-fade-up">${slide.title}</h1>
-                    
-                    <div class="main-message animate-fade-up">
-                        <p>${mainMessage}</p>
-                    </div>
-                    
-                    <div class="solutions-grid stagger-animation animate">
-                        ${solutions.map(s => `
-                            <div class="solution-card hover-lift" data-modal="solution">
-                                <span class="solution-icon">${s.icon}</span>
-                                <h3 class="solution-title">${s.title}</h3>
-                                <p class="solution-desc">${s.desc}</p>
-                            </div>
-                        `).join('')}
-                    </div>
-                </div>
-            `;
-        },
-
-        // Slide 4: Flow Slide
-        'flow-slide': (slide) => {
-            const { subtitle, steps } = slide.content;
-            return `
-                <div class="slide-content">
-                    <h1 class="slide-title gradient-text animate-fade-up">${slide.title}</h1>
-                    <p class="slide-subtitle animate-fade-up">${subtitle}</p>
-                    
-                    <div class="flow-container stagger-animation animate">
-                        ${steps.map((step, index) => `
-                            <div class="flow-step hover-lift" data-modal="step">
-                                <div class="step-number">${step.number}</div>
-                                <span class="step-icon">${step.icon}</span>
-                                <h3 class="step-title">${step.title}</h3>
-                                <p class="step-desc">${step.desc}</p>
-                            </div>
-                            ${index < steps.length - 1 ? '<div class="flow-arrow">→</div>' : ''}
-                        `).join('')}
-                    </div>
-                </div>
-            `;
-        },
-
-        // Slide 5: Modes Slide
-        'modes-slide': (slide) => {
-            const { intro, modes } = slide.content;
-            return `
-                <div class="slide-content">
-                    <h1 class="slide-title gradient-text animate-fade-up">${slide.title}</h1>
-                    <p class="slide-intro animate-fade-up">${intro}</p>
-                    
-                    <div class="modes-container stagger-animation animate">
-                        ${modes.map(mode => `
-                            <div class="mode-card mode-${mode.color} hover-lift" data-modal="mode">
-                                <span class="mode-icon">${mode.icon}</span>
-                                <h3 class="mode-title">${mode.title}</h3>
-                                <p class="mode-desc">${mode.desc}</p>
-                                <div class="mode-example">
-                                    <span class="example-label">Example:</span>
-                                    <span class="example-text">${mode.example}</span>
-                                </div>
-                            </div>
-                        `).join('')}
-                    </div>
-                </div>
-            `;
-        },
-
-        // Slide 6: Cards Slide
-        'cards-slide': (slide) => {
-            const { travelCards, travelNotes, highlight } = slide.content;
-            return `
-                <div class="slide-content">
-                    <h1 class="slide-title gradient-text animate-fade-up">${slide.title}</h1>
-                    
-                    <div class="cards-comparison stagger-animation animate">
-                        <div class="card-type-box hover-lift" data-modal="card">
-                            <span class="card-type-icon">${travelCards.icon}</span>
-                            <h3 class="card-type-title">${travelCards.title}</h3>
-                            <p class="card-type-desc">${travelCards.desc}</p>
-                            <ul class="card-features-list">
-                                ${travelCards.features.map(f => `<li>${f}</li>`).join('')}
-                            </ul>
-                        </div>
-                        
-                        <div class="card-type-box hover-lift" data-modal="card">
-                            <span class="card-type-icon">${travelNotes.icon}</span>
-                            <h3 class="card-type-title">${travelNotes.title}</h3>
-                            <p class="card-type-desc">${travelNotes.desc}</p>
-                            <ul class="card-features-list">
-                                ${travelNotes.features.map(f => `<li>${f}</li>`).join('')}
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="highlight-box animate-fade-up">
-                        <p>${highlight}</p>
-                    </div>
-                </div>
-            `;
-        },
-
-        // Slide 7: Social Slide
-        'social-slide': (slide) => {
-            const { badge, mainTitle, features, quote } = slide.content;
-            return `
-                <div class="slide-content">
-                    <div class="badge-container animate-fade-up">
-                        <span class="future-badge">${badge}</span>
-                    </div>
-                    <h1 class="slide-title gradient-text animate-fade-up">${slide.title}</h1>
-                    <h2 class="slide-main-title animate-fade-up">${mainTitle}</h2>
-                    
-                    <div class="social-features-grid stagger-animation animate">
-                        ${features.map(f => `
-                            <div class="social-feature-card hover-lift" data-modal="social">
-                                <span class="social-icon">${f.icon}</span>
-                                <h3 class="social-title">${f.title}</h3>
-                                <p class="social-desc">${f.desc}</p>
-                            </div>
-                        `).join('')}
-                    </div>
-                    
-                    <blockquote class="slide-quote animate-fade-up">${quote}</blockquote>
-                </div>
-            `;
-        },
-
-        // Slide 8: Personalization Slide
-        'personalization-slide': (slide) => {
-            const { mainMessage, features, stats } = slide.content;
-            return `
-                <div class="slide-content">
-                    <h1 class="slide-title gradient-text animate-fade-up">${slide.title}</h1>
-                    <p class="main-message animate-fade-up">${mainMessage}</p>
-                    
-                    <div class="personalization-grid stagger-animation animate">
-                        ${features.map(f => `
-                            <div class="personalization-card hover-lift" data-modal="personalization">
-                                <span class="pers-icon">${f.icon}</span>
-                                <h3 class="pers-title">${f.title}</h3>
-                                <p class="pers-desc">${f.desc}</p>
-                            </div>
-                        `).join('')}
-                    </div>
-                    
-                    <div class="stats-row animate-fade-up">
-                        ${stats.map(s => `
-                            <div class="stat-item">
-                                <span class="stat-value gradient-text">${s.value}</span>
-                                <span class="stat-label">${s.label}</span>
-                            </div>
-                        `).join('')}
-                    </div>
-                </div>
-            `;
-        },
-
-        // Slide 9: Levels Slide
-        'levels-slide': (slide) => {
-            const { intro, levels, earnXP } = slide.content;
-            return `
-                <div class="slide-content">
-                    <h1 class="slide-title gradient-text animate-fade-up">${slide.title}</h1>
-                    <p class="slide-intro animate-fade-up">${intro}</p>
-                    
-                    <div class="levels-container stagger-animation animate">
-                        ${levels.map(level => `
-                            <div class="level-card level-${level.level} hover-lift" data-modal="level">
-                                <div class="level-header">
-                                    <span class="level-icon">${level.icon}</span>
-                                    <div class="level-info">
-                                        <span class="level-number">Level ${level.level}</span>
-                                        <h3 class="level-name">${level.name}</h3>
+                <div class="split-screen">
+                    <div class="split-content">
+                        <h1 class="premium-title animate-fade-up">${slide.title}</h1>
+                        <div class="stagger-premium" style="display: grid; gap: 16px;">
+                            ${problems.map(p => `
+                                <div class="glass-card-light" style="padding: 20px; border-radius: 16px; display: flex; gap: 16px; align-items: flex-start; text-align: left;">
+                                    <span style="font-size: 2rem; flex-shrink: 0;">${p.icon}</span>
+                                    <div>
+                                        <h3 style="color: #fca5a5; font-size: 1.1rem; font-weight: 600; margin-bottom: 4px;">${p.title}</h3>
+                                        <p style="color: var(--gray-400); font-size: 0.9rem; line-height: 1.5;">${p.desc}</p>
                                     </div>
                                 </div>
-                                <span class="level-xp">${level.xp}</span>
-                                <ul class="level-perks">
-                                    ${level.perks.map(p => `<li>${p}</li>`).join('')}
+                            `).join('')}
+                        </div>
+                        <div class="premium-badge animate-fade-up" style="margin-top: 16px;">${conclusion}</div>
+                    </div>
+                    <div class="split-image">
+                        <img src="${img.stressed}" alt="Travel planning frustration" loading="lazy">
+                        <div class="split-image-overlay"></div>
+                    </div>
+                </div>
+            `;
+        },
+
+        // SLIDE 3: SOLUTION
+        'solution-slide': (slide) => {
+            const { mainMessage, solutions } = slide.content;
+            const img = SlidesRenderer.images;
+            return `
+                <div class="split-screen" style="direction: rtl;">
+                    <div class="split-content" style="direction: ltr;">
+                        <h1 class="premium-title animate-fade-up">${slide.title}</h1>
+                        <div class="glass-card animate-fade-up" style="padding: 20px 28px; border-radius: 16px; margin-bottom: 16px;">
+                            <p style="font-size: 1.4rem; font-weight: 700; color: var(--white); margin: 0;">${mainMessage}</p>
+                        </div>
+                        <div class="stagger-premium" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                            ${solutions.map(s => `
+                                <div class="glass-card-light" style="padding: 20px; border-radius: 16px; text-align: left;">
+                                    <span style="font-size: 2rem; display: block; margin-bottom: 12px;">${s.icon}</span>
+                                    <h3 style="color: #6ee7b7; font-size: 1rem; font-weight: 600; margin-bottom: 6px;">${s.title}</h3>
+                                    <p style="color: var(--gray-400); font-size: 0.85rem; line-height: 1.5;">${s.desc}</p>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                    <div class="split-image" style="direction: ltr;">
+                        <img src="${img.happy_traveler}" alt="Happy traveler" loading="lazy">
+                        <div class="split-image-overlay"></div>
+                    </div>
+                </div>
+            `;
+        },
+
+        // SLIDE 4: HOW IT WORKS
+        'flow-slide': (slide) => {
+            const { subtitle, steps } = slide.content;
+            const img = SlidesRenderer.images;
+            return `
+                <div class="slide-content">
+                    <div class="slide-full-bg">
+                        <img src="${img.laptop_travel}" alt="Planning travel" loading="lazy">
+                    </div>
+                    <h1 class="premium-title animate-fade-up">${slide.title}</h1>
+                    <p class="premium-subtitle animate-fade-up">${subtitle}</p>
+                    <div class="premium-flow stagger-premium">
+                        ${steps.map((step, index) => `
+                            <div class="premium-flow-step hover-lift">
+                                <div class="premium-flow-number">${step.number}</div>
+                                <span class="premium-flow-icon">${step.icon}</span>
+                                <h3 class="premium-flow-title">${step.title}</h3>
+                                <p class="premium-flow-desc">${step.desc}</p>
+                            </div>
+                            ${index < steps.length - 1 ? '<span class="premium-flow-arrow">→</span>' : ''}
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        },
+
+        // SLIDE 5: AI CHATBOT
+        'modes-slide': (slide) => {
+            const { intro, modes } = slide.content;
+            const img = SlidesRenderer.images;
+            return `
+                <div class="split-screen">
+                    <div class="split-content">
+                        <h1 class="premium-title animate-fade-up">${slide.title}</h1>
+                        <p class="premium-text animate-fade-up" style="margin-bottom: 16px;">${intro}</p>
+                        <div class="stagger-premium" style="display: grid; gap: 16px;">
+                            ${modes.map(mode => `
+                                <div class="glass-card-light" style="padding: 20px; border-radius: 16px; text-align: left;">
+                                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+                                        <span style="font-size: 2rem;">${mode.icon}</span>
+                                        <h3 style="color: var(--primary-300); font-size: 1.2rem; font-weight: 700;">${mode.title}</h3>
+                                    </div>
+                                    <p style="color: var(--gray-400); font-size: 0.9rem; line-height: 1.5; margin-bottom: 12px;">${mode.desc}</p>
+                                    <div style="background: rgba(0,0,0,0.3); padding: 12px; border-radius: 8px;">
+                                        <span style="color: var(--primary-400); font-size: 0.75rem; text-transform: uppercase;">Example:</span>
+                                        <p style="color: var(--gray-300); font-size: 0.9rem; font-style: italic; margin-top: 4px;">${mode.example}</p>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                    <div class="split-image">
+                        <img src="${img.chat_ai}" alt="AI Chat Interface" loading="lazy">
+                        <div class="split-image-overlay"></div>
+                    </div>
+                </div>
+            `;
+        },
+
+        // SLIDE 6: TRAVEL CARDS
+        'cards-slide': (slide) => {
+            const { travelCards, travelNotes, highlight } = slide.content;
+            const img = SlidesRenderer.images;
+            return `
+                <div class="slide-content">
+                    <div class="slide-hero-bg" style="width: 100%; opacity: 0.2;">
+                        <img src="${img.santorini}" alt="Santorini" loading="lazy">
+                    </div>
+                    <h1 class="premium-title animate-fade-up">${slide.title}</h1>
+                    <div class="animate-fade-up" style="display: flex; gap: 16px; margin-bottom: 24px;">
+                        <div style="width: 120px; height: 80px; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+                            <img src="${img.paris}" alt="Paris" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div style="width: 120px; height: 80px; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+                            <img src="${img.tokyo}" alt="Tokyo" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div style="width: 120px; height: 80px; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+                            <img src="${img.dubai}" alt="Dubai" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                    </div>
+                    <div class="stagger-premium" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 900px;">
+                        <div class="glass-card" style="padding: 28px; border-radius: 20px; text-align: left;">
+                            <span style="font-size: 3rem; display: block; margin-bottom: 16px;">${travelCards.icon}</span>
+                            <h3 style="font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 8px;">${travelCards.title}</h3>
+                            <p style="color: var(--gray-400); margin-bottom: 16px;">${travelCards.desc}</p>
+                            <ul style="list-style: none; padding: 0; margin: 0;">
+                                ${travelCards.features.map(f => `<li style="color: var(--gray-300); font-size: 0.9rem; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ ${f}</li>`).join('')}
+                            </ul>
+                        </div>
+                        <div class="glass-card" style="padding: 28px; border-radius: 20px; text-align: left;">
+                            <span style="font-size: 3rem; display: block; margin-bottom: 16px;">${travelNotes.icon}</span>
+                            <h3 style="font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 8px;">${travelNotes.title}</h3>
+                            <p style="color: var(--gray-400); margin-bottom: 16px;">${travelNotes.desc}</p>
+                            <ul style="list-style: none; padding: 0; margin: 0;">
+                                ${travelNotes.features.map(f => `<li style="color: var(--gray-300); font-size: 0.9rem; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ ${f}</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="premium-badge animate-fade-up" style="margin-top: 20px;">${highlight}</div>
+                </div>
+            `;
+        },
+
+        // SLIDE 7: SOCIAL
+        'social-slide': (slide) => {
+            const { badge, mainTitle, features, quote } = slide.content;
+            const img = SlidesRenderer.images;
+            return `
+                <div class="split-screen" style="direction: rtl;">
+                    <div class="split-content" style="direction: ltr;">
+                        <span class="premium-badge animate-fade-up">${badge}</span>
+                        <h1 class="premium-title animate-fade-up" style="margin-top: 12px;">${slide.title}</h1>
+                        <h2 class="premium-subtitle animate-fade-up">${mainTitle}</h2>
+                        <div class="stagger-premium" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px;">
+                            ${features.map(f => `
+                                <div class="glass-card-light" style="padding: 20px; border-radius: 16px; text-align: left;">
+                                    <span style="font-size: 2rem; display: block; margin-bottom: 10px;">${f.icon}</span>
+                                    <h3 style="color: #fff; font-size: 1rem; font-weight: 600; margin-bottom: 6px;">${f.title}</h3>
+                                    <p style="color: var(--gray-400); font-size: 0.85rem;">${f.desc}</p>
+                                </div>
+                            `).join('')}
+                        </div>
+                        <div class="premium-quote animate-fade-up" style="font-size: 1.1rem; margin-top: 20px; padding: 16px;">${quote}</div>
+                    </div>
+                    <div class="split-image" style="direction: ltr;">
+                        <img src="${img.friends_travel}" alt="Friends traveling together" loading="lazy">
+                        <div class="split-image-overlay"></div>
+                    </div>
+                </div>
+            `;
+        },
+
+        // SLIDE 8: PERSONALIZATION
+        'personalization-slide': (slide) => {
+            const { mainMessage, features, stats } = slide.content;
+            const img = SlidesRenderer.images;
+            return `
+                <div class="slide-content">
+                    <div class="slide-hero-bg">
+                        <img src="${img.solo_traveler}" alt="Personal journey" loading="lazy">
+                    </div>
+                    <h1 class="premium-title animate-fade-up">${slide.title}</h1>
+                    <p class="premium-subtitle animate-fade-up">${mainMessage}</p>
+                    <div class="stagger-premium" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; max-width: 1000px; margin: 20px 0;">
+                        ${features.map(f => `
+                            <div class="premium-card hover-lift" style="padding: 24px 16px;">
+                                <div class="premium-icon">${f.icon}</div>
+                                <h3 style="color: #fff; font-size: 1rem; font-weight: 600; margin-bottom: 8px;">${f.title}</h3>
+                                <p style="color: var(--gray-400); font-size: 0.85rem;">${f.desc}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="premium-stats-row animate-fade-up">
+                        ${stats.map(s => `
+                            <div class="premium-stat">
+                                <span class="counter-value" data-target="${s.value}">${s.value}</span>
+                                <span class="premium-stat-label">${s.label}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        },
+
+        // SLIDE 9: USER LEVELS
+        'levels-slide': (slide) => {
+            const { intro, levels, earnXP } = slide.content;
+            const img = SlidesRenderer.images;
+            return `
+                <div class="slide-content">
+                    <div class="slide-full-bg">
+                        <img src="${img.adventure}" alt="Adventure" loading="lazy">
+                    </div>
+                    <h1 class="premium-title animate-fade-up">${slide.title}</h1>
+                    <p class="premium-text animate-fade-up">${intro}</p>
+                    <div class="stagger-premium" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; max-width: 1100px; margin: 20px 0;">
+                        ${levels.map(level => `
+                            <div class="glass-card hover-lift" style="padding: 24px 16px; text-align: left; border-color: ${level.level === 4 ? 'rgba(234, 179, 8, 0.3)' : 'rgba(255,255,255,0.08)'};">
+                                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+                                    <span style="font-size: 2.5rem;">${level.icon}</span>
+                                    <div>
+                                        <span style="font-size: 0.75rem; color: var(--primary-400);">Level ${level.level}</span>
+                                        <h3 style="color: #fff; font-size: 1.1rem; font-weight: 700;">${level.name}</h3>
+                                    </div>
+                                </div>
+                                <span style="display: block; color: var(--gray-400); font-size: 0.85rem; margin-bottom: 12px;">${level.xp}</span>
+                                <ul style="list-style: none; padding: 0; margin: 0;">
+                                    ${level.perks.map(p => `<li style="color: var(--gray-300); font-size: 0.8rem; padding: 4px 0;">• ${p}</li>`).join('')}
                                 </ul>
                             </div>
                         `).join('')}
                     </div>
-                    
-                    <div class="earn-xp-box animate-fade-up">
-                        <h4>Earn XP by:</h4>
-                        <div class="xp-methods">
-                            ${earnXP.map(method => `<span class="xp-method">${method}</span>`).join('')}
+                    <div class="glass-card animate-fade-up" style="padding: 16px 24px; display: flex; align-items: center; gap: 16px;">
+                        <h4 style="color: var(--primary-400); font-size: 0.9rem;">Earn XP by:</h4>
+                        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                            ${earnXP.map(method => `<span style="background: rgba(14, 165, 233, 0.2); color: var(--primary-300); padding: 6px 12px; border-radius: 100px; font-size: 0.8rem;">${method}</span>`).join('')}
                         </div>
                     </div>
                 </div>
             `;
         },
 
-        // Slide 10: Business Slide
+        // SLIDE 10: BUSINESS MODEL
         'business-slide': (slide) => {
             const { subtitle, models } = slide.content;
+            const img = SlidesRenderer.images;
             return `
-                <div class="slide-content">
-                    <h1 class="slide-title gradient-text animate-fade-up">${slide.title}</h1>
-                    <p class="slide-subtitle animate-fade-up">${subtitle}</p>
-                    
-                    <div class="business-models-grid stagger-animation animate">
-                        ${models.map(model => `
-                            <div class="business-card hover-lift" data-modal="business">
-                                <div class="business-revenue">${model.revenue}</div>
-                                <span class="business-icon">${model.icon}</span>
-                                <h3 class="business-title">${model.title}</h3>
-                                <p class="business-desc">${model.desc}</p>
-                            </div>
-                        `).join('')}
+                <div class="split-screen">
+                    <div class="split-content">
+                        <h1 class="premium-title animate-fade-up">${slide.title}</h1>
+                        <p class="premium-subtitle animate-fade-up">${subtitle}</p>
+                        <div class="stagger-premium" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px;">
+                            ${models.map(model => `
+                                <div class="glass-card-light hover-lift" style="padding: 24px; border-radius: 16px; text-align: left; position: relative;">
+                                    <span style="position: absolute; top: 12px; right: 12px; background: linear-gradient(135deg, var(--primary-500), var(--accent-cyan)); padding: 4px 12px; border-radius: 100px; font-size: 0.85rem; font-weight: 700;">${model.revenue}</span>
+                                    <span style="font-size: 2.5rem; display: block; margin-bottom: 12px;">${model.icon}</span>
+                                    <h3 style="color: #fff; font-size: 1.1rem; font-weight: 700; margin-bottom: 6px;">${model.title}</h3>
+                                    <p style="color: var(--gray-400); font-size: 0.9rem;">${model.desc}</p>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                    <div class="split-image">
+                        <img src="${img.growth_chart}" alt="Business growth" loading="lazy">
+                        <div class="split-image-overlay"></div>
                     </div>
                 </div>
             `;
         },
 
-        // Slide 11: Pricing Slide
+        // SLIDE 11: PRICING
         'pricing-slide': (slide) => {
             const { tiers } = slide.content;
             return `
                 <div class="slide-content">
-                    <h1 class="slide-title gradient-text animate-fade-up">${slide.title}</h1>
-                    
-                    <div class="pricing-container stagger-animation animate">
+                    <h1 class="premium-title animate-fade-up">${slide.title}</h1>
+                    <div class="stagger-premium" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1000px; margin-top: 24px;">
                         ${tiers.map(tier => `
-                            <div class="pricing-card ${tier.highlighted ? 'highlighted' : ''} hover-lift" data-modal="pricing">
-                                <span class="pricing-icon">${tier.icon}</span>
-                                <h3 class="pricing-name">${tier.name}</h3>
-                                <div class="pricing-price">
-                                    <span class="price-value">${tier.price}</span>
-                                    <span class="price-period">${tier.period}</span>
+                            <div class="premium-pricing-card ${tier.highlighted ? 'highlighted' : ''} hover-lift">
+                                <span style="font-size: 3rem; display: block; margin-bottom: 12px;">${tier.icon}</span>
+                                <h3 style="font-size: 1.3rem; font-weight: 700; color: #fff;">${tier.name}</h3>
+                                <div style="margin: 16px 0;">
+                                    <span class="premium-pricing-price">${tier.price}</span>
+                                    <span class="premium-pricing-period">${tier.period}</span>
                                 </div>
-                                <ul class="pricing-features">
-                                    ${tier.features.map(f => `<li><span class="check">✓</span> ${f}</li>`).join('')}
+                                <ul style="list-style: none; padding: 0; margin: 0; text-align: left;">
+                                    ${tier.features.map(f => `<li style="color: var(--gray-300); font-size: 0.9rem; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; gap: 8px;"><span style="color: var(--success);">✓</span> ${f}</li>`).join('')}
                                 </ul>
                             </div>
                         `).join('')}
@@ -325,98 +394,109 @@ const SlidesRenderer = {
             `;
         },
 
-        // Slide 12: Marketplace Slide
+        // SLIDE 12: CREATOR MARKETPLACE
         'marketplace-slide': (slide) => {
             const { headline, forCreators, forTravelers, stats } = slide.content;
+            const img = SlidesRenderer.images;
             return `
-                <div class="slide-content">
-                    <h1 class="slide-title gradient-text animate-fade-up">${slide.title}</h1>
-                    <p class="headline animate-fade-up">${headline}</p>
-                    
-                    <div class="marketplace-grid stagger-animation animate">
-                        <div class="marketplace-card creators hover-lift" data-modal="marketplace">
-                            <span class="marketplace-icon">${forCreators.icon}</span>
-                            <h3 class="marketplace-title">${forCreators.title}</h3>
-                            <ul class="marketplace-benefits">
-                                ${forCreators.benefits.map(b => `<li>${b}</li>`).join('')}
-                            </ul>
+                <div class="split-screen" style="direction: rtl;">
+                    <div class="split-content" style="direction: ltr;">
+                        <h1 class="premium-title animate-fade-up">${slide.title}</h1>
+                        <p class="premium-subtitle animate-fade-up">${headline}</p>
+                        <div class="stagger-premium" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;">
+                            <div class="glass-card" style="padding: 24px; border-radius: 16px; text-align: left; border-color: rgba(168, 85, 247, 0.3);">
+                                <span style="font-size: 2rem; margin-bottom: 12px; display: block;">${forCreators.icon}</span>
+                                <h3 style="color: #c4b5fd; font-size: 1.1rem; font-weight: 700; margin-bottom: 12px;">${forCreators.title}</h3>
+                                <ul style="list-style: none; padding: 0; margin: 0;">
+                                    ${forCreators.benefits.map(b => `<li style="color: var(--gray-300); font-size: 0.9rem; padding: 6px 0;">✨ ${b}</li>`).join('')}
+                                </ul>
+                            </div>
+                            <div class="glass-card" style="padding: 24px; border-radius: 16px; text-align: left; border-color: rgba(14, 165, 233, 0.3);">
+                                <span style="font-size: 2rem; margin-bottom: 12px; display: block;">${forTravelers.icon}</span>
+                                <h3 style="color: var(--primary-300); font-size: 1.1rem; font-weight: 700; margin-bottom: 12px;">${forTravelers.title}</h3>
+                                <ul style="list-style: none; padding: 0; margin: 0;">
+                                    ${forTravelers.benefits.map(b => `<li style="color: var(--gray-300); font-size: 0.9rem; padding: 6px 0;">🎯 ${b}</li>`).join('')}
+                                </ul>
+                            </div>
                         </div>
-                        
-                        <div class="marketplace-card travelers hover-lift" data-modal="marketplace">
-                            <span class="marketplace-icon">${forTravelers.icon}</span>
-                            <h3 class="marketplace-title">${forTravelers.title}</h3>
-                            <ul class="marketplace-benefits">
-                                ${forTravelers.benefits.map(b => `<li>${b}</li>`).join('')}
-                            </ul>
+                        <div class="premium-stats-row animate-fade-up" style="padding: 16px 0; border: none;">
+                            ${stats.map(s => `
+                                <div class="premium-stat">
+                                    <span class="premium-stat-value">${s.value}</span>
+                                    <span class="premium-stat-label">${s.label}</span>
+                                </div>
+                            `).join('')}
                         </div>
                     </div>
-                    
-                    <div class="stats-row animate-fade-up">
-                        ${stats.map(s => `
-                            <div class="stat-item">
-                                <span class="stat-value gradient-text">${s.value}</span>
-                                <span class="stat-label">${s.label}</span>
-                            </div>
-                        `).join('')}
+                    <div class="split-image" style="direction: ltr;">
+                        <img src="${img.creator}" alt="Content creator" loading="lazy">
+                        <div class="split-image-overlay"></div>
                     </div>
                 </div>
             `;
         },
 
-        // Slide 13: B2B Slide
+        // SLIDE 13: B2B
         'b2b-slide': (slide) => {
             const { subtitle, solutions, pricing } = slide.content;
+            const img = SlidesRenderer.images;
             return `
-                <div class="slide-content">
-                    <h1 class="slide-title gradient-text animate-fade-up">${slide.title}</h1>
-                    <p class="slide-subtitle animate-fade-up">${subtitle}</p>
-                    
-                    <div class="b2b-solutions-grid stagger-animation animate">
-                        ${solutions.map(s => `
-                            <div class="b2b-card hover-lift" data-modal="b2b">
-                                <span class="b2b-icon">${s.icon}</span>
-                                <h3 class="b2b-title">${s.title}</h3>
-                                <p class="b2b-desc">${s.desc}</p>
-                            </div>
-                        `).join('')}
+                <div class="split-screen">
+                    <div class="split-content">
+                        <h1 class="premium-title animate-fade-up">${slide.title}</h1>
+                        <p class="premium-subtitle animate-fade-up">${subtitle}</p>
+                        <div class="stagger-premium" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0;">
+                            ${solutions.map(s => `
+                                <div class="glass-card-light hover-lift" style="padding: 20px; border-radius: 16px; text-align: left;">
+                                    <span style="font-size: 2rem; display: block; margin-bottom: 10px;">${s.icon}</span>
+                                    <h3 style="color: #fff; font-size: 1rem; font-weight: 600; margin-bottom: 6px;">${s.title}</h3>
+                                    <p style="color: var(--gray-400); font-size: 0.85rem;">${s.desc}</p>
+                                </div>
+                            `).join('')}
+                        </div>
+                        <div class="glass-card animate-fade-up" style="display: flex; justify-content: center; gap: 32px; padding: 20px;">
+                            ${pricing.map(p => `
+                                <div style="text-align: center;">
+                                    <span style="display: block; color: var(--gray-400); font-size: 0.85rem; margin-bottom: 4px;">${p.tier}</span>
+                                    <span style="font-size: 1.2rem; font-weight: 700; color: var(--primary-300);">${p.price}</span>
+                                </div>
+                            `).join('')}
+                        </div>
                     </div>
-                    
-                    <div class="b2b-pricing animate-fade-up">
-                        ${pricing.map(p => `
-                            <div class="b2b-price-tier">
-                                <span class="tier-name">${p.tier}</span>
-                                <span class="tier-price">${p.price}</span>
-                            </div>
-                        `).join('')}
+                    <div class="split-image">
+                        <img src="${img.business_meeting}" alt="Business meeting" loading="lazy">
+                        <div class="split-image-overlay"></div>
                     </div>
                 </div>
             `;
         },
 
-        // Slide 14: Revenue Slide
+        // SLIDE 14: REVENUE
         'revenue-slide': (slide) => {
             const { headline, totalRevenue, year, breakdown } = slide.content;
+            const img = SlidesRenderer.images;
             return `
                 <div class="slide-content">
-                    <h1 class="slide-title gradient-text animate-fade-up">${slide.title}</h1>
-                    <p class="headline animate-fade-up">${headline}</p>
-                    
-                    <div class="revenue-hero animate-scale-in">
-                        <span class="revenue-total gradient-text-animated">${totalRevenue}</span>
-                        <span class="revenue-year">${year}</span>
+                    <div class="slide-full-bg">
+                        <img src="${img.office}" alt="Office" loading="lazy">
                     </div>
-                    
-                    <div class="revenue-breakdown stagger-animation animate">
+                    <h1 class="premium-title animate-fade-up">${slide.title}</h1>
+                    <p class="premium-text animate-fade-up">${headline}</p>
+                    <div class="animate-scale-in" style="text-align: center; margin: 24px 0;">
+                        <span class="counter-value" style="font-size: 4.5rem;">${totalRevenue}</span>
+                        <span style="display: block; color: var(--gray-400); font-size: 1.1rem; margin-top: 8px;">${year}</span>
+                    </div>
+                    <div class="stagger-premium" style="display: grid; gap: 16px; max-width: 800px; width: 100%;">
                         ${breakdown.map(item => `
-                            <div class="revenue-item hover-lift" data-modal="revenue">
-                                <div class="revenue-header">
-                                    <span class="revenue-source">${item.source}</span>
-                                    <span class="revenue-amount">${item.amount}</span>
+                            <div class="glass-card" style="padding: 20px; border-radius: 12px;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                                    <span style="color: #fff; font-weight: 600;">${item.source}</span>
+                                    <span style="color: var(--primary-300); font-weight: 700; font-size: 1.2rem;">${item.amount}</span>
                                 </div>
-                                <div class="revenue-bar">
-                                    <div class="revenue-fill" style="width: ${item.percentage}%"></div>
+                                <div style="height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden;">
+                                    <div style="height: 100%; width: ${item.percentage}%; background: linear-gradient(90deg, var(--primary-500), var(--accent-cyan)); border-radius: 4px;"></div>
                                 </div>
-                                <p class="revenue-details">${item.details}</p>
+                                <p style="color: var(--gray-500); font-size: 0.8rem; margin-top: 8px;">${item.details}</p>
                             </div>
                         `).join('')}
                     </div>
@@ -424,104 +504,101 @@ const SlidesRenderer = {
             `;
         },
 
-        // Slide 15: Advantage Slide
+        // SLIDE 15: COMPETITIVE ADVANTAGE
         'advantage-slide': (slide) => {
             const { intro, advantages, competitors } = slide.content;
+            const img = SlidesRenderer.images;
             return `
                 <div class="slide-content">
-                    <h1 class="slide-title gradient-text animate-fade-up">${slide.title}</h1>
-                    <p class="slide-intro animate-fade-up">${intro}</p>
-                    
-                    <div class="advantages-grid stagger-animation animate">
+                    <div class="slide-hero-bg">
+                        <img src="${img.hiking}" alt="Reaching the top" loading="lazy">
+                    </div>
+                    <h1 class="premium-title animate-fade-up">${slide.title}</h1>
+                    <p class="premium-subtitle animate-fade-up">${intro}</p>
+                    <div class="stagger-premium" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; max-width: 1100px; margin: 20px 0;">
                         ${advantages.map(adv => `
-                            <div class="advantage-card hover-lift" data-modal="advantage">
-                                <span class="advantage-icon">${adv.icon}</span>
-                                <h3 class="advantage-title">${adv.title}</h3>
-                                <p class="advantage-desc">${adv.desc}</p>
-                                <div class="vs-others">
-                                    <span class="vs-label">${adv.vsOthers}</span>
-                                </div>
+                            <div class="glass-card hover-lift" style="padding: 24px 16px; text-align: left;">
+                                <span style="font-size: 2.5rem; display: block; margin-bottom: 12px;">${adv.icon}</span>
+                                <h3 style="color: #fff; font-size: 1rem; font-weight: 700; margin-bottom: 8px;">${adv.title}</h3>
+                                <p style="color: var(--gray-400); font-size: 0.85rem; margin-bottom: 12px;">${adv.desc}</p>
+                                <span style="display: block; color: #fca5a5; font-size: 0.75rem; font-style: italic;">${adv.vsOthers}</span>
                             </div>
                         `).join('')}
                     </div>
-                    
-                    <div class="competitors-row animate-fade-up">
-                        <span class="vs-text">vs</span>
-                        ${competitors.map(c => `<span class="competitor">${c}</span>`).join('')}
+                    <div class="glass-card-light animate-fade-up" style="display: flex; align-items: center; gap: 16px; padding: 12px 24px;">
+                        <span style="color: var(--gray-400); font-weight: 600;">vs</span>
+                        ${competitors.map(c => `<span style="background: rgba(255,255,255,0.05); padding: 8px 16px; border-radius: 8px; color: var(--gray-400); font-size: 0.9rem;">${c}</span>`).join('')}
                     </div>
                 </div>
             `;
         },
 
-        // Slide 16: Vision Slide
+        // SLIDE 16: VISION
         'vision-slide': (slide) => {
             const { quote, milestones, mission } = slide.content;
+            const img = SlidesRenderer.images;
             return `
-                <div class="slide-content vision-slide-content">
-                    <h1 class="slide-title gradient-text animate-fade-up">${slide.title}</h1>
-                    
-                    <blockquote class="vision-quote animate-fade-up">${quote}</blockquote>
-                    
-                    <div class="timeline stagger-animation animate">
+                <div class="slide-content">
+                    <div class="slide-full-bg">
+                        <img src="${img.future}" alt="Future vision" loading="lazy">
+                    </div>
+                    <h1 class="premium-title animate-fade-up">${slide.title}</h1>
+                    <div class="premium-quote animate-fade-up">${quote}</div>
+                    <div class="premium-timeline stagger-premium">
                         ${milestones.map(m => `
-                            <div class="timeline-item">
-                                <span class="timeline-year">${m.year}</span>
-                                <div class="timeline-content hover-lift" data-modal="timeline">
-                                    <h3 class="timeline-title">${m.title}</h3>
-                                    <p class="timeline-desc">${m.desc}</p>
+                            <div class="premium-timeline-item">
+                                <div class="premium-timeline-year">${m.year}</div>
+                                <div class="premium-timeline-content">
+                                    <h3 class="premium-timeline-title">${m.title}</h3>
+                                    <p class="premium-timeline-desc">${m.desc}</p>
                                 </div>
                             </div>
                         `).join('')}
                     </div>
-                    
-                    <p class="mission-statement animate-fade-up">${mission}</p>
+                    <p class="premium-text animate-fade-up" style="font-size: 1.1rem; color: var(--primary-300); margin-top: 24px;">${mission}</p>
                 </div>
             `;
         },
 
-        // Slide 17: Final Slide
+        // SLIDE 17: THANK YOU
         'final-slide': (slide) => {
             const { headline, tagline, cta, presenter, contact, demo } = slide.content;
+            const img = SlidesRenderer.images;
             return `
-                <div class="slide-content final-slide-content">
-                    <div class="final-header animate-fade-up">
-                        <h1 class="final-title">${slide.title} 🙏</h1>
+                <div class="slide-content">
+                    <div class="slide-full-bg">
+                        <img src="${img.thank_you}" alt="Thank you" loading="lazy">
                     </div>
-                    
-                    <p class="final-headline gradient-text animate-fade-up">${headline}</p>
-                    
-                    <div class="presenter-info animate-fade-up">
-                        <span class="presenter-item">👤 ${presenter.name}</span>
-                        <span class="presenter-divider">|</span>
-                        <span class="presenter-item">🏛️ ${presenter.university}</span>
-                        <span class="presenter-divider">|</span>
-                        <span class="presenter-item">🏢 ${presenter.faculty}</span>
+                    <h1 class="premium-title animate-fade-up" style="font-size: 3.5rem;">Thank You 🙏</h1>
+                    <p class="counter-value animate-fade-up" style="font-size: 2.5rem; margin: 16px 0;">${headline}</p>
+                    <div class="glass-card animate-fade-up" style="padding: 24px 40px; display: flex; align-items: center; gap: 24px; margin: 24px 0;">
+                        <span style="font-size: 1.1rem;">👤 <strong>${presenter.name}</strong></span>
+                        <span style="color: var(--gray-600);">|</span>
+                        <span style="color: var(--gray-400);">🏛️ ${presenter.university}</span>
+                        <span style="color: var(--gray-600);">|</span>
+                        <span style="color: var(--gray-400);">🏢 ${presenter.faculty}</span>
                     </div>
-                    
-                    <div class="contact-buttons animate-fade-up">
-                        <a href="mailto:${contact.email}" class="contact-btn email-btn">
-                            <span class="btn-icon">✉️</span>
-                            <span>${contact.email}</span>
+                    <div class="stagger-premium" style="display: flex; gap: 16px; margin: 16px 0;">
+                        <a href="mailto:${contact.email}" class="glass-card-light hover-lift" style="padding: 16px 24px; border-radius: 12px; display: flex; align-items: center; gap: 12px; text-decoration: none;">
+                            <span style="font-size: 1.5rem;">✉️</span>
+                            <span style="color: var(--gray-300);">${contact.email}</span>
                         </a>
-                        <a href="https://${contact.github}" target="_blank" class="contact-btn github-btn">
-                            <span class="btn-icon">💻</span>
-                            <span>${contact.github}</span>
+                        <a href="https://${contact.github}" target="_blank" class="glass-card-light hover-lift" style="padding: 16px 24px; border-radius: 12px; display: flex; align-items: center; gap: 12px; text-decoration: none;">
+                            <span style="font-size: 1.5rem;">💻</span>
+                            <span style="color: var(--gray-300);">${contact.github}</span>
                         </a>
                     </div>
-                    
-                    <div class="demo-link animate-fade-up">
-                        <span class="demo-label">Live Demo:</span>
-                        <a href="https://${demo}" target="_blank" class="demo-url">${demo}</a>
+                    <div class="animate-fade-up" style="margin-top: 16px;">
+                        <span style="color: var(--gray-500); font-size: 0.9rem;">Live Demo:</span>
+                        <a href="https://${demo}" target="_blank" style="color: var(--primary-400); font-weight: 600; margin-left: 8px; font-size: 1.1rem;">${demo}</a>
                     </div>
-                    
-                    <p class="final-tagline animate-fade-up">${tagline}</p>
+                    <p class="tagline gradient-text-animated animate-float" style="margin-top: 24px; font-size: 1.3rem;">${tagline}</p>
                 </div>
             `;
         }
     }
 };
 
-// Export for module usage
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = SlidesRenderer;
 }
