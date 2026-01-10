@@ -491,27 +491,27 @@ const SlidesRenderer = {
             const { headline, totalRevenue, year, breakdown } = slide.content;
             const img = SlidesRenderer.images;
             return `
-                <div class="slide-content">
+                <div class="slide-content revenue-slide-content">
                     <div class="slide-full-bg">
                         <img src="${img.office}" alt="Office" loading="lazy">
                     </div>
                     <h1 class="premium-title animate-fade-up">${slide.title}</h1>
-                    <p class="premium-text animate-fade-up">${headline}</p>
-                    <div class="animate-scale-in" style="text-align: center; margin: 24px 0;">
-                        <span class="counter-value" style="font-size: 4.5rem;">${totalRevenue}</span>
-                        <span style="display: block; color: var(--gray-400); font-size: 1.1rem; margin-top: 8px;">${year}</span>
+                    <p class="premium-text animate-fade-up" style="margin-bottom: 8px;">${headline}</p>
+                    <div class="animate-scale-in revenue-total">
+                        <span class="counter-value">${totalRevenue}</span>
+                        <span class="revenue-period">${year}</span>
                     </div>
-                    <div class="stagger-premium" style="display: grid; gap: 16px; max-width: 800px; width: 100%;">
+                    <div class="stagger-premium revenue-breakdown">
                         ${breakdown.map(item => `
-                            <div class="glass-card clickable-card" data-modal="revenue" style="padding: 20px; border-radius: 12px; cursor: pointer;">
-                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-                                    <span class="revenue-title" style="color: #fff; font-weight: 600;">${item.source}</span>
-                                    <span style="color: var(--primary-300); font-weight: 700; font-size: 1.2rem;">${item.amount}</span>
+                            <div class="glass-card clickable-card" data-modal="revenue" style="padding: 16px 20px; border-radius: 12px; cursor: pointer;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                                    <span class="revenue-title" style="color: #fff; font-weight: 600; font-size: 0.95rem;">${item.source}</span>
+                                    <span style="color: var(--primary-300); font-weight: 700; font-size: 1.1rem;">${item.amount}</span>
                                 </div>
-                                <div style="height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden;">
+                                <div style="height: 6px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden;">
                                     <div style="height: 100%; width: ${item.percentage}%; background: linear-gradient(90deg, var(--primary-500), var(--accent-cyan)); border-radius: 4px;"></div>
                                 </div>
-                                <p class="revenue-desc" style="color: var(--gray-500); font-size: 0.8rem; margin-top: 8px;">${item.details}</p>
+                                <p class="revenue-desc" style="color: var(--gray-500); font-size: 0.75rem; margin-top: 6px;">${item.details}</p>
                                 <span class="click-hint-mini">ℹ️</span>
                             </div>
                         `).join('')}

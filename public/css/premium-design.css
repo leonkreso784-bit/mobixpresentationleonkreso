@@ -86,6 +86,59 @@
 }
 
 /* =============================================
+   REVENUE SLIDE SPECIFIC
+   ============================================= */
+
+.revenue-slide-content {
+    justify-content: center !important;
+    padding-top: 40px !important;
+}
+
+.revenue-total {
+    text-align: center;
+    margin: 16px 0;
+}
+
+.revenue-total .counter-value {
+    font-size: 3.5rem;
+    display: block;
+}
+
+.revenue-period {
+    display: block;
+    color: var(--gray-400);
+    font-size: 1rem;
+    margin-top: 4px;
+}
+
+.revenue-breakdown {
+    display: grid;
+    gap: 12px;
+    max-width: 750px;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .revenue-slide-content {
+        padding-top: 50px !important;
+    }
+    
+    .revenue-total .counter-value {
+        font-size: 2.5rem !important;
+    }
+    
+    .revenue-period {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .revenue-total .counter-value {
+        font-size: 2rem !important;
+    }
+}
+
+/* =============================================
    GLASSMORPHISM UTILITIES
    ============================================= */
 
@@ -736,10 +789,17 @@
     
     .premium-flow {
         gap: 16px;
+        flex-wrap: wrap;
+        justify-content: center;
     }
     
     .premium-flow-arrow {
         display: none;
+    }
+    
+    .premium-flow-step {
+        min-width: 150px;
+        flex: 0 1 calc(50% - 16px);
     }
     
     .premium-stats-row {
@@ -755,15 +815,36 @@
     .premium-timeline::before {
         display: none;
     }
+    
+    /* Fix grids za tablet */
+    .stagger-premium[style*="repeat(4, 1fr)"],
+    [style*="grid-template-columns: repeat(4, 1fr)"] {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+    
+    .stagger-premium[style*="repeat(3, 1fr)"],
+    [style*="grid-template-columns: repeat(3, 1fr)"] {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
 }
 
 @media (max-width: 768px) {
+    .slide-content {
+        padding: 60px 16px 20px !important;
+        justify-content: flex-start;
+    }
+    
     .split-content {
         padding: 16px;
     }
     
     .premium-title {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
+        margin-top: 0;
+    }
+    
+    .premium-subtitle {
+        font-size: 1rem;
     }
     
     .premium-card {
@@ -771,43 +852,82 @@
     }
     
     .counter-value {
-        font-size: 2.5rem;
+        font-size: 2.2rem !important;
     }
     
     .premium-stat-value {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
     
     .premium-flow-step {
-        min-width: 140px;
-        padding: 24px 16px;
+        min-width: 100%;
+        padding: 20px 16px;
     }
     
     .premium-pricing-card {
-        padding: 28px 20px;
+        padding: 24px 16px;
     }
     
     .premium-pricing-price {
-        font-size: 2.5rem;
+        font-size: 2rem;
     }
     
     .premium-quote {
-        font-size: 1.2rem;
-        padding: 24px 16px;
+        font-size: 1.1rem;
+        padding: 20px 12px;
+    }
+    
+    /* Svi 4-column i 3-column gridovi -> 1 kolona */
+    .stagger-premium[style*="repeat(4, 1fr)"],
+    [style*="grid-template-columns: repeat(4, 1fr)"],
+    .stagger-premium[style*="repeat(3, 1fr)"],
+    [style*="grid-template-columns: repeat(3, 1fr)"],
+    [style*="grid-template-columns: 1fr 1fr"] {
+        grid-template-columns: 1fr !important;
+    }
+    
+    /* Features grid na title slide */
+    .features-grid {
+        grid-template-columns: 1fr !important;
+        gap: 12px;
+    }
+    
+    /* Destination images */
+    [style*="display: flex; gap: 16px; margin-bottom: 24px"] {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    /* Thank you slide fix */
+    .glass-card[style*="display: flex; align-items: center; gap: 24px"] {
+        flex-direction: column !important;
+        gap: 12px !important;
+        text-align: center;
+        padding: 16px !important;
+    }
+    
+    /* Contact links stack */
+    .stagger-premium[style*="display: flex; gap: 16px"] {
+        flex-direction: column;
+        align-items: center;
     }
 }
 
 @media (max-width: 480px) {
+    .slide-content {
+        padding: 50px 12px 16px !important;
+    }
+    
     .premium-title {
-        font-size: 1.5rem;
+        font-size: 1.35rem;
     }
     
     .premium-subtitle {
-        font-size: 1rem;
+        font-size: 0.9rem;
     }
     
     .premium-text {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
     }
     
     .premium-icon {
@@ -817,25 +937,81 @@
     }
     
     .split-image {
-        min-height: 180px;
+        min-height: 150px;
     }
     
     .premium-stats-row {
-        gap: 16px;
+        gap: 12px;
     }
     
     .premium-stat-value {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
     }
     
     .premium-stat-label {
-        font-size: 0.75rem;
+        font-size: 0.7rem;
     }
     
     .premium-timeline-year {
-        width: 60px;
-        height: 60px;
-        font-size: 0.9rem;
+        width: 50px;
+        height: 50px;
+        font-size: 0.8rem;
+    }
+    
+    .premium-timeline-content {
+        padding: 12px;
+    }
+    
+    .premium-timeline-title {
+        font-size: 0.95rem;
+    }
+    
+    .premium-timeline-desc {
+        font-size: 0.75rem;
+    }
+    
+    .counter-value {
+        font-size: 1.8rem !important;
+    }
+    
+    /* Glass cards smaller padding */
+    .glass-card,
+    .glass-card-light {
+        padding: 16px !important;
+    }
+    
+    /* Clickable hints */
+    .click-hint {
+        font-size: 0.65rem;
+    }
+    
+    .click-hint-mini {
+        font-size: 0.8rem;
+    }
+    
+    /* Problem slide cards */
+    .glass-card-light[style*="display: flex; gap: 16px"] {
+        flex-direction: column;
+        gap: 8px !important;
+        text-align: center;
+    }
+    
+    /* Pricing */
+    .premium-pricing-card {
+        padding: 20px 12px;
+    }
+    
+    /* B2B pricing row */
+    .glass-card[style*="display: flex; justify-content: center; gap: 32px"] {
+        flex-direction: column;
+        gap: 16px !important;
+    }
+    
+    /* Competitors row */
+    .glass-card-light[style*="display: flex; align-items: center; gap: 16px"] {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px !important;
     }
 }
 
