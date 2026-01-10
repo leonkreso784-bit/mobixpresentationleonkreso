@@ -1,0 +1,463 @@
+/* =============================================
+   MOBIX Presentation - Slide Background Images
+   Creative visual enhancement for each slide
+   ============================================= */
+
+/* Base slide image container */
+.slide-bg-image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 45%;
+    height: 100%;
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 0;
+    mask-image: linear-gradient(to left, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+    -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+}
+
+.slide-bg-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Ensure content stays above background */
+.slide-content {
+    position: relative;
+    z-index: 1;
+}
+
+/* =============================================
+   DECORATIVE IMAGE CARDS - For specific slides
+   ============================================= */
+
+/* Image card that floats on right side */
+.slide-image-card {
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 280px;
+    height: 350px;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(255, 255, 255, 0.1),
+        0 0 80px rgba(14, 165, 233, 0.2);
+    z-index: 2;
+    animation: floatImage 6s ease-in-out infinite;
+}
+
+.slide-image-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.slide-image-card:hover img {
+    transform: scale(1.05);
+}
+
+.slide-image-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        180deg,
+        transparent 0%,
+        transparent 60%,
+        rgba(15, 23, 42, 0.8) 100%
+    );
+    z-index: 1;
+    pointer-events: none;
+}
+
+@keyframes floatImage {
+    0%, 100% { transform: translateY(-50%) translateX(0); }
+    50% { transform: translateY(-52%) translateX(-5px); }
+}
+
+/* Second decorative card (stacked effect) */
+.slide-image-card-secondary {
+    position: absolute;
+    right: 8%;
+    top: 55%;
+    transform: translateY(-50%) rotate(-5deg);
+    width: 220px;
+    height: 280px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+    opacity: 0.7;
+}
+
+.slide-image-card-secondary img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* =============================================
+   INLINE IMAGE GRIDS
+   ============================================= */
+
+/* Image showcase grid */
+.image-showcase {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 20px 0;
+    max-width: 600px;
+}
+
+.image-showcase-item {
+    border-radius: 16px;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: all 0.4s ease;
+}
+
+.image-showcase-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 40px rgba(14, 165, 233, 0.3);
+}
+
+.image-showcase-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* =============================================
+   FEATURE IMAGES (within cards)
+   ============================================= */
+
+.feature-card-image {
+    width: 100%;
+    height: 120px;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 16px;
+}
+
+.feature-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.feature-card:hover .feature-card-image img {
+    transform: scale(1.1);
+}
+
+/* =============================================
+   ICON REPLACEMENT IMAGES
+   ============================================= */
+
+.icon-image {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    overflow: hidden;
+    margin: 0 auto 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.icon-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* =============================================
+   DESTINATION CARD IMAGES
+   ============================================= */
+
+.destination-image {
+    width: 100%;
+    height: 180px;
+    border-radius: 16px 16px 0 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.destination-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.destination-image::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: linear-gradient(transparent, rgba(15, 23, 42, 0.9));
+}
+
+/* =============================================
+   HERO IMAGE SECTION
+   ============================================= */
+
+.hero-image-section {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    margin: 24px 0;
+}
+
+.hero-image-main {
+    width: 300px;
+    height: 200px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(14, 165, 233, 0.3);
+}
+
+.hero-image-main img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-image-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.hero-image-small {
+    width: 140px;
+    height: 90px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.hero-image-small img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* =============================================
+   DECORATIVE FLOATING IMAGES
+   ============================================= */
+
+.floating-images-container {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.floating-image {
+    position: absolute;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    opacity: 0.6;
+}
+
+.floating-image:nth-child(1) {
+    top: 10%;
+    right: 5%;
+    width: 150px;
+    height: 100px;
+    animation: float1 8s ease-in-out infinite;
+}
+
+.floating-image:nth-child(2) {
+    bottom: 15%;
+    right: 10%;
+    width: 120px;
+    height: 80px;
+    animation: float2 10s ease-in-out infinite;
+}
+
+.floating-image:nth-child(3) {
+    top: 20%;
+    right: 15%;
+    width: 100px;
+    height: 70px;
+    animation: float3 7s ease-in-out infinite;
+}
+
+.floating-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@keyframes float1 {
+    0%, 100% { transform: translateY(0) rotate(3deg); }
+    50% { transform: translateY(-20px) rotate(-2deg); }
+}
+
+@keyframes float2 {
+    0%, 100% { transform: translateY(0) rotate(-2deg); }
+    50% { transform: translateY(15px) rotate(3deg); }
+}
+
+@keyframes float3 {
+    0%, 100% { transform: translateY(0) rotate(5deg); }
+    50% { transform: translateY(-15px) rotate(-3deg); }
+}
+
+/* =============================================
+   MOBILE RESPONSIVE
+   ============================================= */
+
+@media (max-width: 1024px) {
+    .slide-image-card {
+        width: 200px;
+        height: 250px;
+        right: 2%;
+        opacity: 0.8;
+    }
+    
+    .slide-image-card-secondary {
+        display: none;
+    }
+    
+    .slide-bg-image {
+        width: 40%;
+        opacity: 0.1;
+    }
+}
+
+@media (max-width: 768px) {
+    .slide-image-card {
+        display: none;
+    }
+    
+    .slide-bg-image {
+        width: 100%;
+        opacity: 0.08;
+        mask-image: linear-gradient(to top, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 100%);
+        -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 100%);
+    }
+    
+    .image-showcase {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    
+    .hero-image-section {
+        flex-direction: column;
+    }
+    
+    .hero-image-main {
+        width: 100%;
+        max-width: 280px;
+        height: 160px;
+    }
+    
+    .hero-image-stack {
+        flex-direction: row;
+    }
+    
+    .hero-image-small {
+        width: 100px;
+        height: 70px;
+    }
+    
+    .floating-images-container {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .slide-bg-image {
+        opacity: 0.06;
+    }
+    
+    .image-showcase {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        max-width: 100%;
+    }
+    
+    .image-showcase-item {
+        border-radius: 12px;
+    }
+    
+    .feature-card-image {
+        height: 80px;
+    }
+    
+    .icon-image {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+    }
+}
+
+/* =============================================
+   LOADING STATES
+   ============================================= */
+
+.image-loading {
+    background: linear-gradient(90deg, 
+        rgba(14, 165, 233, 0.1) 0%, 
+        rgba(14, 165, 233, 0.2) 50%, 
+        rgba(14, 165, 233, 0.1) 100%);
+    background-size: 200% 100%;
+    animation: imageShimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes imageShimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* =============================================
+   SPECIFIC SLIDE BACKGROUNDS
+   ============================================= */
+
+/* Title slide - travel panorama */
+.title-slide-bg {
+    background: url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&q=80') center/cover no-repeat;
+}
+
+/* Problem slide - frustrated traveler */
+.problem-slide-bg {
+    background: url('https://images.unsplash.com/photo-1544717305-2782549b5136?w=800&q=80') center/cover no-repeat;
+}
+
+/* Solution slide - happy traveler */
+.solution-slide-bg {
+    background: url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&q=80') center/cover no-repeat;
+}
+
+/* AI slide - technology */
+.ai-slide-bg {
+    background: url('https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80') center/cover no-repeat;
+}
+
+/* Cards slide - organization */
+.cards-slide-bg {
+    background: url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=800&q=80') center/cover no-repeat;
+}
+
+/* Social slide - community */
+.social-slide-bg {
+    background: url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=80') center/cover no-repeat;
+}
+
+/* Vision slide - future */
+.vision-slide-bg {
+    background: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80') center/cover no-repeat;
+}

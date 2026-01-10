@@ -1,10 +1,93 @@
 /* =============================================
    MOBIX Presentation - Slides Renderer
    Generates HTML for each slide type
+   With Creative Image Integration
    ============================================= */
 
 const SlidesRenderer = {
     
+    // Curated Unsplash images for each slide theme
+    slideImages: {
+        1: { // Title - AI Travel
+            main: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600&q=80',
+            alt: 'Travel planning'
+        },
+        2: { // Problem
+            main: 'https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&q=80',
+            alt: 'Stressed traveler'
+        },
+        3: { // Solution
+            main: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=600&q=80',
+            alt: 'Road trip adventure'
+        },
+        4: { // How it works
+            main: 'https://images.unsplash.com/photo-1516738901171-8eb4fc13bd20?w=600&q=80',
+            alt: 'Mobile app travel'
+        },
+        5: { // AI Chatbot
+            main: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&q=80',
+            alt: 'AI technology'
+        },
+        6: { // Travel Cards
+            main: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=600&q=80',
+            alt: 'Beautiful destination'
+        },
+        7: { // Social
+            main: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=80',
+            alt: 'Friends traveling'
+        },
+        8: { // Personalization
+            main: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80',
+            alt: 'Personal journey'
+        },
+        9: { // User Levels
+            main: 'https://images.unsplash.com/photo-1533227268428-f9ed0900fb3b?w=600&q=80',
+            alt: 'Achievement'
+        },
+        10: { // Business Model
+            main: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80',
+            alt: 'Business growth'
+        },
+        11: { // Subscription
+            main: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&q=80',
+            alt: 'Premium service'
+        },
+        12: { // Creator Marketplace
+            main: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&q=80',
+            alt: 'Creative community'
+        },
+        13: { // B2B
+            main: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600&q=80',
+            alt: 'Business partnership'
+        },
+        14: { // Revenue
+            main: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80',
+            alt: 'Analytics growth'
+        },
+        15: { // Competitive
+            main: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80',
+            alt: 'Team strategy'
+        },
+        16: { // Vision
+            main: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&q=80',
+            alt: 'Global vision'
+        },
+        17: { // Thank You
+            main: 'https://images.unsplash.com/photo-1530521954074-e64f6810b32d?w=600&q=80',
+            alt: 'Thank you sunset'
+        }
+    },
+
+    // Destination images for travel cards showcase
+    destinationImages: [
+        { src: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=400&q=80', name: 'Paris' },
+        { src: 'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=400&q=80', name: 'London' },
+        { src: 'https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=400&q=80', name: 'Dubai' },
+        { src: 'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=400&q=80', name: 'Tokyo' },
+        { src: 'https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=400&q=80', name: 'Santorini' },
+        { src: 'https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=400&q=80', name: 'Barcelona' }
+    ],
+
     // Main render function
     render(slide) {
         const renderer = this.renderers[slide.type];
@@ -12,6 +95,22 @@ const SlidesRenderer = {
             return renderer(slide);
         }
         return this.renderDefault(slide);
+    },
+
+    // Get slide image
+    getSlideImage(slideId) {
+        return this.slideImages[slideId] || { main: '', alt: '' };
+    },
+
+    // Render floating image decoration
+    renderFloatingImage(slideId) {
+        const image = this.slideImages[slideId];
+        if (!image) return '';
+        return `
+            <div class="slide-image-card">
+                <img src="${image.main}" alt="${image.alt}" loading="lazy">
+            </div>
+        `;
     },
 
     // Default fallback renderer
@@ -29,8 +128,21 @@ const SlidesRenderer = {
         // Slide 1: Title Slide
         'title-slide': (slide) => {
             const { subtitle, mainText, features, tagline } = slide.content;
+            const destinations = SlidesRenderer.destinationImages;
             return `
                 <div class="slide-content title-slide-content">
+                    <div class="floating-images-container">
+                        <div class="floating-image">
+                            <img src="${destinations[0].src}" alt="${destinations[0].name}" loading="lazy">
+                        </div>
+                        <div class="floating-image">
+                            <img src="${destinations[4].src}" alt="${destinations[4].name}" loading="lazy">
+                        </div>
+                        <div class="floating-image">
+                            <img src="${destinations[2].src}" alt="${destinations[2].name}" loading="lazy">
+                        </div>
+                    </div>
+                    
                     <div class="title-header animate-fade-up">
                         <img src="assets/title-font.png" alt="MOBIX" class="title-logo-img">
                         <p class="title-subtitle">${subtitle}</p>
@@ -58,8 +170,13 @@ const SlidesRenderer = {
         // Slide 2: Problem Slide
         'problem-slide': (slide) => {
             const { problems, conclusion } = slide.content;
+            const image = SlidesRenderer.slideImages[2];
             return `
                 <div class="slide-content">
+                    <div class="slide-image-card">
+                        <img src="${image.main}" alt="${image.alt}" loading="lazy">
+                    </div>
+                    
                     <h1 class="slide-title gradient-text animate-fade-up">${slide.title}</h1>
                     
                     <div class="problems-grid stagger-animation animate">
@@ -82,8 +199,13 @@ const SlidesRenderer = {
         // Slide 3: Solution Slide
         'solution-slide': (slide) => {
             const { mainMessage, solutions } = slide.content;
+            const image = SlidesRenderer.slideImages[3];
             return `
                 <div class="slide-content">
+                    <div class="slide-image-card">
+                        <img src="${image.main}" alt="${image.alt}" loading="lazy">
+                    </div>
+                    
                     <h1 class="slide-title gradient-text animate-fade-up">${slide.title}</h1>
                     
                     <div class="main-message animate-fade-up">
@@ -106,8 +228,13 @@ const SlidesRenderer = {
         // Slide 4: Flow Slide
         'flow-slide': (slide) => {
             const { subtitle, steps } = slide.content;
+            const image = SlidesRenderer.slideImages[4];
             return `
                 <div class="slide-content">
+                    <div class="slide-bg-image">
+                        <img src="${image.main}" alt="${image.alt}" loading="lazy">
+                    </div>
+                    
                     <h1 class="slide-title gradient-text animate-fade-up">${slide.title}</h1>
                     <p class="slide-subtitle animate-fade-up">${subtitle}</p>
                     
@@ -129,8 +256,13 @@ const SlidesRenderer = {
         // Slide 5: Modes Slide
         'modes-slide': (slide) => {
             const { intro, modes } = slide.content;
+            const image = SlidesRenderer.slideImages[5];
             return `
                 <div class="slide-content">
+                    <div class="slide-image-card">
+                        <img src="${image.main}" alt="${image.alt}" loading="lazy">
+                    </div>
+                    
                     <h1 class="slide-title gradient-text animate-fade-up">${slide.title}</h1>
                     <p class="slide-intro animate-fade-up">${intro}</p>
                     
@@ -154,9 +286,18 @@ const SlidesRenderer = {
         // Slide 6: Cards Slide
         'cards-slide': (slide) => {
             const { travelCards, travelNotes, highlight } = slide.content;
+            const destinations = SlidesRenderer.destinationImages;
             return `
                 <div class="slide-content">
                     <h1 class="slide-title gradient-text animate-fade-up">${slide.title}</h1>
+                    
+                    <div class="image-showcase animate-fade-up" style="animation-delay: 0.1s">
+                        ${destinations.slice(0, 3).map(dest => `
+                            <div class="image-showcase-item">
+                                <img src="${dest.src}" alt="${dest.name}" loading="lazy">
+                            </div>
+                        `).join('')}
+                    </div>
                     
                     <div class="cards-comparison stagger-animation animate">
                         <div class="card-type-box hover-lift" data-modal="card">
@@ -188,8 +329,13 @@ const SlidesRenderer = {
         // Slide 7: Social Slide
         'social-slide': (slide) => {
             const { badge, mainTitle, features, quote } = slide.content;
+            const image = SlidesRenderer.slideImages[7];
             return `
                 <div class="slide-content">
+                    <div class="slide-image-card">
+                        <img src="${image.main}" alt="${image.alt}" loading="lazy">
+                    </div>
+                    
                     <div class="badge-container animate-fade-up">
                         <span class="future-badge">${badge}</span>
                     </div>
@@ -214,8 +360,13 @@ const SlidesRenderer = {
         // Slide 8: Personalization Slide
         'personalization-slide': (slide) => {
             const { mainMessage, features, stats } = slide.content;
+            const image = SlidesRenderer.slideImages[8];
             return `
                 <div class="slide-content">
+                    <div class="slide-image-card">
+                        <img src="${image.main}" alt="${image.alt}" loading="lazy">
+                    </div>
+                    
                     <h1 class="slide-title gradient-text animate-fade-up">${slide.title}</h1>
                     <p class="main-message animate-fade-up">${mainMessage}</p>
                     
@@ -244,8 +395,13 @@ const SlidesRenderer = {
         // Slide 9: Levels Slide
         'levels-slide': (slide) => {
             const { intro, levels, earnXP } = slide.content;
+            const image = SlidesRenderer.slideImages[9];
             return `
                 <div class="slide-content">
+                    <div class="slide-bg-image">
+                        <img src="${image.main}" alt="${image.alt}" loading="lazy">
+                    </div>
+                    
                     <h1 class="slide-title gradient-text animate-fade-up">${slide.title}</h1>
                     <p class="slide-intro animate-fade-up">${intro}</p>
                     
@@ -280,8 +436,13 @@ const SlidesRenderer = {
         // Slide 10: Business Slide
         'business-slide': (slide) => {
             const { subtitle, models } = slide.content;
+            const image = SlidesRenderer.slideImages[10];
             return `
                 <div class="slide-content">
+                    <div class="slide-image-card">
+                        <img src="${image.main}" alt="${image.alt}" loading="lazy">
+                    </div>
+                    
                     <h1 class="slide-title gradient-text animate-fade-up">${slide.title}</h1>
                     <p class="slide-subtitle animate-fade-up">${subtitle}</p>
                     
@@ -302,8 +463,13 @@ const SlidesRenderer = {
         // Slide 11: Pricing Slide
         'pricing-slide': (slide) => {
             const { tiers } = slide.content;
+            const image = SlidesRenderer.slideImages[11];
             return `
                 <div class="slide-content">
+                    <div class="slide-bg-image">
+                        <img src="${image.main}" alt="${image.alt}" loading="lazy">
+                    </div>
+                    
                     <h1 class="slide-title gradient-text animate-fade-up">${slide.title}</h1>
                     
                     <div class="pricing-container stagger-animation animate">
@@ -328,8 +494,13 @@ const SlidesRenderer = {
         // Slide 12: Marketplace Slide
         'marketplace-slide': (slide) => {
             const { headline, forCreators, forTravelers, stats } = slide.content;
+            const image = SlidesRenderer.slideImages[12];
             return `
                 <div class="slide-content">
+                    <div class="slide-image-card">
+                        <img src="${image.main}" alt="${image.alt}" loading="lazy">
+                    </div>
+                    
                     <h1 class="slide-title gradient-text animate-fade-up">${slide.title}</h1>
                     <p class="headline animate-fade-up">${headline}</p>
                     
@@ -366,8 +537,13 @@ const SlidesRenderer = {
         // Slide 13: B2B Slide
         'b2b-slide': (slide) => {
             const { subtitle, solutions, pricing } = slide.content;
+            const image = SlidesRenderer.slideImages[13];
             return `
                 <div class="slide-content">
+                    <div class="slide-image-card">
+                        <img src="${image.main}" alt="${image.alt}" loading="lazy">
+                    </div>
+                    
                     <h1 class="slide-title gradient-text animate-fade-up">${slide.title}</h1>
                     <p class="slide-subtitle animate-fade-up">${subtitle}</p>
                     
@@ -396,8 +572,13 @@ const SlidesRenderer = {
         // Slide 14: Revenue Slide
         'revenue-slide': (slide) => {
             const { headline, totalRevenue, year, breakdown } = slide.content;
+            const image = SlidesRenderer.slideImages[14];
             return `
                 <div class="slide-content">
+                    <div class="slide-bg-image">
+                        <img src="${image.main}" alt="${image.alt}" loading="lazy">
+                    </div>
+                    
                     <h1 class="slide-title gradient-text animate-fade-up">${slide.title}</h1>
                     <p class="headline animate-fade-up">${headline}</p>
                     
@@ -427,8 +608,13 @@ const SlidesRenderer = {
         // Slide 15: Advantage Slide
         'advantage-slide': (slide) => {
             const { intro, advantages, competitors } = slide.content;
+            const image = SlidesRenderer.slideImages[15];
             return `
                 <div class="slide-content">
+                    <div class="slide-image-card">
+                        <img src="${image.main}" alt="${image.alt}" loading="lazy">
+                    </div>
+                    
                     <h1 class="slide-title gradient-text animate-fade-up">${slide.title}</h1>
                     <p class="slide-intro animate-fade-up">${intro}</p>
                     
@@ -456,8 +642,19 @@ const SlidesRenderer = {
         // Slide 16: Vision Slide
         'vision-slide': (slide) => {
             const { quote, milestones, mission } = slide.content;
+            const image = SlidesRenderer.slideImages[16];
+            const destinations = SlidesRenderer.destinationImages;
             return `
                 <div class="slide-content vision-slide-content">
+                    <div class="floating-images-container">
+                        <div class="floating-image">
+                            <img src="${destinations[3].src}" alt="${destinations[3].name}" loading="lazy">
+                        </div>
+                        <div class="floating-image">
+                            <img src="${destinations[5].src}" alt="${destinations[5].name}" loading="lazy">
+                        </div>
+                    </div>
+                    
                     <h1 class="slide-title gradient-text animate-fade-up">${slide.title}</h1>
                     
                     <blockquote class="vision-quote animate-fade-up">${quote}</blockquote>
@@ -482,8 +679,13 @@ const SlidesRenderer = {
         // Slide 17: Final Slide
         'final-slide': (slide) => {
             const { headline, tagline, cta, presenter, contact, demo } = slide.content;
+            const image = SlidesRenderer.slideImages[17];
             return `
                 <div class="slide-content final-slide-content">
+                    <div class="slide-bg-image" style="opacity: 0.2;">
+                        <img src="${image.main}" alt="${image.alt}" loading="lazy">
+                    </div>
+                    
                     <div class="final-header animate-fade-up">
                         <h1 class="final-title">${slide.title} 🙏</h1>
                     </div>
