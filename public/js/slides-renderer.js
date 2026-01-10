@@ -1,6 +1,6 @@
 /* =============================================
    MOBIX Presentation - Slides Renderer
-   Premium Design with HD Images & Glassmorphism
+   Premium Design with HD Images & Modal Support
    ============================================= */
 
 const SlidesRenderer = {
@@ -53,7 +53,7 @@ const SlidesRenderer = {
 
     renderers: {
         
-        // SLIDE 1: TITLE
+        // SLIDE 1: TITLE - What is MOBIX?
         'title-slide': (slide) => {
             const { subtitle, mainText, features, tagline } = slide.content;
             const img = SlidesRenderer.images;
@@ -69,10 +69,11 @@ const SlidesRenderer = {
                     <p class="premium-text animate-fade-up" style="animation-delay: 0.2s; max-width: 700px; text-align: center;">${mainText}</p>
                     <div class="features-grid stagger-premium">
                         ${features.map(f => `
-                            <div class="premium-card hover-lift" data-modal="feature">
-                                <div class="premium-icon">${f.icon}</div>
+                            <div class="premium-card hover-lift clickable-card" data-modal="feature">
+                                <span class="feature-icon">${f.icon}</span>
                                 <h3 class="feature-title">${f.title}</h3>
                                 <p class="feature-desc">${f.desc}</p>
+                                <span class="click-hint">Click for details</span>
                             </div>
                         `).join('')}
                     </div>
@@ -91,12 +92,13 @@ const SlidesRenderer = {
                         <h1 class="premium-title animate-fade-up">${slide.title}</h1>
                         <div class="stagger-premium" style="display: grid; gap: 16px;">
                             ${problems.map(p => `
-                                <div class="glass-card-light" style="padding: 20px; border-radius: 16px; display: flex; gap: 16px; align-items: flex-start; text-align: left;">
-                                    <span style="font-size: 2rem; flex-shrink: 0;">${p.icon}</span>
+                                <div class="glass-card-light clickable-card" data-modal="problem" style="padding: 20px; border-radius: 16px; display: flex; gap: 16px; align-items: flex-start; text-align: left; cursor: pointer;">
+                                    <span class="problem-icon" style="font-size: 2rem; flex-shrink: 0;">${p.icon}</span>
                                     <div>
-                                        <h3 style="color: #fca5a5; font-size: 1.1rem; font-weight: 600; margin-bottom: 4px;">${p.title}</h3>
-                                        <p style="color: var(--gray-400); font-size: 0.9rem; line-height: 1.5;">${p.desc}</p>
+                                        <h3 class="problem-title" style="color: #fca5a5; font-size: 1.1rem; font-weight: 600; margin-bottom: 4px;">${p.title}</h3>
+                                        <p class="problem-desc" style="color: var(--gray-400); font-size: 0.9rem; line-height: 1.5;">${p.desc}</p>
                                     </div>
+                                    <span class="click-hint-mini">ℹ️</span>
                                 </div>
                             `).join('')}
                         </div>
@@ -123,10 +125,11 @@ const SlidesRenderer = {
                         </div>
                         <div class="stagger-premium" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
                             ${solutions.map(s => `
-                                <div class="glass-card-light" style="padding: 20px; border-radius: 16px; text-align: left;">
-                                    <span style="font-size: 2rem; display: block; margin-bottom: 12px;">${s.icon}</span>
-                                    <h3 style="color: #6ee7b7; font-size: 1rem; font-weight: 600; margin-bottom: 6px;">${s.title}</h3>
-                                    <p style="color: var(--gray-400); font-size: 0.85rem; line-height: 1.5;">${s.desc}</p>
+                                <div class="glass-card-light clickable-card" data-modal="solution" style="padding: 20px; border-radius: 16px; text-align: left; cursor: pointer;">
+                                    <span class="solution-icon" style="font-size: 2rem; display: block; margin-bottom: 12px;">${s.icon}</span>
+                                    <h3 class="solution-title" style="color: #6ee7b7; font-size: 1rem; font-weight: 600; margin-bottom: 6px;">${s.title}</h3>
+                                    <p class="solution-desc" style="color: var(--gray-400); font-size: 0.85rem; line-height: 1.5;">${s.desc}</p>
+                                    <span class="click-hint-mini">ℹ️</span>
                                 </div>
                             `).join('')}
                         </div>
@@ -152,11 +155,12 @@ const SlidesRenderer = {
                     <p class="premium-subtitle animate-fade-up">${subtitle}</p>
                     <div class="premium-flow stagger-premium">
                         ${steps.map((step, index) => `
-                            <div class="premium-flow-step hover-lift">
+                            <div class="premium-flow-step clickable-card hover-lift" data-modal="step">
                                 <div class="premium-flow-number">${step.number}</div>
-                                <span class="premium-flow-icon">${step.icon}</span>
-                                <h3 class="premium-flow-title">${step.title}</h3>
-                                <p class="premium-flow-desc">${step.desc}</p>
+                                <span class="step-icon">${step.icon}</span>
+                                <h3 class="step-title">${step.title}</h3>
+                                <p class="step-desc">${step.desc}</p>
+                                <span class="click-hint-mini">ℹ️</span>
                             </div>
                             ${index < steps.length - 1 ? '<span class="premium-flow-arrow">→</span>' : ''}
                         `).join('')}
@@ -165,7 +169,7 @@ const SlidesRenderer = {
             `;
         },
 
-        // SLIDE 5: AI CHATBOT
+        // SLIDE 5: AI CHATBOT MODES
         'modes-slide': (slide) => {
             const { intro, modes } = slide.content;
             const img = SlidesRenderer.images;
@@ -176,16 +180,17 @@ const SlidesRenderer = {
                         <p class="premium-text animate-fade-up" style="margin-bottom: 16px;">${intro}</p>
                         <div class="stagger-premium" style="display: grid; gap: 16px;">
                             ${modes.map(mode => `
-                                <div class="glass-card-light" style="padding: 20px; border-radius: 16px; text-align: left;">
+                                <div class="glass-card-light clickable-card" data-modal="mode" style="padding: 20px; border-radius: 16px; text-align: left; cursor: pointer;">
                                     <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
-                                        <span style="font-size: 2rem;">${mode.icon}</span>
-                                        <h3 style="color: var(--primary-300); font-size: 1.2rem; font-weight: 700;">${mode.title}</h3>
+                                        <span class="mode-icon" style="font-size: 2rem;">${mode.icon}</span>
+                                        <h3 class="mode-title" style="color: var(--primary-300); font-size: 1.2rem; font-weight: 700;">${mode.title}</h3>
                                     </div>
-                                    <p style="color: var(--gray-400); font-size: 0.9rem; line-height: 1.5; margin-bottom: 12px;">${mode.desc}</p>
+                                    <p class="mode-desc" style="color: var(--gray-400); font-size: 0.9rem; line-height: 1.5; margin-bottom: 12px;">${mode.desc}</p>
                                     <div style="background: rgba(0,0,0,0.3); padding: 12px; border-radius: 8px;">
                                         <span style="color: var(--primary-400); font-size: 0.75rem; text-transform: uppercase;">Example:</span>
                                         <p style="color: var(--gray-300); font-size: 0.9rem; font-style: italic; margin-top: 4px;">${mode.example}</p>
                                     </div>
+                                    <span class="click-hint-mini">ℹ️</span>
                                 </div>
                             `).join('')}
                         </div>
@@ -198,7 +203,7 @@ const SlidesRenderer = {
             `;
         },
 
-        // SLIDE 6: TRAVEL CARDS
+        // SLIDE 6: TRAVEL CARDS & NOTES
         'cards-slide': (slide) => {
             const { travelCards, travelNotes, highlight } = slide.content;
             const img = SlidesRenderer.images;
@@ -220,21 +225,23 @@ const SlidesRenderer = {
                         </div>
                     </div>
                     <div class="stagger-premium" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 900px;">
-                        <div class="glass-card" style="padding: 28px; border-radius: 20px; text-align: left;">
-                            <span style="font-size: 3rem; display: block; margin-bottom: 16px;">${travelCards.icon}</span>
-                            <h3 style="font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 8px;">${travelCards.title}</h3>
-                            <p style="color: var(--gray-400); margin-bottom: 16px;">${travelCards.desc}</p>
+                        <div class="glass-card clickable-card" data-modal="cards" style="padding: 28px; border-radius: 20px; text-align: left; cursor: pointer;">
+                            <span class="item-icon" style="font-size: 3rem; display: block; margin-bottom: 16px;">${travelCards.icon}</span>
+                            <h3 class="item-title" style="font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 8px;">${travelCards.title}</h3>
+                            <p class="item-desc" style="color: var(--gray-400); margin-bottom: 16px;">${travelCards.desc}</p>
                             <ul style="list-style: none; padding: 0; margin: 0;">
                                 ${travelCards.features.map(f => `<li style="color: var(--gray-300); font-size: 0.9rem; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ ${f}</li>`).join('')}
                             </ul>
+                            <span class="click-hint">Click for details</span>
                         </div>
-                        <div class="glass-card" style="padding: 28px; border-radius: 20px; text-align: left;">
-                            <span style="font-size: 3rem; display: block; margin-bottom: 16px;">${travelNotes.icon}</span>
-                            <h3 style="font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 8px;">${travelNotes.title}</h3>
-                            <p style="color: var(--gray-400); margin-bottom: 16px;">${travelNotes.desc}</p>
+                        <div class="glass-card clickable-card" data-modal="notes" style="padding: 28px; border-radius: 20px; text-align: left; cursor: pointer;">
+                            <span class="item-icon" style="font-size: 3rem; display: block; margin-bottom: 16px;">${travelNotes.icon}</span>
+                            <h3 class="item-title" style="font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 8px;">${travelNotes.title}</h3>
+                            <p class="item-desc" style="color: var(--gray-400); margin-bottom: 16px;">${travelNotes.desc}</p>
                             <ul style="list-style: none; padding: 0; margin: 0;">
                                 ${travelNotes.features.map(f => `<li style="color: var(--gray-300); font-size: 0.9rem; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ ${f}</li>`).join('')}
                             </ul>
+                            <span class="click-hint">Click for details</span>
                         </div>
                     </div>
                     <div class="premium-badge animate-fade-up" style="margin-top: 20px;">${highlight}</div>
@@ -242,7 +249,7 @@ const SlidesRenderer = {
             `;
         },
 
-        // SLIDE 7: SOCIAL
+        // SLIDE 7: SOCIAL DISCOVERY
         'social-slide': (slide) => {
             const { badge, mainTitle, features, quote } = slide.content;
             const img = SlidesRenderer.images;
@@ -254,10 +261,11 @@ const SlidesRenderer = {
                         <h2 class="premium-subtitle animate-fade-up">${mainTitle}</h2>
                         <div class="stagger-premium" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px;">
                             ${features.map(f => `
-                                <div class="glass-card-light" style="padding: 20px; border-radius: 16px; text-align: left;">
-                                    <span style="font-size: 2rem; display: block; margin-bottom: 10px;">${f.icon}</span>
-                                    <h3 style="color: #fff; font-size: 1rem; font-weight: 600; margin-bottom: 6px;">${f.title}</h3>
-                                    <p style="color: var(--gray-400); font-size: 0.85rem;">${f.desc}</p>
+                                <div class="glass-card-light clickable-card" data-modal="social" style="padding: 20px; border-radius: 16px; text-align: left; cursor: pointer;">
+                                    <span class="feature-icon" style="font-size: 2rem; display: block; margin-bottom: 10px;">${f.icon}</span>
+                                    <h3 class="feature-title" style="color: #fff; font-size: 1rem; font-weight: 600; margin-bottom: 6px;">${f.title}</h3>
+                                    <p class="feature-desc" style="color: var(--gray-400); font-size: 0.85rem;">${f.desc}</p>
+                                    <span class="click-hint-mini">ℹ️</span>
                                 </div>
                             `).join('')}
                         </div>
@@ -284,10 +292,11 @@ const SlidesRenderer = {
                     <p class="premium-subtitle animate-fade-up">${mainMessage}</p>
                     <div class="stagger-premium" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; max-width: 1000px; margin: 20px 0;">
                         ${features.map(f => `
-                            <div class="premium-card hover-lift" style="padding: 24px 16px;">
-                                <div class="premium-icon">${f.icon}</div>
-                                <h3 style="color: #fff; font-size: 1rem; font-weight: 600; margin-bottom: 8px;">${f.title}</h3>
-                                <p style="color: var(--gray-400); font-size: 0.85rem;">${f.desc}</p>
+                            <div class="premium-card clickable-card hover-lift" data-modal="personalization" style="padding: 24px 16px; cursor: pointer;">
+                                <span class="feature-icon">${f.icon}</span>
+                                <h3 class="feature-title" style="color: #fff; font-size: 1rem; font-weight: 600; margin-bottom: 8px;">${f.title}</h3>
+                                <p class="feature-desc" style="color: var(--gray-400); font-size: 0.85rem;">${f.desc}</p>
+                                <span class="click-hint-mini">ℹ️</span>
                             </div>
                         `).join('')}
                     </div>
@@ -316,18 +325,19 @@ const SlidesRenderer = {
                     <p class="premium-text animate-fade-up">${intro}</p>
                     <div class="stagger-premium" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; max-width: 1100px; margin: 20px 0;">
                         ${levels.map(level => `
-                            <div class="glass-card hover-lift" style="padding: 24px 16px; text-align: left; border-color: ${level.level === 4 ? 'rgba(234, 179, 8, 0.3)' : 'rgba(255,255,255,0.08)'};">
+                            <div class="glass-card clickable-card hover-lift" data-modal="level" style="padding: 24px 16px; text-align: left; border-color: ${level.level === 4 ? 'rgba(234, 179, 8, 0.3)' : 'rgba(255,255,255,0.08)'}; cursor: pointer;">
                                 <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
-                                    <span style="font-size: 2.5rem;">${level.icon}</span>
+                                    <span class="level-icon" style="font-size: 2.5rem;">${level.icon}</span>
                                     <div>
                                         <span style="font-size: 0.75rem; color: var(--primary-400);">Level ${level.level}</span>
-                                        <h3 style="color: #fff; font-size: 1.1rem; font-weight: 700;">${level.name}</h3>
+                                        <h3 class="level-title" style="color: #fff; font-size: 1.1rem; font-weight: 700;">${level.name}</h3>
                                     </div>
                                 </div>
-                                <span style="display: block; color: var(--gray-400); font-size: 0.85rem; margin-bottom: 12px;">${level.xp}</span>
+                                <span class="level-desc" style="display: block; color: var(--gray-400); font-size: 0.85rem; margin-bottom: 12px;">${level.xp}</span>
                                 <ul style="list-style: none; padding: 0; margin: 0;">
                                     ${level.perks.map(p => `<li style="color: var(--gray-300); font-size: 0.8rem; padding: 4px 0;">• ${p}</li>`).join('')}
                                 </ul>
+                                <span class="click-hint-mini">ℹ️</span>
                             </div>
                         `).join('')}
                     </div>
@@ -352,11 +362,12 @@ const SlidesRenderer = {
                         <p class="premium-subtitle animate-fade-up">${subtitle}</p>
                         <div class="stagger-premium" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px;">
                             ${models.map(model => `
-                                <div class="glass-card-light hover-lift" style="padding: 24px; border-radius: 16px; text-align: left; position: relative;">
+                                <div class="glass-card-light clickable-card hover-lift" data-modal="business" style="padding: 24px; border-radius: 16px; text-align: left; position: relative; cursor: pointer;">
                                     <span style="position: absolute; top: 12px; right: 12px; background: linear-gradient(135deg, var(--primary-500), var(--accent-cyan)); padding: 4px 12px; border-radius: 100px; font-size: 0.85rem; font-weight: 700;">${model.revenue}</span>
-                                    <span style="font-size: 2.5rem; display: block; margin-bottom: 12px;">${model.icon}</span>
-                                    <h3 style="color: #fff; font-size: 1.1rem; font-weight: 700; margin-bottom: 6px;">${model.title}</h3>
-                                    <p style="color: var(--gray-400); font-size: 0.9rem;">${model.desc}</p>
+                                    <span class="model-icon" style="font-size: 2.5rem; display: block; margin-bottom: 12px;">${model.icon}</span>
+                                    <h3 class="model-title" style="color: #fff; font-size: 1.1rem; font-weight: 700; margin-bottom: 6px;">${model.title}</h3>
+                                    <p class="model-desc" style="color: var(--gray-400); font-size: 0.9rem;">${model.desc}</p>
+                                    <span class="click-hint-mini">ℹ️</span>
                                 </div>
                             `).join('')}
                         </div>
@@ -377,9 +388,9 @@ const SlidesRenderer = {
                     <h1 class="premium-title animate-fade-up">${slide.title}</h1>
                     <div class="stagger-premium" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1000px; margin-top: 24px;">
                         ${tiers.map(tier => `
-                            <div class="premium-pricing-card ${tier.highlighted ? 'highlighted' : ''} hover-lift">
-                                <span style="font-size: 3rem; display: block; margin-bottom: 12px;">${tier.icon}</span>
-                                <h3 style="font-size: 1.3rem; font-weight: 700; color: #fff;">${tier.name}</h3>
+                            <div class="premium-pricing-card clickable-card ${tier.highlighted ? 'highlighted' : ''} hover-lift" data-modal="pricing" style="cursor: pointer;">
+                                <span class="tier-icon" style="font-size: 3rem; display: block; margin-bottom: 12px;">${tier.icon}</span>
+                                <h3 class="tier-title" style="font-size: 1.3rem; font-weight: 700; color: #fff;">${tier.name}</h3>
                                 <div style="margin: 16px 0;">
                                     <span class="premium-pricing-price">${tier.price}</span>
                                     <span class="premium-pricing-period">${tier.period}</span>
@@ -387,6 +398,7 @@ const SlidesRenderer = {
                                 <ul style="list-style: none; padding: 0; margin: 0; text-align: left;">
                                     ${tier.features.map(f => `<li style="color: var(--gray-300); font-size: 0.9rem; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; gap: 8px;"><span style="color: var(--success);">✓</span> ${f}</li>`).join('')}
                                 </ul>
+                                <span class="click-hint">Click for details</span>
                             </div>
                         `).join('')}
                     </div>
@@ -404,19 +416,21 @@ const SlidesRenderer = {
                         <h1 class="premium-title animate-fade-up">${slide.title}</h1>
                         <p class="premium-subtitle animate-fade-up">${headline}</p>
                         <div class="stagger-premium" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;">
-                            <div class="glass-card" style="padding: 24px; border-radius: 16px; text-align: left; border-color: rgba(168, 85, 247, 0.3);">
-                                <span style="font-size: 2rem; margin-bottom: 12px; display: block;">${forCreators.icon}</span>
-                                <h3 style="color: #c4b5fd; font-size: 1.1rem; font-weight: 700; margin-bottom: 12px;">${forCreators.title}</h3>
+                            <div class="glass-card clickable-card" data-modal="marketplace" style="padding: 24px; border-radius: 16px; text-align: left; border-color: rgba(168, 85, 247, 0.3); cursor: pointer;">
+                                <span class="creator-icon" style="font-size: 2rem; margin-bottom: 12px; display: block;">${forCreators.icon}</span>
+                                <h3 class="creator-title" style="color: #c4b5fd; font-size: 1.1rem; font-weight: 700; margin-bottom: 12px;">${forCreators.title}</h3>
                                 <ul style="list-style: none; padding: 0; margin: 0;">
                                     ${forCreators.benefits.map(b => `<li style="color: var(--gray-300); font-size: 0.9rem; padding: 6px 0;">✨ ${b}</li>`).join('')}
                                 </ul>
+                                <span class="click-hint">Click for details</span>
                             </div>
-                            <div class="glass-card" style="padding: 24px; border-radius: 16px; text-align: left; border-color: rgba(14, 165, 233, 0.3);">
-                                <span style="font-size: 2rem; margin-bottom: 12px; display: block;">${forTravelers.icon}</span>
-                                <h3 style="color: var(--primary-300); font-size: 1.1rem; font-weight: 700; margin-bottom: 12px;">${forTravelers.title}</h3>
+                            <div class="glass-card clickable-card" data-modal="marketplace" style="padding: 24px; border-radius: 16px; text-align: left; border-color: rgba(14, 165, 233, 0.3); cursor: pointer;">
+                                <span class="traveler-icon" style="font-size: 2rem; margin-bottom: 12px; display: block;">${forTravelers.icon}</span>
+                                <h3 class="traveler-title" style="color: var(--primary-300); font-size: 1.1rem; font-weight: 700; margin-bottom: 12px;">${forTravelers.title}</h3>
                                 <ul style="list-style: none; padding: 0; margin: 0;">
                                     ${forTravelers.benefits.map(b => `<li style="color: var(--gray-300); font-size: 0.9rem; padding: 6px 0;">🎯 ${b}</li>`).join('')}
                                 </ul>
+                                <span class="click-hint">Click for details</span>
                             </div>
                         </div>
                         <div class="premium-stats-row animate-fade-up" style="padding: 16px 0; border: none;">
@@ -447,10 +461,11 @@ const SlidesRenderer = {
                         <p class="premium-subtitle animate-fade-up">${subtitle}</p>
                         <div class="stagger-premium" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0;">
                             ${solutions.map(s => `
-                                <div class="glass-card-light hover-lift" style="padding: 20px; border-radius: 16px; text-align: left;">
-                                    <span style="font-size: 2rem; display: block; margin-bottom: 10px;">${s.icon}</span>
-                                    <h3 style="color: #fff; font-size: 1rem; font-weight: 600; margin-bottom: 6px;">${s.title}</h3>
-                                    <p style="color: var(--gray-400); font-size: 0.85rem;">${s.desc}</p>
+                                <div class="glass-card-light clickable-card hover-lift" data-modal="b2b" style="padding: 20px; border-radius: 16px; text-align: left; cursor: pointer;">
+                                    <span class="b2b-icon" style="font-size: 2rem; display: block; margin-bottom: 10px;">${s.icon}</span>
+                                    <h3 class="b2b-title" style="color: #fff; font-size: 1rem; font-weight: 600; margin-bottom: 6px;">${s.title}</h3>
+                                    <p class="b2b-desc" style="color: var(--gray-400); font-size: 0.85rem;">${s.desc}</p>
+                                    <span class="click-hint-mini">ℹ️</span>
                                 </div>
                             `).join('')}
                         </div>
@@ -488,15 +503,16 @@ const SlidesRenderer = {
                     </div>
                     <div class="stagger-premium" style="display: grid; gap: 16px; max-width: 800px; width: 100%;">
                         ${breakdown.map(item => `
-                            <div class="glass-card" style="padding: 20px; border-radius: 12px;">
+                            <div class="glass-card clickable-card" data-modal="revenue" style="padding: 20px; border-radius: 12px; cursor: pointer;">
                                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-                                    <span style="color: #fff; font-weight: 600;">${item.source}</span>
+                                    <span class="revenue-title" style="color: #fff; font-weight: 600;">${item.source}</span>
                                     <span style="color: var(--primary-300); font-weight: 700; font-size: 1.2rem;">${item.amount}</span>
                                 </div>
                                 <div style="height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden;">
                                     <div style="height: 100%; width: ${item.percentage}%; background: linear-gradient(90deg, var(--primary-500), var(--accent-cyan)); border-radius: 4px;"></div>
                                 </div>
-                                <p style="color: var(--gray-500); font-size: 0.8rem; margin-top: 8px;">${item.details}</p>
+                                <p class="revenue-desc" style="color: var(--gray-500); font-size: 0.8rem; margin-top: 8px;">${item.details}</p>
+                                <span class="click-hint-mini">ℹ️</span>
                             </div>
                         `).join('')}
                     </div>
@@ -517,11 +533,12 @@ const SlidesRenderer = {
                     <p class="premium-subtitle animate-fade-up">${intro}</p>
                     <div class="stagger-premium" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; max-width: 1100px; margin: 20px 0;">
                         ${advantages.map(adv => `
-                            <div class="glass-card hover-lift" style="padding: 24px 16px; text-align: left;">
-                                <span style="font-size: 2.5rem; display: block; margin-bottom: 12px;">${adv.icon}</span>
-                                <h3 style="color: #fff; font-size: 1rem; font-weight: 700; margin-bottom: 8px;">${adv.title}</h3>
-                                <p style="color: var(--gray-400); font-size: 0.85rem; margin-bottom: 12px;">${adv.desc}</p>
+                            <div class="glass-card clickable-card hover-lift" data-modal="advantage" style="padding: 24px 16px; text-align: left; cursor: pointer;">
+                                <span class="advantage-icon" style="font-size: 2.5rem; display: block; margin-bottom: 12px;">${adv.icon}</span>
+                                <h3 class="advantage-title" style="color: #fff; font-size: 1rem; font-weight: 700; margin-bottom: 8px;">${adv.title}</h3>
+                                <p class="advantage-desc" style="color: var(--gray-400); font-size: 0.85rem; margin-bottom: 12px;">${adv.desc}</p>
                                 <span style="display: block; color: #fca5a5; font-size: 0.75rem; font-style: italic;">${adv.vsOthers}</span>
+                                <span class="click-hint-mini">ℹ️</span>
                             </div>
                         `).join('')}
                     </div>
@@ -546,12 +563,13 @@ const SlidesRenderer = {
                     <div class="premium-quote animate-fade-up">${quote}</div>
                     <div class="premium-timeline stagger-premium">
                         ${milestones.map(m => `
-                            <div class="premium-timeline-item">
+                            <div class="premium-timeline-item clickable-card" data-modal="vision" style="cursor: pointer;">
                                 <div class="premium-timeline-year">${m.year}</div>
                                 <div class="premium-timeline-content">
-                                    <h3 class="premium-timeline-title">${m.title}</h3>
-                                    <p class="premium-timeline-desc">${m.desc}</p>
+                                    <h3 class="milestone-title">${m.title}</h3>
+                                    <p class="milestone-desc">${m.desc}</p>
                                 </div>
+                                <span class="click-hint-mini" style="position: absolute; top: 8px; right: 8px;">ℹ️</span>
                             </div>
                         `).join('')}
                     </div>

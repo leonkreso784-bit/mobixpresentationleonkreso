@@ -177,10 +177,10 @@ class MobixPresentation {
     }
 
     getModalContent(type, card) {
-        // Get icon and title from the card
-        const iconEl = card.querySelector('.feature-icon, .problem-icon, .solution-icon, .tech-icon, .benefit-icon, .metric-icon, .step-icon, .detail-icon, .item-icon, .spec-icon');
-        const titleEl = card.querySelector('.feature-title, .problem-title, .solution-title, .tech-title, .benefit-title, .metric-title, .step-title, .detail-title, .item-title, .spec-title, h3, h4');
-        const descEl = card.querySelector('.feature-desc, .problem-desc, .solution-desc, .tech-desc, .benefit-desc, .metric-desc, .step-desc, .detail-desc, .item-desc, .spec-desc, p');
+        // Get icon and title from the card - expanded selectors for premium design
+        const iconEl = card.querySelector('.feature-icon, .problem-icon, .solution-icon, .step-icon, .mode-icon, .item-icon, .level-icon, .model-icon, .tier-icon, .creator-icon, .traveler-icon, .b2b-icon, .advantage-icon, .tech-icon, .benefit-icon, .metric-icon, .detail-icon, .spec-icon');
+        const titleEl = card.querySelector('.feature-title, .problem-title, .solution-title, .step-title, .mode-title, .item-title, .level-title, .model-title, .tier-title, .creator-title, .traveler-title, .b2b-title, .advantage-title, .milestone-title, .revenue-title, h3, h4');
+        const descEl = card.querySelector('.feature-desc, .problem-desc, .solution-desc, .step-desc, .mode-desc, .item-desc, .level-desc, .model-desc, .b2b-desc, .advantage-desc, .milestone-desc, .revenue-desc, p');
         
         const icon = iconEl ? iconEl.textContent : '📌';
         const title = titleEl ? titleEl.textContent : 'Details';
