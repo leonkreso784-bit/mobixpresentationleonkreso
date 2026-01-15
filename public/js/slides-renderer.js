@@ -71,7 +71,7 @@ const SlidesRenderer = {
                         ${features.map(f => `
                             <div class="premium-card hover-lift clickable-card" data-modal="feature">
                                 <span class="feature-icon">${f.icon}</span>
-                                <h3 class="feature-title">${f.title}</h3>
+                                <h2 class="feature-title">${f.title}</h2>
                                 <p class="feature-desc">${f.desc}</p>
                                 <span class="click-hint">Click for details</span>
                             </div>
@@ -95,7 +95,7 @@ const SlidesRenderer = {
                                 <div class="glass-card-light clickable-card" data-modal="problem" style="padding: 20px; border-radius: 16px; display: flex; gap: 16px; align-items: flex-start; text-align: left; cursor: pointer;">
                                     <span class="problem-icon" style="font-size: 2rem; flex-shrink: 0;">${p.icon}</span>
                                     <div>
-                                        <h3 class="problem-title" style="color: #fca5a5; font-size: 1.1rem; font-weight: 600; margin-bottom: 4px;">${p.title}</h3>
+                                        <h2 class="problem-title" style="color: #fca5a5; font-size: 1.1rem; font-weight: 600; margin-bottom: 4px;">${p.title}</h2>
                                         <p class="problem-desc" style="color: var(--gray-400); font-size: 0.9rem; line-height: 1.5;">${p.desc}</p>
                                     </div>
                                     <span class="click-hint-mini">ℹ️</span>
@@ -127,7 +127,7 @@ const SlidesRenderer = {
                             ${solutions.map(s => `
                                 <div class="glass-card-light clickable-card" data-modal="solution" style="padding: 20px; border-radius: 16px; text-align: left; cursor: pointer;">
                                     <span class="solution-icon" style="font-size: 2rem; display: block; margin-bottom: 12px;">${s.icon}</span>
-                                    <h3 class="solution-title" style="color: #6ee7b7; font-size: 1rem; font-weight: 600; margin-bottom: 6px;">${s.title}</h3>
+                                    <h2 class="solution-title" style="color: #6ee7b7; font-size: 1rem; font-weight: 600; margin-bottom: 6px;">${s.title}</h2>
                                     <p class="solution-desc" style="color: var(--gray-400); font-size: 0.85rem; line-height: 1.5;">${s.desc}</p>
                                     <span class="click-hint-mini">ℹ️</span>
                                 </div>
@@ -158,7 +158,7 @@ const SlidesRenderer = {
                             <div class="premium-flow-step clickable-card hover-lift" data-modal="step">
                                 <div class="premium-flow-number">${step.number}</div>
                                 <span class="step-icon">${step.icon}</span>
-                                <h3 class="step-title">${step.title}</h3>
+                                <h2 class="step-title">${step.title}</h2>
                                 <p class="step-desc">${step.desc}</p>
                                 <span class="click-hint-mini">ℹ️</span>
                             </div>
@@ -183,7 +183,7 @@ const SlidesRenderer = {
                                 <div class="glass-card-light clickable-card" data-modal="mode" style="padding: 20px; border-radius: 16px; text-align: left; cursor: pointer;">
                                     <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
                                         <span class="mode-icon" style="font-size: 2rem;">${mode.icon}</span>
-                                        <h3 class="mode-title" style="color: var(--primary-300); font-size: 1.2rem; font-weight: 700;">${mode.title}</h3>
+                                        <h2 class="mode-title" style="color: var(--primary-300); font-size: 1.2rem; font-weight: 700;">${mode.title}</h2>
                                     </div>
                                     <p class="mode-desc" style="color: var(--gray-400); font-size: 0.9rem; line-height: 1.5; margin-bottom: 12px;">${mode.desc}</p>
                                     <div style="background: rgba(0,0,0,0.3); padding: 12px; border-radius: 8px;">
@@ -227,7 +227,7 @@ const SlidesRenderer = {
                     <div class="stagger-premium" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 900px;">
                         <div class="glass-card clickable-card" data-modal="cards" style="padding: 28px; border-radius: 20px; text-align: left; cursor: pointer;">
                             <span class="item-icon" style="font-size: 3rem; display: block; margin-bottom: 16px;">${travelCards.icon}</span>
-                            <h3 class="item-title" style="font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 8px;">${travelCards.title}</h3>
+                            <h2 class="item-title" style="font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 8px;">${travelCards.title}</h2>
                             <p class="item-desc" style="color: var(--gray-400); margin-bottom: 16px;">${travelCards.desc}</p>
                             <ul style="list-style: none; padding: 0; margin: 0;">
                                 ${travelCards.features.map(f => `<li style="color: var(--gray-300); font-size: 0.9rem; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ ${f}</li>`).join('')}
@@ -236,7 +236,7 @@ const SlidesRenderer = {
                         </div>
                         <div class="glass-card clickable-card" data-modal="notes" style="padding: 28px; border-radius: 20px; text-align: left; cursor: pointer;">
                             <span class="item-icon" style="font-size: 3rem; display: block; margin-bottom: 16px;">${travelNotes.icon}</span>
-                            <h3 class="item-title" style="font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 8px;">${travelNotes.title}</h3>
+                            <h2 class="item-title" style="font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 8px;">${travelNotes.title}</h2>
                             <p class="item-desc" style="color: var(--gray-400); margin-bottom: 16px;">${travelNotes.desc}</p>
                             <ul style="list-style: none; padding: 0; margin: 0;">
                                 ${travelNotes.features.map(f => `<li style="color: var(--gray-300); font-size: 0.9rem; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ ${f}</li>`).join('')}
@@ -263,7 +263,7 @@ const SlidesRenderer = {
                             ${features.map(f => `
                                 <div class="glass-card-light clickable-card" data-modal="social" style="padding: 20px; border-radius: 16px; text-align: left; cursor: pointer;">
                                     <span class="feature-icon" style="font-size: 2rem; display: block; margin-bottom: 10px;">${f.icon}</span>
-                                    <h3 class="feature-title" style="color: #fff; font-size: 1rem; font-weight: 600; margin-bottom: 6px;">${f.title}</h3>
+                                    <h2 class="feature-title" style="color: #fff; font-size: 1rem; font-weight: 600; margin-bottom: 6px;">${f.title}</h2>
                                     <p class="feature-desc" style="color: var(--gray-400); font-size: 0.85rem;">${f.desc}</p>
                                     <span class="click-hint-mini">ℹ️</span>
                                 </div>
@@ -294,7 +294,7 @@ const SlidesRenderer = {
                         ${features.map(f => `
                             <div class="premium-card clickable-card hover-lift" data-modal="personalization" style="padding: 24px 16px; cursor: pointer;">
                                 <span class="feature-icon">${f.icon}</span>
-                                <h3 class="feature-title" style="color: #fff; font-size: 1rem; font-weight: 600; margin-bottom: 8px;">${f.title}</h3>
+                                <h2 class="feature-title" style="color: #fff; font-size: 1rem; font-weight: 600; margin-bottom: 8px;">${f.title}</h2>
                                 <p class="feature-desc" style="color: var(--gray-400); font-size: 0.85rem;">${f.desc}</p>
                                 <span class="click-hint-mini">ℹ️</span>
                             </div>
@@ -330,7 +330,7 @@ const SlidesRenderer = {
                                     <span class="level-icon" style="font-size: 2.5rem;">${level.icon}</span>
                                     <div>
                                         <span style="font-size: 0.75rem; color: var(--primary-400);">Level ${level.level}</span>
-                                        <h3 class="level-title" style="color: #fff; font-size: 1.1rem; font-weight: 700;">${level.name}</h3>
+                                        <h2 class="level-title" style="color: #fff; font-size: 1.1rem; font-weight: 700;">${level.name}</h2>
                                     </div>
                                 </div>
                                 <span class="level-desc" style="display: block; color: var(--gray-400); font-size: 0.85rem; margin-bottom: 12px;">${level.xp}</span>
@@ -365,7 +365,7 @@ const SlidesRenderer = {
                                 <div class="glass-card-light clickable-card hover-lift" data-modal="business" style="padding: 24px; border-radius: 16px; text-align: left; position: relative; cursor: pointer;">
                                     <span style="position: absolute; top: 12px; right: 12px; background: linear-gradient(135deg, var(--primary-500), var(--accent-cyan)); padding: 4px 12px; border-radius: 100px; font-size: 0.85rem; font-weight: 700;">${model.revenue}</span>
                                     <span class="model-icon" style="font-size: 2.5rem; display: block; margin-bottom: 12px;">${model.icon}</span>
-                                    <h3 class="model-title" style="color: #fff; font-size: 1.1rem; font-weight: 700; margin-bottom: 6px;">${model.title}</h3>
+                                    <h2 class="model-title" style="color: #fff; font-size: 1.1rem; font-weight: 700; margin-bottom: 6px;">${model.title}</h2>
                                     <p class="model-desc" style="color: var(--gray-400); font-size: 0.9rem;">${model.desc}</p>
                                     <span class="click-hint-mini">ℹ️</span>
                                 </div>
@@ -390,7 +390,7 @@ const SlidesRenderer = {
                         ${tiers.map(tier => `
                             <div class="premium-pricing-card clickable-card ${tier.highlighted ? 'highlighted' : ''} hover-lift" data-modal="pricing" style="cursor: pointer;">
                                 <span class="tier-icon" style="font-size: 3rem; display: block; margin-bottom: 12px;">${tier.icon}</span>
-                                <h3 class="tier-title" style="font-size: 1.3rem; font-weight: 700; color: #fff;">${tier.name}</h3>
+                                <h2 class="tier-title" style="font-size: 1.3rem; font-weight: 700; color: #fff;">${tier.name}</h2>
                                 <div style="margin: 16px 0;">
                                     <span class="premium-pricing-price">${tier.price}</span>
                                     <span class="premium-pricing-period">${tier.period}</span>
@@ -418,7 +418,7 @@ const SlidesRenderer = {
                         <div class="stagger-premium" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;">
                             <div class="glass-card clickable-card" data-modal="marketplace" style="padding: 24px; border-radius: 16px; text-align: left; border-color: rgba(168, 85, 247, 0.3); cursor: pointer;">
                                 <span class="creator-icon" style="font-size: 2rem; margin-bottom: 12px; display: block;">${forCreators.icon}</span>
-                                <h3 class="creator-title" style="color: #c4b5fd; font-size: 1.1rem; font-weight: 700; margin-bottom: 12px;">${forCreators.title}</h3>
+                                <h2 class="creator-title" style="color: #c4b5fd; font-size: 1.1rem; font-weight: 700; margin-bottom: 12px;">${forCreators.title}</h2>
                                 <ul style="list-style: none; padding: 0; margin: 0;">
                                     ${forCreators.benefits.map(b => `<li style="color: var(--gray-300); font-size: 0.9rem; padding: 6px 0;">✨ ${b}</li>`).join('')}
                                 </ul>
@@ -426,7 +426,7 @@ const SlidesRenderer = {
                             </div>
                             <div class="glass-card clickable-card" data-modal="marketplace" style="padding: 24px; border-radius: 16px; text-align: left; border-color: rgba(14, 165, 233, 0.3); cursor: pointer;">
                                 <span class="traveler-icon" style="font-size: 2rem; margin-bottom: 12px; display: block;">${forTravelers.icon}</span>
-                                <h3 class="traveler-title" style="color: var(--primary-300); font-size: 1.1rem; font-weight: 700; margin-bottom: 12px;">${forTravelers.title}</h3>
+                                <h2 class="traveler-title" style="color: var(--primary-300); font-size: 1.1rem; font-weight: 700; margin-bottom: 12px;">${forTravelers.title}</h2>
                                 <ul style="list-style: none; padding: 0; margin: 0;">
                                     ${forTravelers.benefits.map(b => `<li style="color: var(--gray-300); font-size: 0.9rem; padding: 6px 0;">🎯 ${b}</li>`).join('')}
                                 </ul>
@@ -463,7 +463,7 @@ const SlidesRenderer = {
                             ${solutions.map(s => `
                                 <div class="glass-card-light clickable-card hover-lift" data-modal="b2b" style="padding: 20px; border-radius: 16px; text-align: left; cursor: pointer;">
                                     <span class="b2b-icon" style="font-size: 2rem; display: block; margin-bottom: 10px;">${s.icon}</span>
-                                    <h3 class="b2b-title" style="color: #fff; font-size: 1rem; font-weight: 600; margin-bottom: 6px;">${s.title}</h3>
+                                    <h2 class="b2b-title" style="color: #fff; font-size: 1rem; font-weight: 600; margin-bottom: 6px;">${s.title}</h2>
                                     <p class="b2b-desc" style="color: var(--gray-400); font-size: 0.85rem;">${s.desc}</p>
                                     <span class="click-hint-mini">ℹ️</span>
                                 </div>
@@ -535,7 +535,7 @@ const SlidesRenderer = {
                         ${advantages.map(adv => `
                             <div class="glass-card clickable-card hover-lift" data-modal="advantage" style="padding: 24px 16px; text-align: left; cursor: pointer;">
                                 <span class="advantage-icon" style="font-size: 2.5rem; display: block; margin-bottom: 12px;">${adv.icon}</span>
-                                <h3 class="advantage-title" style="color: #fff; font-size: 1rem; font-weight: 700; margin-bottom: 8px;">${adv.title}</h3>
+                                <h2 class="advantage-title" style="color: #fff; font-size: 1rem; font-weight: 700; margin-bottom: 8px;">${adv.title}</h2>
                                 <p class="advantage-desc" style="color: var(--gray-400); font-size: 0.85rem; margin-bottom: 12px;">${adv.desc}</p>
                                 <span style="display: block; color: #fca5a5; font-size: 0.75rem; font-style: italic;">${adv.vsOthers}</span>
                                 <span class="click-hint-mini">ℹ️</span>
@@ -566,7 +566,7 @@ const SlidesRenderer = {
                             <div class="premium-timeline-item clickable-card" data-modal="vision" style="cursor: pointer;">
                                 <div class="premium-timeline-year">${m.year}</div>
                                 <div class="premium-timeline-content">
-                                    <h3 class="milestone-title">${m.title}</h3>
+                                    <h2 class="milestone-title">${m.title}</h2>
                                     <p class="milestone-desc">${m.desc}</p>
                                 </div>
                                 <span class="click-hint-mini" style="position: absolute; top: 8px; right: 8px;">ℹ️</span>
